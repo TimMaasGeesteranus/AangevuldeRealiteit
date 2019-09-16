@@ -9,18 +9,14 @@ Contactmomenten
 
 Binnen het project zullen er de volgende contactmomenten plaatsvinden:
 
-| Meetings              | aanwezigen                   | Doel                                                          |
-|-----------------------|------------------------------|---------------------------------------------------------------|
-| Daily standup         | Het projecteam               | Inventariseren individuele voortgang                          |
-| Sprint planning       | Het projectteam & Begeleider | Het bepalen van de taken per sprint                           |
-| Retrospective meeting | Het projecteam & Begeleider  | Tussentijds evalueren op de verloop van de sprint            |
-| Sprint review         | Het projecteam & Begeleider  | Het opleveren van de deelproducten en evalueren van de sprint |
+| Meetings              | aanwezigen                   | Doel                                                                                                                 |
+|-----------------------|------------------------------|----------------------------------------------------------------------------------------------------------------------|
+| Daily standup         | Het projecteam               | \-Inventariseren individuele voortgang <br> -Projectvoortgang inventariseren en eventueel bijsturen <br> -Problemen aankaarten |
+| Sprint planning       | Het projectteam & Begeleider | \-Het bepalen van de taken per sprint                                                                                |
+| Retrospective meeting | Het projecteam & Begeleider  | \-Tussentijds evalueren op de verloop van de sprint. <br>-Het geven van onderlinge feedback.                             |
+| Sprint review         | Het projecteam & Begeleider  | \-Het opleveren van de deelproducten en evalueren van de sprint                                                      |
 
--   Projectvoortgang inventariseren en eventueel bijsturen
 
--   Problemen aankaarten
-
--   Het geven van onderlinge feedback.
 
 Contactgegevens
 ---------------
