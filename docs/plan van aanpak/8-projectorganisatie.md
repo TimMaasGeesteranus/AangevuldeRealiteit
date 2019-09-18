@@ -1,11 +1,9 @@
 Projectorganisatie
 ==================
 
-Contact
-=======
+## Contact
 
-Contactmomenten
----------------
+### Contactmomenten
 
 Binnen het project zullen er de volgende contactmomenten plaatsvinden:
 
@@ -18,10 +16,9 @@ Binnen het project zullen er de volgende contactmomenten plaatsvinden:
 
 
 
-Contactgegevens
----------------
+### Contactgegevens
 
-### Team
+#### Team
 
 Gedurende het project kan er contact worden opgenomen met het team middels de
 onderstaande contactgegevens.
@@ -39,3 +36,48 @@ onderstaande contactgegevens.
 
 *Wanneer het contact de hele groep betreft, gelieve contact op te nemen met het
 emailadres van het team.*
+
+## Projectrollen
+
+Binnen het projecteam zij er ook een aantal projectrollen gedefinieerd. Deze
+kunnen worden teruggevonden in het onderstaande overzicht.
+
+| Personen | Rollen                    |
+|----------|---------------------------|
+| Jim      | Planning                  |
+| Randy    | Scrummaster, Klantcontact |
+| Kay      | Lokaalreservering         |
+| Reno     | Notulist                  |
+| Tim      | Klantcontact              |
+| Kevin    | Planning                  |
+
+Verantwoordelijkheden rollen:
+
+-   Planning:
+
+    -   Het controleren of het project schema ligt aan de hand van de planning
+
+    -   Het inschatten van deadlines en het mogelijk bijstellen van de planning
+
+-   Scrummaster
+
+    -   Het bewaken van het scrumproces
+
+    -   Het bijwerken van het scrumbord
+
+    -   Het voorbereiden van meetings
+
+    -   Het voorzitten van meetings
+
+-   Klantcontact
+
+    -   Het contact met begeleiders/externe partijen
+
+-   Lokaalreservering
+
+    -   Het tijdig reserveren van werkruimtes
+
+-   Notulist
+
+    -   Het notuleren tijdens de verschillende meetings/contactmomenten
+

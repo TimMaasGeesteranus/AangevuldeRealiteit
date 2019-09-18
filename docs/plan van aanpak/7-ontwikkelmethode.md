@@ -1,8 +1,8 @@
 Ontwikkelmethode
 ================
 
-Scrum
------
+## Scrum
+
 
 ### Waarom Scrum
 
