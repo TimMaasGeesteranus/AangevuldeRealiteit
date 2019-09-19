@@ -9,31 +9,58 @@ Ontwikkelmethode
 Gedurende het project zal er gebruik worden gemaakt van de ontwikkelmethode
 Scrum.
 
-Er is bij de opdracht namelijk sprake van wisselende requirements. Waardoor een
-iteratieve en incrementele management methode wenselijk is.
+Met als voornaamste reden dat de usecase nog niet definitief is. Het zou namelijk kunnen dat voor de [usecase deadline]() nog wordt besloten om de usecase aan te passen.
+Waarbij een flexible iteratieve methode zoals scrum wenselijk is.
+
+Daarnaast zullen wij bij onze huidige usecase ook periodiek bepaalde functionaliteiten worden opgeleverd. Waardoor ook het incrementele gedeelte ook goed past bij ons project.
 
 ### Wat is Scrum
 
 Scrum is een incrementele en iteratieve aanpak om een product op te leveren. Het
 totale product wordt in delen opgesplitst (incrementen), welke periodiek worden
-opgeleverd. Het voordeel hiervan is dat de requirements kunnen veranderen
-tijdens het project, zonder dat dit al te veel tijdsverlies oplevert. Daarnaast
-kan er iteratief aan het product gewerkt worden. Een deel van de user stories
-kan opgeleverd worden, vervolgens worden voorzien van feedback door de
-opdrachtgever en op basis van deze feedback worden verbeterd. Dit zorgt ervoor
-dat de opdrachtgever op de hoogte kan blijven en tussentijds bij kan sturen.
+opgeleverd. De voordelen hiervan zijn dat de requirements kunnen veranderen
+tijdens het project, zonder dat dit al te veel tijdsverlies oplevert en er elke periode (sprint) weer een nieuwe feature kan worden opgeleverd.
+
+*Voor meer informatie over Scrum kan de volgende [bron](https://docs.google.com/document/d/1nYtDFelWIIY_HflRyFgfNad_BLUWWT5OzyGJE5lavZ4/edit#heading=h.qdslz9rw1ldu) worden geraadpleegd*
 
 ### Scrum binnen het project
+#### Planning
+Het project zal worden opgedeeld in 3 fasen:
+-   De pregame (4 weken)
 
-Het project is opgedeeld in 3 delen. Een pregame en postgame-fase en \* sprints.
-De pregame en postgame bedragen beiden één week.
+    -   Het bepalen van de usecase
+
+    -   Het uitvoeren van voorbereidend onderzoek
+
+    -   Het opstellen van het storyboard
+
+-   De sprints (4 sprints van 3 weken)
+
+    -   Het uitvoeren van onderzoek
+
+    -   Het realiseren van de applicatie
+
+    -   Het opstellen van applicatietests
+
+    -   Het opstellen en bijwerken van documentatie
+
+-   De postgame (10 dagen)
+
+    -   Het opstellen van opleverdocumentatie
+
+    -   Het uitvoeren van de laatste verbeteracties
+
+    -   De presentatie van het eindresultaat
+
+*Meer informatie over de scrumplanning kan worden teruggevonden in het hoofdstuk [projectorganisatie]()*
+
 
 #### Rollen
 
 Binnen ons project zal er één scrumrol worden toegekend. Namelijk die van
 Scrummaster.  
 Wat deze rol precies zal inhouden kan worden teruggevonden in het onderdeel
-projectrollen van het hoofdstuk projectorganisatie.
+projectrollen van het hoofdstuk [projectorganisatie]().
 
 #### Meetings
 
@@ -49,4 +76,4 @@ Namelijk de:
 -   Sprint review
 
 Wat deze meetings precies zullen inhouden, kan worden teruggevonden in het
-onderdeel contactmomenten van het hoofdstuk projectorganisatie.
+onderdeel contactmomenten van het hoofdstuk [projectorganisatie]().
