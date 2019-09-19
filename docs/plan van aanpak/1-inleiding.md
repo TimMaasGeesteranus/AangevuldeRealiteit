@@ -1,5 +1,4 @@
-Inleiding
-=========
+# Inleiding
 
 In dit document wordt het projectplan beschreven voor de nieuwe Augmented
 reality(AR) toepassing die zal worden gerealiseerd tijdens het NOTS project.
@@ -25,7 +24,7 @@ dit projectplan op gebaseerd zal zijn.
 Deze usecase betreft een platform waarbij toeristen doormiddel van AR worden
 voorzien van informatie over verschillende bezienswaardigheden. Er is namelijk
 bij veel bezienswaardigheden ter plekke vaak geen of beperkte informatie
-beschikbaar Zo valt er bij veel beelden/monumenten geen informatie te vinden en
+beschikbaar. Zo valt er bij veel beelden/monumenten geen informatie te vinden en
 is de taal vaak een probleem bij bezienswaardigheden in het buitenland.
 
 Vandaar dat er een prototype van een location-based platform zal worden
@@ -33,7 +32,7 @@ opgeleverd, waarbij bij de verschillende bezienswaardigheden informatie in de
 gewenst taal zal worden getoond. Daarnaast zal het ook de mogelijkheid hebben op
 informatie voor te lezen doormiddel van een spraak assistent.
 
-In dit document zullen we de aanpak en benodigde onderzoek van deze toepassing
+In dit document zullen we de aanpak en het benodigde onderzoek van deze toepassing
 vastleggen. Zodat het als leidraad kan worden gebruikt voor het projecteam en
 refereerbaar is voor de verschillende betrokken partijen.
 
