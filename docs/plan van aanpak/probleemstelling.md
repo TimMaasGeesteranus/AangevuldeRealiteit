@@ -10,8 +10,4 @@ De te realiseren applicatie zal toeristen de mogelijkheid bieden om onbegrijpeli
 Omdat bezienswaardigheden niet altijd informatie tonen in een taal die te begrijpen is voor de toeristen, is het mogelijk om de aanvullende informatie automatisch te vertalen naar de ingestelde voorkeurtaal.
 
 ### **Beluisteren**
-Sommige toeristen kiezen ervoor om in een korte tijd meerdere bezienswaardigheden te bezoeken. Echter is het erg tijdrovend om vervolgens informatie over deze bezienswaardigheden te lezen.
-
-De te realiseren applicatie zal toeristen de mogelijkheid bieden om de beschikbare informatie te beluisteren in zijn/haar taal. Tevens geeft dit toeristen de mogelijkheid om tijdens het reizen deze informatie te beluisteren.
-
-Tevens kan deze functie benut worden om tour guides te vervangen.
+Er zal een mogelijkheid beschikbaar zijn om toeristen de beschikbare informatie te laten beluisteren in zijn/haar taal. Dit kan vervolgens gebruikt worden om tour guides te vervangen.
