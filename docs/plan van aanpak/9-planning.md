@@ -4,12 +4,14 @@ Dit project zal worden uitgevoerd doormiddel van de Scrum methode. Dit betekent 
 
 ## Overzicht belangrijke data
 
-| Datum     | Tijd  | Beschrijving                        |
-| --------- | ----- | ----------------------------------- | 
-| 20-9-2019 | 16:00 | **Inlevermoment Plan van Aanpak**   |
-| 20-9-2019 | 16:00 | **Inlevermoment Storyboard**        |
-|-----------| 16:00 | **Inlevermoment Onderzoeksverslag** |
-|-----------| 16:00 | **Inlevermoment Eindproduct**       |
+| Datum      | Tijd  | Beschrijving                                |
+| ---------- | ----- | ------------------------------------------- | 
+| 20-9-2019  | 16:00 | **Inlevermoment Plan van Aanpak**           |
+| 20-9-2019  | 16:00 | **Inlevermoment Storyboard**                |
+| 31-10-2019 | 16:00 | **Inlevermoment Onderzoeksverslag**         |
+| 31-10-2019 | 16:00 | **Inlevermoment Tussentijds product**       |
+| 23-1-2020  | 16:00 | **Inlevermoment Eindproduct**               |
+
 
 
 
