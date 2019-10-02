@@ -1,1 +1,18 @@
 theme: jekyll-theme-cayman
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+include:
+- index.md
+- 2.%20probleemstelling.md
+- 3.%20doelstelling.md
+- 4.%20vraagstelling(en).md
+- 5.%20planning.md
+- 6.%20op%20te%20leveren%20producten%20\&%20kwaliteitseisen.md
+- 6.%20risico's.md
+- 7.%20ontwikkelmethode.md
+- 8.%20projectorganisatie.md
+- 9.%20projectgrenzen.md
+- 10.%20Randvoorwaarden.md
