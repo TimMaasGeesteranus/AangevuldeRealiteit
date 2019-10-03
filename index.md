@@ -7,7 +7,7 @@ Gedurende het NOTS-project dient elke projectgroep een toepassing te
 realiseren aan de hand van de nieuwste technologieën zoals Machine learning,
 Artificial intelligence etc.
 
-Onze keuze is uitgegaan voor Augmented reality. Dit is een techniek waarbij er
+Onze keuze is uitgegaan naar Augmented reality. Dit is een techniek waarbij er
 door middel van een camera/bril digitale elementen aan de fysieke omgeving kunnen
 worden toegevoegd. Een technologie die op dit moment vol aan het ontwikkelen is
 door het opkomen van verschillende nieuwe frameworks waarmee het eenvoudig is
@@ -28,8 +28,8 @@ beschikbaar. Zo valt er bij veel beelden/monumenten geen informatie te vinden en
 is de taal vaak een probleem bij bezienswaardigheden in het buitenland.
 
 Vandaar dat er een prototype van een location-based platform zal worden
-opgeleverd, waarbij bij de verschillende bezienswaardigheden informatie in de
-gewenste taal zal worden getoond. Daarnaast zal het ook de mogelijkheid hebben op
+opgeleverd. Hierbij wordt bij de verschillende bezienswaardigheden informatie in de
+gewenste taal getoond. Daarnaast zal het ook de mogelijkheid hebben op
 informatie voor te lezen door middel van een spraak assistent.
 
 In dit document zal de aanpak van het benodigde onderzoek van deze toepassing
@@ -37,18 +37,22 @@ worden vastgelegd. Dit kan als leidraad worden gebruikt voor het projectteam. Oo
 
 Dit zal nader toegelicht worden aan de hand van de volgende hoofdstukken:
 
-2. [Probleemstelling](./2.%20probleemstelling)
+2. [Probleemstelling](./2.%20probleemstelling.md)
 
-3. Doelstelling
+3. [Doelstelling](./3.%20doelstelling.md)
 
-4. Vraagstellingen
+4. [Vraagstelling(en)](<./4%20vraagstelling(en).md>)
 
-5. Planning
+5. [Randvoorwaarden](./5%20Randvoorwaarden.md)
 
-6. Risico’s
+6. [Op te leveren producten & kwaliteitseisen](./6.%20Op%20te%20leveren%20producten%20en%20kwaliteitseisen.md)
 
-7. Ontwikkelmethode
+7. [Projectgrenzen](./7.%20Projectgrenzen.md)
 
-8. Projectorganisatie
+8. [Ontwikkelmethode](./8.%20Ontwikkelmethode.md)
 
-9. Projectgrenzen
+9. [Projectorganisatie](./9.%20Projectorganisatie.md)
+
+10. [Planning](./10.%20Planning.md)
+
+11. [Risico's](./11%20Risico's.md)
