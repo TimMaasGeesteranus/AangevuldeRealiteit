@@ -37,25 +37,25 @@ worden vastgelegd. Dit kan als leidraad worden gebruikt voor het projectteam. Oo
 
 Dit zal nader toegelicht worden aan de hand van de volgende hoofdstukken:
 
-2. [Probleemstelling](./2.%20probleemstelling.md)
+2. [Probleemstelling](#Probleemstelling)
 
-3. [Doelstelling](./3.%20doelstelling.md)
+3. [Doelstelling](#Doelstelling)
 
-4. [Vraagstelling(en)](<./4%20vraagstelling(en).md>)
+4. [Vraagstelling(en)](#Vraagstelling)
 
-5. [Randvoorwaarden](./5%20Randvoorwaarden.md)
+5. [Randvoorwaarden](#Randvoorwaarden)
 
-6. [Op te leveren producten & kwaliteitseisen](./6.%20Op%20te%20leveren%20producten%20en%20kwaliteitseisen.md)
+6. [Op te leveren producten & kwaliteitseisen](#Op%20te%20leveren%20producten%20en%20kwaliteitseisen)
 
-7. [Projectgrenzen](./7.%20Projectgrenzen.md)
+7. [Projectgrenzen](#Projectgrenzen)
 
-8. [Ontwikkelmethode](./8.%20Ontwikkelmethode.md)
+8. [Ontwikkelmethode](#Ontwikkelmethode)
 
-9. [Projectorganisatie](./9.%20Projectorganisatie.md)
+9. [Projectorganisatie](#Projectorganisatie)
 
-10. [Planning](./10.%20Planning.md)
+10. [Planning](#Planning)
 
-11. [Risico's](./11%20Risico's.md)
+11. [Risico's](#Risico's)
 
 # Probleemstelling
 
@@ -77,6 +77,8 @@ Het doel van dit project is om voor 18 april 2020 een prototype applicatie te re
 Door het gebruik van de camera op een mobiel apparaat zal er door middel van Augmented Reality digitale elementen worden toegevoegd aan de realiteit om de
 gebruiker een betere beleving te geven. Door middel van deze digitale elementen kan de gebruiker meer ervaren en meer te weten te komen over het monument waar
 hij zijn camera op richt. Daarnaast kan de gebruiker ervoor kiezen de informatie in zijn eigen spreektaal te laten voorlezen.
+
+# Vraagstelling
 
 Om het doel te bereiken zullen er een aantal onderzoeken worden gedaan die in het hoofdstuk vraagstellingen zullen worden toegelicht.
 
