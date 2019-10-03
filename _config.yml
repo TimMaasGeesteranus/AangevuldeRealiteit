@@ -6,14 +6,14 @@ relative_links:
 include:
   - index.md
   - 2.%20probleemstelling.md
-  - 3. doelstelling.md
-  - 4. vraagstelling(en).md
-  - 5. planning.md
-  - 6. op te leveren producten \& kwaliteitseisen.md
-  - 7. ontwikkelmethode.md
-  - 8. projectorganisatie.md
-  - 9. projectgrenzen.md
-  - 10. Randvoorwaarden.md
-  - 11. Risico's.md
+  - 3.%20doelstelling.md
+  - 4.%20vraagstelling(en).md
+  - 5.%20planning.md
+  - 6.%20op%20te%20leveren%20producten%20\&%20kwaliteitseisen.md
+  - 7.%20ontwikkelmethode.md
+  - 8.%20projectorganisatie.md
+  - 9.%20projectgrenzen.md
+  - 10.%20Randvoorwaarden.md
+  - 11.%20Risico's.md
 
 theme: jekyll-theme-cayman
