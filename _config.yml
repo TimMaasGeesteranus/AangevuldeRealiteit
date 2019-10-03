@@ -4,16 +4,15 @@ plugins:
 relative_links:
   enabled: true
   collections: true
-source: /docs
 include:
-- index.md
-- 2.%20probleemstelling.md
-- 3.%20doelstelling.md
-- 4.%20vraagstelling(en).md
-- 5.%20planning.md
-- 6.%20op%20te%20leveren%20producten%20\&%20kwaliteitseisen.md
-- 6.%20risico's.md
-- 7.%20ontwikkelmethode.md
-- 8.%20projectorganisatie.md
-- 9.%20projectgrenzen.md
-- 10.%20Randvoorwaarden.md
+- docs/index.md
+- docs/2.%20probleemstelling.md
+- docs/3.%20doelstelling.md
+- docs/4.%20vraagstelling(en).md
+- docs/5.%20planning.md
+- docs/6.%20op%20te%20leveren%20producten%20\&%20kwaliteitseisen.md
+- docs/6.%20risico's.md
+- docs/7.%20ontwikkelmethode.md
+- docs/8.%20projectorganisatie.md
+- docs/9.%20projectgrenzen.md
+- docs/10.%20Randvoorwaarden.md
