@@ -37,7 +37,7 @@ worden vastgelegd. Dit kan als leidraad worden gebruikt voor het projectteam. Oo
 
 Dit zal nader toegelicht worden aan de hand van de volgende hoofdstukken:
 
-2. [Probleemstelling](./2.%20probleemstelling.md)
+2. [Probleemstelling](./probleemstelling.md)
 
 3. [Doelstelling](./3.%20doelstelling.md)
 
