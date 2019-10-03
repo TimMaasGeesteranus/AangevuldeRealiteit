@@ -1,11 +1,11 @@
-theme: jekyll-theme-slate
+theme: jekyll-theme-cayman
 plugins:
   - jekyll-relative-links
 relative_links:
   enabled: true
   collections: true
 include:
-  # - index.md
+  - index.md
   - 2. probleemstelling.md
   - 3. doelstelling.md
   - 4. vraagstelling(en).md
