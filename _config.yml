@@ -6,7 +6,7 @@ relative_links:
   collections: true
 include:
   - index.md
-  - 2. probleemstelling.md
+  - 2.probleemstelling.md
   - 3. doelstelling.md
   - 4. vraagstelling(en).md
   - 5. planning.md
