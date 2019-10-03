@@ -37,19 +37,18 @@ worden vastgelegd. Dit kan als leidraad worden gebruikt voor het projectteam. Oo
 
 Dit zal nader toegelicht worden aan de hand van de volgende hoofdstukken:
 
-2.  Probleemstelling
+2. [Probleemstelling](./2.%20probleemstelling)
 
 3. Doelstelling
 
-4.  Vraagstellingen
+4. Vraagstellingen
 
-5.  Planning
+5. Planning
 
-6.  Risico’s
+6. Risico’s
 
-7.  Ontwikkelmethode
+7. Ontwikkelmethode
 
 8. Projectorganisatie
 
 9. Projectgrenzen
-
