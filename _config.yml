@@ -4,6 +4,7 @@ plugins:
 relative_links:
   enabled: true
   collections: true
+source: /docs
 include:
 - index.md
 - 2.%20probleemstelling.md
