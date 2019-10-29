@@ -37,3 +37,5 @@ sprint.
 | Sluiting vergadering & vragen vanuit begeleiding |                                                                         | 15                  |
 
 Totale tijdsduur: 60 minuten
+
+**Notulen**
