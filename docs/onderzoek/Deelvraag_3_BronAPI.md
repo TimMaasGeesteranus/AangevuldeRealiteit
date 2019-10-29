@@ -17,3 +17,5 @@ De beschikbare informatie bestaat uit alle Wikipedia pagina's.
 De informatie is beschikbaar in het Nederlands en het Engels.
 
 Aangezien er geen vergelijkbare API gevonden kan worden wordt ervoor gekozen om de Wikipedia API te gebruiken
+
+MediaWiki. (z.d.). API:Hoofdpagina - MediaWiki. Geraadpleegd op 22 oktober 2019, van https://www.mediawiki.org/wiki/API:Main_page/nl
