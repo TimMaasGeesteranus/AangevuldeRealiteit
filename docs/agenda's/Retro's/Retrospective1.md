@@ -1,6 +1,6 @@
 # Retrospective 29-10-2019
 
-Scrum Master: Randy
+Scrum Master: Randy <br>
 Notulist: Reno
 
 ## Mededelingen
