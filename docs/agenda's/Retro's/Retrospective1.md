@@ -7,9 +7,9 @@ Notulist: Reno
 
 ## Agenda vaststellen
 
+- Planning
 - Demo
 - Reflectie sprint
-- Planning
 - Rollen bespreken
 
 ## Demo
