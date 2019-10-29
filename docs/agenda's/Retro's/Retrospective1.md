@@ -1,5 +1,8 @@
 # Retrospective 29-10-2019
 
+Scrum Master: Randy
+Notulist: Reno
+
 ## Mededelingen
 
 ## Agenda vaststellen
