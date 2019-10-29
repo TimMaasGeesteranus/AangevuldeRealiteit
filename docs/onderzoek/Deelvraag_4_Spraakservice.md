@@ -46,16 +46,19 @@ Om een werkend audiobestand te kunnen genereren met Watson moet de gebruiker een
 
 
 #### 2.6.1 Implementatieresultaten 
+![helloworldwav](https://github.com/TimMaasGeesteranus/AangevuldeRealiteit/blob/master/docs/onderzoek/media/helloworldWav.png) 
+<br><sub> Figuur 1  Hello World.wav </sub>
 
-<sub> Figuur 1  Hello World.wav </sub>
+
+![helloworldogg](https://github.com/TimMaasGeesteranus/AangevuldeRealiteit/blob/master/docs/onderzoek/media/helloworldOgg.png)  
+<br><sub> Figuur 2 Hello World.ogg </sub>
+
+![helloworldopus](https://github.com/TimMaasGeesteranus/AangevuldeRealiteit/blob/master/docs/onderzoek/media/helloworldOpus.png) 
+<br><sub> Figuur 3 Hello World.opus </sub>
+
+![helloworldresult](https://github.com/TimMaasGeesteranus/AangevuldeRealiteit/blob/master/docs/onderzoek/media/helloworldResult.png)
+<br><sub> Figuur 4 Gegenereerde audiobestanden </sub>
  
-<sub> Figuur 2 Hello World.ogg </sub>
- 
-<sub> Figuur 3 Hello World.opus </sub>
-
-<sub> Figuur 4 Gegenereerde audiobestanden </sub>
-
-
 
 
 
