@@ -46,7 +46,7 @@ Om een werkend audiobestand te kunnen genereren met Watson moet de gebruiker een
 
 
 #### 2.6.1 Implementatieresultaten 
- 
+
 <sub> Figuur 1  Hello World.wav </sub>
  
 <sub> Figuur 2 Hello World.ogg </sub>
