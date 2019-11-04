@@ -8,7 +8,7 @@ Omdat tijdens dit project het budget erg gelimiteerd is zal de prijs van de spra
 | Amazon Polly                | Gratis                           | -        |
 | Voice Reader Server 15      | €4950,- per taal                 | Ja       |
 | Watson                      | Gratis                           | -        |
-| Google cloud text-to-speech |	€13,40 per jaar/ Gratis	         | Nee/ -   |
+| Google cloud text-to-speech | Gratis	                          | -        |
 | ResponsiveVoice.JS          | $39 per maand	                   | Nee      |
 | CloudPronouncer             | $80,- per maand/ $816,- per jaar | Nee      |
 
@@ -58,11 +58,9 @@ Om een werkend audiobestand te kunnen genereren met Watson moet de gebruiker een
 
 ![helloworldresult](https://github.com/TimMaasGeesteranus/AangevuldeRealiteit/blob/master/docs/onderzoek/media/helloworldResult.png)
 <br><sub> Figuur 4 Gegenereerde audiobestanden </sub>
- 
 
-
-
-
+## 3. Conclusie
+Uit het onderzoek naar prijzen van verschillende spraakservices is gekomen dat Amazon Polly, Watson en Google Cloud text-to-speech bruikbare opties waren tijdens dit project. Later bleek tijdens het implementatieonderzoek dat alleen Watson te implementeren was, dit is omdat Amazon Polly en Google Cloud text-to-speech een creditcard vereisen om gebruik te maken van de services. Omdat wij geen bruikbare creditcard hebben of kunnen regelen is ervoor gekozen om geen gebruik te maken van deze services. Hierdoor is Watson als enige bruikbare tekst-to-speech service overgebleven en wij zullen deze ook daarom gebruiken voor de applicatie.
 
 ## Bronnen
 * Fearn, N., & Turner, B. (2019, 19 juni). Best text to speech software of 2019. Geraadpleegd op 29 oktober 2019, van https://www.techradar.com/news/best-text-to-speech-software
