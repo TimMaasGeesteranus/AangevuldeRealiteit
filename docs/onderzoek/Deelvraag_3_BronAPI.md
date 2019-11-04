@@ -2,8 +2,6 @@
 
 ## Wikipedia API MediaWiki:
 
-[Documentatie API](https://www.mediawiki.org/wiki/API:Main_page/nl)
-
 #### Implementatie Gemak:
 
 De implementatie van de Wikipedia API is niet gecompliceerd. Voor het gebruik van de API is geen API-key nodig wat het implementatie gemak bevorderd. Om de juiste informatie op te halen zijn er twee HTTP-requests nodig. Met het eerste request wordt er een lijst met artikelen opgehaald die gerelateerd zijn aan de opgegeven zoekterm. Nadat dit request voltooid is wordt er een tweede HTTP-request gemaakt. In de URL wordt de naam van het gewenste artikel meegegeven. Met dit request wordt alle informatie uit het desbetreffende artikel opgehaald.
