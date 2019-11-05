@@ -23,9 +23,9 @@ Dit zet een continious improvement proces in gang
 Bronnen
 -------
 
-<https://www.youtube.com/watch?v=wfsRAZUnonI>
+Four Principles Lean Management - Get Lean in 90 Seconds. (2012, 24 mei). Geraadpleegd op 25 september 2019, van https://www.youtube.com/watch?v=wfsRAZUnonI
 
-<https://www.sixsigma.nl/wat-is-lean>
+Wat is Lean? (z.d.). Geraadpleegd op 25 september 2019, van https://www.sixsigma.nl/wat-is-lean
 
 PRINCE2®
 ========
@@ -74,9 +74,9 @@ Prince2 principles
 Bronnen
 -------
 
-<https://www.youtube.com/watch?v=QKESFiTWW6k>
+ICM opleidingen & trainingen. (2015, 12 november). De 7 principes van PRINCE2®. Geraadpleegd op 25 september 2019, van https://www.youtube.com/watch?v=QKESFiTWW6k
 
-https://www.prince2online.nl/wat-is-prince2.html
+Prince2online. (z.d.). Wat is PRINCE2®. Geraadpleegd op 25 september 2019, van https://www.prince2online.nl/wat-is-prince2.html
 
 Extreme programming
 ===================
@@ -84,7 +84,7 @@ Extreme programming
 Bronnen
 -------
 
-<https://nl.wikipedia.org/wiki/Extreme_programming>
+Wikipedia-bijdragers. (2019, 22 februari). Extreme programming - Wikipedia. Geraadpleegd op 25 september 2019, van https://nl.wikipedia.org/wiki/Extreme_programming
 
 # Waterval
 Waterval is een projectmethode waarbij een project wordt uitgevoerd in verschillende stappen om stap voor stap tot een eindproduct te komen.
@@ -104,9 +104,10 @@ Alle taken binnen een waterval project zijn gegroepeerd afhankelijk van het type
 Bij Waterval wordt er uitgegaan van een vaste planning waar niet vanaf geweken mag worden. Het probleem hiermee is dan je nooit 100% zeker kunt weten hoeveel tijd je nodig hebt voor een bepaald deelproduct van de software. Het resultaat hiervan is dus dat het erg riskant is om waterval te gebruiken.
 
 ## Bronnen
-https://activecollab.com/blog/project-management/waterfall-project-management-methodology
+
+Olic, A. (2017, 24 april). Waterfall Project Management Methodology · Activecollab Blog. Geraadpleegd op 25 september 2019, van https://activecollab.com/blog/project-management/waterfall-project-management-methodology
 
 Algemene bronnen
 ================
 
-<https://www.nutcache.com/blog/8-top-project-management-approaches-methods-techniques/>
+The Editorial Team. (2019, 28 mei). Top Project Management Methods, Approaches, Techniques | Nutcache. Geraadpleegd op 25 september 2019, van https://www.nutcache.com/blog/8-top-project-management-approaches-methods-techniques/
