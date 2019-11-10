@@ -82,9 +82,6 @@ Tussentijdse presentatie kunnen wij daar iets laten zien?
 
 Alleen een paar tutorial producten.
 
-Persoonlijk iets:  
-_ff iedereen vragen zijn ding op te sturen zodat het in notulen kan_
-
 No defect stuff goed gedaan zegt Kevin.
 
 Marcel vraagt of we het ergens aan kunnen tonen om het te waarborgen.
