@@ -1,5 +1,5 @@
 # Pagina's
 ## Splash screen
-## Settings pagina
-## Overview alle bezienswaardigheden
-## Detailview bezienswaardigheid
+## Settings screen
+## Overview screen
+## Detailview screen
