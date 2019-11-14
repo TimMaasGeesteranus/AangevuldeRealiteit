@@ -1,9 +1,9 @@
 - Gezamelijke bestandenn	
-	- Alle geschreven code en gedane tutorials verzamelen
-	- PvA toevoegen
+	x Alle geschreven code en gedane tutorials verzamelen
+	x PvA toevoegen
 	- Planning inclusief resultaten
-	- presentatie van de kennismeeting
-	- Tussentijdse presentatie
+	x presentatie van de kennismeeting
+	x Tussentijdse presentatie
 - Persoonlijke bestanden
 	- sandwiches of happiness
 	- Tussentijds verslag
