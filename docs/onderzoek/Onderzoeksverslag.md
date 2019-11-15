@@ -1,0 +1,72 @@
+# Inleiding
+
+# Opzet onderzoek
+## Onderzoeksvragen
+
+## Deelvragen
+
+# Wat is Augmented Reality?
+Augmented Reality is het toevoegen van digitale elementen aan de fysieke wereld door middel van devices zoals een Smartphone of Smartglasses. Denk hierbij aan 3D objecten waarmee de gebruiker kan interactie kan hebben en bruikbare interfaces.
+
+## Wat zijn de toepassingen van Augmented Reality?
+Augmented reality is een techniek die voor enorm veel doeleinden gebruikt kan worden. Er zijn verschillende onderdelen van AR. Deze zullen hieronder besproken worden. 
+
+### Gezichtsherkenning
+Met de hulp van AR is het mogelijk om gezichten te herkennen. Deze kunnen vervolgens gescand worden en aan de hand van de gescande gegevens kan informatie opgehaald worden. Toepassingen van deze techniek zijn onder andere:
+
+#### Foto’s ordenen
+Door gezichten te herkennen op foto’s is het mogelijk al je foto’s te ordenen op basis van de personen die op de foto staan. Zo kun je eenvoudig alle foto’s terugvinden waar jij opstaat. 
+
+#### Gezichtsfilters
+Met behulp van AR kunnen er objecten aan de werkelijkheid toegevoegd worden. Combineer dit met een gezichtsscanner en je kan filters over je gezicht plaatsen. Denk hierbij aan een app die je er 50 jaar ouder uit laat zien dan je werkelijk bent.
+
+### Objectherkenning
+Door je camera op objecten te richten kunnen deze gescand worden. Het gescande object kan dan herkend worden en er kan informatie over het object in het scherm verschijnen. Ook kunnen objecten aan de werkelijkheid toegevoegd worden. Toepassingen van deze techniek zijn onder andere:
+
+#### Kamers meubileren met AR
+Het inrichten van je kamer kan erg moeilijk zijn als je niet alle meubels in huis hebt of de meubels moeilijk te verplaatsen zijn. Met behulp van AR kun je je camera op de kamer richten en hier meubels inzetten. 
+
+#### Pokémon Go
+Dit is misschien wel het meest bekende spel dat gebruik maakt van AR. Op basis van je locatie worden er pokémon getoond. Om deze te vangen moet de camera geopend zijn. De pokémon komt dan op een vaste plek in beeld.
+
+### AR-bril
+Met AR wordt er een digitale laag over de werkelijkheid gelegd. Dit kan door middel van je mobiele telefoon, maar ook via een projectie op een prisma met een “slimme bril”. Denk hierbij aan de Google Glass. Deze wordt vooral gebruikt in het bedrijfsleven om handsfree te kunnen werken. 
+
+## Wat zijn de verschillen tussen virtual reality en augmented reality?
+
+### Augmented reality
+AR voegt digitale elementen toe aan de werkelijkheid. Dit gebeurt vaak via de camera van een mobiele telefoon, maar kan ook via een speciale AR-bril. Je ziet dus én de werkelijke wereld door middel van je camera, én digitale elementen.
+
+### Virtual reality
+In tegenstelling tot AR is er bij VR niks meer te zien van de werkelijke wereld. Alles is vervangen door digitale elementen. Er wordt een compleet nieuwe virtuele wereld gemaakt. Virtual reality werkt vaak met VR-brillen. Door deze brillen zie je alleen de virtuele wereld, je zit er dus middenin! 
+
+## Wat zijn de voor- en nadelen van Augmented Reality?
+Hoewel Augmented Reality veel te bieden heeft, heeft het natuurlijk ook een aantal nadelen. Hieronder gaan we de belangrijkste voor- en nadelen behandelen van Augmented Reality.
+
+### Voordelen
+**Het ondersteunt het leerproces**
+Het is gebleken dat mensen meer leren wanneer ze leren door middel van een Augmented Reality ervaring. Dit komt omdat de mensen aandachtiger en interactiever bezig zijn met de stof waardoor ze het sneller opslaan. Daarnaast kan de lesstof eindeloos herhaald worden door Augmented Reality.
+
+**Winkelen wordt makkelijker**
+De gebruiker kan bepaalde producten zien of passen zonder van de bank af te komen, waardoor de gebruiker sneller weet of hij het product wilt hebben. Hetzelfde geld voor het inrichten van een huis. De gebruiker kan zien of bijvoorbeeld het meubilair past bij zijn inrichting.
+
+**Objecten kunnen op een unieke wijzen worden bekeken**
+Objecten kunnen bekeken worden vanuit elke hoek door je eigen ogen door middel van AR. Een goede toepassingen hiervan zou zijn het fabriceren van auto-onderdelen. Vaak worden auto-onderdelen honderden keren gefabriceerd tot het product perfect is. Door middel van Augmented Reality kan het product op een echte auto worden gezet zodat de fabrikanten meteen zien of het product precies goed is. Dit biedt een realistischer voorbeeld dan een computerscherm waarop de auto te zien is.
+
+### Nadelen
+**Privacy schending** 
+Net als andere moderne technologieën is Augmented Reality technology ook kwetsbaar voor data hacks en andere veiligheidsrisico's. Er is veel persoonlijke informatie te vinden in virtuele omgevingen en dit zal alleen maar groeien in de toekomst. Daarnaast zijn veel mensen bang dat persoonlijke data gebruikt kan worden om je op te sporen.
+
+**Belemmert interacties in de echte wereld**
+Als alles beschikbaar is vanuit de woonkamer, gaat de mens minder vaak het huis uit. Zo raken mensen als het ware 'disconnected' van de echte wereld. Hierdoor is het mogelijk dat mensen achteruit gaan op sociale vaardigheden maar ook de aarde minder gaan waarderen doordat ze het niet 'echt' ervaren.
+
+## Wat is de toekomst van Augmented Reality?
+Er wordt verwacht dat Augmented Reality de komende jaren exponentieel zal groeien.
+In de toekomst zal AR-technologie bijvoorbeeld gebruikt worden in het verkeer, waarbij gegevens over je auto of je route op de voorruit worden getoond. Restaurants zouden eten kunnen laten zien door het scannen van een maaltijd op een menukaart. Naast deze allerdaagse toepassingen zal AR ook flink groeien in de medische wereld en in militaire uitrusting.
+
+Een arts kan bijvoorbeeld bij een operatie die veel precisie vereist instructies krijgen terwijl hij opereert. Dit zal voor minder menselijke fouten zorgen. Daarnaast zou de arts overige gegevens kunnen zien over de huidige patient, bijvoorbeeld hartslag, vochtgehalte en dergelijke.
+
+Simpel gezegd: Augmented Reality zal veel groeien de komende jaren en biedt veel verschillende opties om de mens te helpen.
+# Conclusie
+
+# Bronnen
