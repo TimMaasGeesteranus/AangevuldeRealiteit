@@ -73,6 +73,7 @@ typings/
 
 #vs code
 .vscode
+.vs
 
 #images dir
 public/uploads
