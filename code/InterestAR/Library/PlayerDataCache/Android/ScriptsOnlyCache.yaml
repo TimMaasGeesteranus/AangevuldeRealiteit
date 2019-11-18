@@ -672,4 +672,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/Jim/Documents/GitHub/AangevuldeRealiteit/InterestAR/com.ICA.InterestAR.apk
+  playerPath: C:/Users/Jim/Documents/GitHub/AangevuldeRealiteit/code/InterestAR/com.ICA.InterestAR.apk
