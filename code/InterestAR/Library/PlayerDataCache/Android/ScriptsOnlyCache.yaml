@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
+    - UnityEditor.TestTools.TestRunner.TestListCacheData
     WikitudeUnityPlugin.dll:
     - Wikitude.WikitudeCamera
   sceneClasses:
@@ -14,7 +15,13 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 21
       Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
     - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
@@ -669,7 +676,31 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: LBAR.dll
+    namespaceName: LBAR
+    className: LBARCam
+  - hash:
+      serializedVersion: 2
+      Hash: b056f69257387aa08624acc886d432fa
+    assemblyName: LBAR.dll
+    namespaceName: LBAR
+    className: POI
+  - hash:
+      serializedVersion: 2
+      Hash: bf578d72a7878a388ab61a16293c909d
+    assemblyName: LBAR.dll
+    namespaceName: LBAR
+    className: Radar
+  - hash:
+      serializedVersion: 2
+      Hash: 829591091ead1d16958c126a64070b5a
+    assemblyName: LBAR.dll
+    namespaceName: 
+    className: World
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/Jim/Documents/GitHub/AangevuldeRealiteit/code/InterestAR/com.ICA.InterestAR.apk
+  playerPath: C:/Users/kevin/OneDrive/Documenten/GitHub/AangevuldeRealiteit/code/InterestAR/com.ICA.InterestAR.apk
