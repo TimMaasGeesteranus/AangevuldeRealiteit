@@ -1,0 +1,13 @@
+C:\Users\randy\source\repos\MediaWikiTest\MediaWikiTest\bin\Debug\netcoreapp3.1\MediaWikiTest.exe
+C:\Users\randy\source\repos\MediaWikiTest\MediaWikiTest\bin\Debug\netcoreapp3.1\MediaWikiTest.deps.json
+C:\Users\randy\source\repos\MediaWikiTest\MediaWikiTest\bin\Debug\netcoreapp3.1\MediaWikiTest.runtimeconfig.json
+C:\Users\randy\source\repos\MediaWikiTest\MediaWikiTest\bin\Debug\netcoreapp3.1\MediaWikiTest.runtimeconfig.dev.json
+C:\Users\randy\source\repos\MediaWikiTest\MediaWikiTest\bin\Debug\netcoreapp3.1\MediaWikiTest.dll
+C:\Users\randy\source\repos\MediaWikiTest\MediaWikiTest\bin\Debug\netcoreapp3.1\MediaWikiTest.pdb
+C:\Users\randy\source\repos\MediaWikiTest\MediaWikiTest\obj\Debug\netcoreapp3.1\MediaWikiTest.csprojAssemblyReference.cache
+C:\Users\randy\source\repos\MediaWikiTest\MediaWikiTest\obj\Debug\netcoreapp3.1\MediaWikiTest.AssemblyInfoInputs.cache
+C:\Users\randy\source\repos\MediaWikiTest\MediaWikiTest\obj\Debug\netcoreapp3.1\MediaWikiTest.AssemblyInfo.cs
+C:\Users\randy\source\repos\MediaWikiTest\MediaWikiTest\obj\Debug\netcoreapp3.1\MediaWikiTest.dll
+C:\Users\randy\source\repos\MediaWikiTest\MediaWikiTest\obj\Debug\netcoreapp3.1\MediaWikiTest.pdb
+C:\Users\randy\source\repos\MediaWikiTest\MediaWikiTest\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\randy\source\repos\MediaWikiTest\MediaWikiTest\obj\Debug\netcoreapp3.1\MediaWikiTest.csproj.CopyComplete
