@@ -11,3 +11,14 @@ C:\Users\randy\source\repos\MediaWikiTest\MediaWikiTest\obj\Debug\netcoreapp3.1\
 C:\Users\randy\source\repos\MediaWikiTest\MediaWikiTest\obj\Debug\netcoreapp3.1\MediaWikiTest.pdb
 C:\Users\randy\source\repos\MediaWikiTest\MediaWikiTest\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\randy\source\repos\MediaWikiTest\MediaWikiTest\obj\Debug\netcoreapp3.1\MediaWikiTest.csproj.CopyComplete
+D:\School\NotS\AangevuldeRealiteit\code\MediaWikiTest\MediaWikiTest\bin\Debug\netcoreapp3.1\MediaWikiTest.exe
+D:\School\NotS\AangevuldeRealiteit\code\MediaWikiTest\MediaWikiTest\bin\Debug\netcoreapp3.1\MediaWikiTest.deps.json
+D:\School\NotS\AangevuldeRealiteit\code\MediaWikiTest\MediaWikiTest\bin\Debug\netcoreapp3.1\MediaWikiTest.runtimeconfig.json
+D:\School\NotS\AangevuldeRealiteit\code\MediaWikiTest\MediaWikiTest\bin\Debug\netcoreapp3.1\MediaWikiTest.runtimeconfig.dev.json
+D:\School\NotS\AangevuldeRealiteit\code\MediaWikiTest\MediaWikiTest\bin\Debug\netcoreapp3.1\MediaWikiTest.dll
+D:\School\NotS\AangevuldeRealiteit\code\MediaWikiTest\MediaWikiTest\bin\Debug\netcoreapp3.1\MediaWikiTest.pdb
+D:\School\NotS\AangevuldeRealiteit\code\MediaWikiTest\MediaWikiTest\obj\Debug\netcoreapp3.1\MediaWikiTest.csprojAssemblyReference.cache
+D:\School\NotS\AangevuldeRealiteit\code\MediaWikiTest\MediaWikiTest\obj\Debug\netcoreapp3.1\MediaWikiTest.AssemblyInfoInputs.cache
+D:\School\NotS\AangevuldeRealiteit\code\MediaWikiTest\MediaWikiTest\obj\Debug\netcoreapp3.1\MediaWikiTest.AssemblyInfo.cs
+D:\School\NotS\AangevuldeRealiteit\code\MediaWikiTest\MediaWikiTest\obj\Debug\netcoreapp3.1\MediaWikiTest.dll
+D:\School\NotS\AangevuldeRealiteit\code\MediaWikiTest\MediaWikiTest\obj\Debug\netcoreapp3.1\MediaWikiTest.pdb

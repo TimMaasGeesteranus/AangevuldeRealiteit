@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text.RegularExpressions;
@@ -12,54 +11,45 @@ namespace MediaWikiTest
     {
         static void Main(string[] args)
         {
-            string article = GetOpenSearch(args).Result;
-            GetData(article);
+            string text = GetData(String.Join("", args)).Result;
+            Console.WriteLine(text);
             Console.ReadKey();
         }
 
-        static async Task<string> GetOpenSearch(string[] term)
+        static async Task<string> GetOpenSearch(string term)
+        {
+            term = Regex.Replace(term, @"s", "_");
+            string openSearchUrl = $"https://nl.wikipedia.org//w/api.php?action=opensearch&format=json&origin=*&search={term}";
+
+            using (HttpClient client = new HttpClient())
+            using (HttpResponseMessage res = await client.GetAsync(openSearchUrl))
+            using (HttpContent content = res.Content)
+            {
+                string response = await content.ReadAsStringAsync();
+                response = response.Replace("[", "").Replace("]", "").Replace(",", "");
+                string[] stringArray = response
+                    .Split('"')
+                    .Where(x => !string.IsNullOrEmpty(x))
+                    .Skip(1)
+                    .ToArray();
+
+                string title = stringArray[0].Replace(" ", "_");
+                if (title == string.Empty)
+                {
+                    throw new ArgumentNullException();
+                }
+                return title;
+            }
+        }
+        private static async Task<string> GetData(string args)
         {
             try
             {
-                string value = String.Join("", term);
-                Console.WriteLine(value);
-                Console.WriteLine();
-                string openSearchUrl = $"https://nl.wikipedia.org//w/api.php?action=opensearch&format=json&origin=*&search={value}";
+                string article = await GetOpenSearch(args);
+                string dataUrl = $"https://nl.wikipedia.org/w/api.php?action=query&titles={article}&format=xml&redirects=true&prop=extracts";
 
                 using (HttpClient client = new HttpClient())
-                using (HttpResponseMessage res = await client.GetAsync(openSearchUrl))
-                {
-                    Console.WriteLine("Fetching open search...");
-                    using (HttpContent content = res.Content)
-                    {
-                        string response = await content.ReadAsStringAsync();
-                        response = response.Replace("[", "").Replace("]", "").Replace(",", "");
-                        string[] stringArray = response.Split('"');
-                        stringArray = stringArray.Where(x => !string.IsNullOrEmpty(x))
-                            .Skip(1)
-                            .ToArray();
-
-                        Console.WriteLine("Open search fetch complete.");
-                        //Console.WriteLine(response);
-                        return stringArray[0].Replace(" ", "_");
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return e.Message;
-            }
-        }
-        private static async void GetData(string article)
-        {
-            string dataUrl = $"https://nl.wikipedia.org/w/api.php?action=query&titles={article}&format=xml&redirects=true&prop=extracts";
-            //string dataUrl = $"https://nl.wikipedia.org/wiki/{article}";
-
-            using (HttpClient client = new HttpClient())        
-            using (HttpResponseMessage res = await client.GetAsync(dataUrl))
-            {
-                Console.WriteLine("Fetching content...");
+                using (HttpResponseMessage res = await client.GetAsync(dataUrl))
                 using (HttpContent content = res.Content)
                 {
                     string response = await content.ReadAsStringAsync();
@@ -70,13 +60,15 @@ namespace MediaWikiTest
 
                     response = response.Substring(indexFirstTag, indexLastTag - indexFirstTag);
 
-
                     string acceptable = "b|i";
-                    response = Regex.Replace(response, @"</?(?(?=" + acceptable + @")notag|[a-zA-Z0-9]+)(?:\s[a-zA-Z0-9\-]+=?(?:(["",']?).*?\1?)?)*\s*/?>", "");
+                    response = Regex.Replace(response, @"</?(?(?=" + acceptable + @")notag|[a-zA-Z0-9]+)(?:\s[a-zA-Z0-9\-]+=?(?:(["",']?).?\1?)?)\s*/?>", "");
 
-                    Console.WriteLine(response);
-                    Console.WriteLine("Done");
+                    return response;
                 }
+            }
+            catch (Exception)
+            {
+                return "Could not load information";
             }
         }
     }
