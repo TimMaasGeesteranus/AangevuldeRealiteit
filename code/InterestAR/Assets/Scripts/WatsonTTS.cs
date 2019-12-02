@@ -4,17 +4,41 @@ using UnityEngine;
 using IBM.Cloud.SDK;
 using IBM.Cloud.SDK.Utilities;
 using IBM.Watson.TextToSpeech.V1;
-
+using UnityEngine.UI;
+using UnityEngine.Android;
+    
 public class WatsonTTS : MonoBehaviour
 {
+    public Button PlayButton;
     TextToSpeechService textToSpeechService;
+    bool isPlaying = false;
+    IEnumerator theCoroutine;
 
+    void Start()
+    {
+        Button btn = PlayButton.GetComponent<Button>();
+        btn.onClick.AddListener(Wrapper);
 
-    public void Wrapper(){
-        StartCoroutine(Speak());
+        theCoroutine = MyCoroutine();
     }
 
-    public IEnumerator Speak()
+
+    public void Wrapper()
+    {
+        if (isPlaying)
+        {
+            isPlaying = false;
+            StopCoroutine(theCoroutine);
+            Debug.Log("Stop the track DJ");
+        } else
+        {
+            isPlaying = true;
+            StartCoroutine(theCoroutine);
+            Debug.Log("DJ spin that shit");
+        }
+    }
+
+    public IEnumerator MyCoroutine()
     {
         textToSpeechService = new TextToSpeechService();
         while (!textToSpeechService.Authenticator.CanAuthenticate())
@@ -31,7 +55,7 @@ public class WatsonTTS : MonoBehaviour
                 audioSource.clip = clip;
                 audioSource.Play();
             },
-            text: "Hello world",
+            text: "blaf blaf blaf blaf",
             voice: "en-US_AllisonVoice",
             accept: "audio/wav"
         );
