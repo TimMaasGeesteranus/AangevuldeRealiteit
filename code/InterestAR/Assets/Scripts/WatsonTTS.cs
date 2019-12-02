@@ -58,7 +58,7 @@ public class WatsonTTS : MonoBehaviour
                 audioSource.clip = clip;
                 audioSource.Play();
             },
-            text: "blaf blaf blaf blaf. blaf blaf blaf blaf. blaf blaf blaf blaf",
+            text: "In the midst of chaos, there is also opportunity.",
             voice: "en-US_AllisonVoice",
             accept: "audio/wav"
         );
