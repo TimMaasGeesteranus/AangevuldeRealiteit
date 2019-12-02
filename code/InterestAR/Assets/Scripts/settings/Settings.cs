@@ -9,16 +9,6 @@ namespace Assets.Scripts
 {
     class Settings
     {
-        // In app language
-        public string Language { get; set; }
-
-        // Range in KM
-        public string Range { get; set; }
-
-        public Settings(string language, string range)
-        {
-            Language = language;
-            Range = range;
-        }
+        UserData userData = new UserData();
     }
 }

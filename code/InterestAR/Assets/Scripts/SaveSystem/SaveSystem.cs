@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.settings;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,15 +13,17 @@ namespace Assets.Scripts.SaveSystem
     {
         private static string PerisistencePath = Path.Combine(Application.persistentDataPath, "settings.json");
 
-        public static void saveSettings(Settings settings) {
-            File.WriteAllText(PerisistencePath, JsonUtility.ToJson(settings));
+        // Saves the userdata to the persistent data directory
+        public static void saveSettings(UserData userData) {
+            File.WriteAllText(PerisistencePath, JsonUtility.ToJson(userData));
         }
 
-        public static Settings loadSettings(Settings settings)
+        // Gets the userdata
+        public static UserData loadSettings()
         {
             StreamReader reader = new StreamReader(PerisistencePath);
             string json = reader.ReadToEnd();
-            return JsonUtility.FromJson<Settings>(json);
+            return JsonUtility.FromJson<UserData>(json);
         }
     }
 }
