@@ -4,17 +4,44 @@ using UnityEngine;
 using IBM.Cloud.SDK;
 using IBM.Cloud.SDK.Utilities;
 using IBM.Watson.TextToSpeech.V1;
+using UnityEngine.UI;
 
 public class WatsonTTS : MonoBehaviour
 {
+    public Button PlayButton;
     TextToSpeechService textToSpeechService;
+    bool isPlaying = false;
+    IEnumerator theCoroutine;
+    AudioSource MyAudioSource;
 
-
-    public void Wrapper(){
-        StartCoroutine(Speak());
+    void Start()
+    {
+        MyAudioSource = GetComponent<AudioSource>();
+        Button btn = PlayButton.GetComponent<Button>();
+        btn.onClick.AddListener(Wrapper);
     }
 
-    public IEnumerator Speak()
+    void Update()
+    {
+        theCoroutine = MyCoroutine(); // Coroutines always change and if not defined withing the Update it will be different and cant be started again.
+    }
+
+
+    public void Wrapper()
+    {
+        if (isPlaying)
+        {
+            isPlaying = false;
+            MyAudioSource.Stop(); // This stops the audioplayer, StopCoroutine won't work here since this coroutine first has to finish for it to start talking. 
+        }
+        else
+        {
+            isPlaying = true;
+            StartCoroutine(theCoroutine);
+        }
+    }
+
+    public IEnumerator MyCoroutine()
     {
         textToSpeechService = new TextToSpeechService();
         while (!textToSpeechService.Authenticator.CanAuthenticate())
@@ -31,7 +58,7 @@ public class WatsonTTS : MonoBehaviour
                 audioSource.clip = clip;
                 audioSource.Play();
             },
-            text: "Hello world",
+            text: "blaf blaf blaf blaf. blaf blaf blaf blaf. blaf blaf blaf blaf",
             voice: "en-US_AllisonVoice",
             accept: "audio/wav"
         );
