@@ -13,7 +13,6 @@ public class WatsonTTS : MonoBehaviour
     TextToSpeechService textToSpeechService;
     bool isPlaying = false;
     IEnumerator theCoroutine;
-    
     AudioSource MyAudioSource;
 
     void Start()
@@ -24,7 +23,7 @@ public class WatsonTTS : MonoBehaviour
     }
 
     void Update(){
-        theCoroutine = MyCoroutine();
+        theCoroutine = MyCoroutine(); // Coroutines always change and if not defined withing the Update it will be different and cant be started again.
     }
 
 
@@ -33,14 +32,11 @@ public class WatsonTTS : MonoBehaviour
         if (isPlaying)
         {
             isPlaying = false;
-            StopCoroutine(theCoroutine);
-            MyAudioSource.Stop();
-            Debug.Log("Stop the track DJ");
+            MyAudioSource.Stop(); // This stops the audioplayer, StopCoroutine won't work here since this coroutine first has to finish for it to start talking. 
         } else
         {
             isPlaying = true;
             StartCoroutine(theCoroutine);
-            Debug.Log("DJ spin that shit");
         }
     }
 
