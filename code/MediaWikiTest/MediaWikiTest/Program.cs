@@ -18,7 +18,7 @@ namespace MediaWikiTest
 
         static async Task<string> GetOpenSearch(string term)
         {
-            term = Regex.Replace(term, @"s", "_");
+            term = Regex.Replace(term, " ", "_");
             string openSearchUrl = $"https://nl.wikipedia.org//w/api.php?action=opensearch&format=json&origin=*&search={term}";
 
             using (HttpClient client = new HttpClient())
