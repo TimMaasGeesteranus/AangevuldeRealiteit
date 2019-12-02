@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.settings;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,16 +7,18 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts
 {
-    static class SettingsPersistence
+    class Settings
     {
-        public static void LoadData()
+        // In app language
+        public string Language { get; set; }
+
+        // Range in KM
+        public string Range { get; set; }
+
+        public Settings(string language, string range)
         {
-
-        }
-
-        public static void saveData()
-        {
-
+            Language = language;
+            Range = range;
         }
     }
 }
