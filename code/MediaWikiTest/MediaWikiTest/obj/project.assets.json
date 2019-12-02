@@ -1,37 +1,37 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.0": {}
+    ".NETCoreApp,Version=v3.1": {}
   },
   "libraries": {},
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.0": []
+    ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Users\\randy\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\School\\NotS\\AangevuldeRealiteit\\code\\MediaWikiTest\\MediaWikiTest\\MediaWikiTest.csproj",
+      "projectUniqueName": "C:\\Users\\randy\\source\\repos\\MediaWikiTest\\MediaWikiTest\\MediaWikiTest.csproj",
       "projectName": "MediaWikiTest",
-      "projectPath": "D:\\School\\NotS\\AangevuldeRealiteit\\code\\MediaWikiTest\\MediaWikiTest\\MediaWikiTest.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "D:\\School\\NotS\\AangevuldeRealiteit\\code\\MediaWikiTest\\MediaWikiTest\\obj\\",
+      "projectPath": "C:\\Users\\randy\\source\\repos\\MediaWikiTest\\MediaWikiTest\\MediaWikiTest.csproj",
+      "packagesPath": "C:\\Users\\randy\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\randy\\source\\repos\\MediaWikiTest\\MediaWikiTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\randy\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "netcoreapp3.0"
+        "netcoreapp3.1"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -39,7 +39,7 @@
         "https://www.myget.org/F/miniprofiler/api/v3/index.json": {}
       },
       "frameworks": {
-        "netcoreapp3.0": {
+        "netcoreapp3.1": {
           "projectReferences": {}
         }
       },
@@ -50,7 +50,7 @@
       }
     },
     "frameworks": {
-      "netcoreapp3.0": {
+      "netcoreapp3.1": {
         "imports": [
           "net461",
           "net462",
