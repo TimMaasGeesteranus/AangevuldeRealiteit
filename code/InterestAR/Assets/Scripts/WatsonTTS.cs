@@ -13,12 +13,17 @@ public class WatsonTTS : MonoBehaviour
     TextToSpeechService textToSpeechService;
     bool isPlaying = false;
     IEnumerator theCoroutine;
+    
+    AudioSource MyAudioSource;
 
     void Start()
     {
+        MyAudioSource = GetComponent<AudioSource>();
         Button btn = PlayButton.GetComponent<Button>();
         btn.onClick.AddListener(Wrapper);
+    }
 
+    void Update(){
         theCoroutine = MyCoroutine();
     }
 
@@ -29,6 +34,7 @@ public class WatsonTTS : MonoBehaviour
         {
             isPlaying = false;
             StopCoroutine(theCoroutine);
+            MyAudioSource.Stop();
             Debug.Log("Stop the track DJ");
         } else
         {
@@ -55,7 +61,7 @@ public class WatsonTTS : MonoBehaviour
                 audioSource.clip = clip;
                 audioSource.Play();
             },
-            text: "blaf blaf blaf blaf",
+            text: "blaf blaf blaf blaf. blaf blaf blaf blaf. blaf blaf blaf blaf",
             voice: "en-US_AllisonVoice",
             accept: "audio/wav"
         );
