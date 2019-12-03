@@ -17,7 +17,6 @@ public class InsertTextFromAPI : MonoBehaviour
     public String Returnvalue;
     async void Start()
     {
-        //ChangingText.text = "hallo daar";
         if (Returnvalue == "text")
         {
             ChangingText.text = await GetData("Eiffeltoren");
