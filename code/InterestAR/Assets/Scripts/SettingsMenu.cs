@@ -5,16 +5,21 @@ using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
 {
-    Dropdown languageDropdown;
-    GameObject a;
+    // Values
+    private string language;
+    private float distance;  
+    private List<string> languages = new List<string> { "netherlands", "Englisch", "German" };
 
-    List<string> languages = new List<string> { "netherlands", "Englisch", "German" };
+    // Gameobjects
+    public Button saveButton;
+    public Text distanceAmount;
+    public Dropdown languageDropdown;
 
+    
     // Start is called before the first frame update
     void Start()
     {
         SetupDropdown();
-
     }
 
     private void SetupDropdown()
@@ -24,8 +29,14 @@ public class SettingsMenu : MonoBehaviour
         languageDropdown.RefreshShownValue();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void SetSlider(float value)
+    {
+        Debug.Log("test");
+        Debug.Log(value);
+    }
+
+    public void Set()
     {
         
     }
