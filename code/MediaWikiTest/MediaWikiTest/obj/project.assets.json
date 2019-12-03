@@ -8,25 +8,25 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\randy\\.nuget\\packages\\": {},
+    "C:\\Users\\User\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\randy\\source\\repos\\MediaWikiTest\\MediaWikiTest\\MediaWikiTest.csproj",
+      "projectUniqueName": "D:\\School\\NotS\\AangevuldeRealiteit\\code\\MediaWikiTest\\MediaWikiTest\\MediaWikiTest.csproj",
       "projectName": "MediaWikiTest",
-      "projectPath": "C:\\Users\\randy\\source\\repos\\MediaWikiTest\\MediaWikiTest\\MediaWikiTest.csproj",
-      "packagesPath": "C:\\Users\\randy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\randy\\source\\repos\\MediaWikiTest\\MediaWikiTest\\obj\\",
+      "projectPath": "D:\\School\\NotS\\AangevuldeRealiteit\\code\\MediaWikiTest\\MediaWikiTest\\MediaWikiTest.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "D:\\School\\NotS\\AangevuldeRealiteit\\code\\MediaWikiTest\\MediaWikiTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\randy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],

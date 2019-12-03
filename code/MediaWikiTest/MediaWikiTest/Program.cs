@@ -3,7 +3,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Web;
+using System.Net;
 
 namespace MediaWikiTest
 {
@@ -53,7 +53,7 @@ namespace MediaWikiTest
                 using (HttpContent content = res.Content)
                 {
                     string response = await content.ReadAsStringAsync();
-                    response = HttpUtility.HtmlDecode(response);
+                    response = WebUtility.HtmlDecode(response);
 
                     int indexFirstTag = response.IndexOf("<extract xml:space=\"preserve\">");
                     int indexLastTag = response.IndexOf("</extract>");
