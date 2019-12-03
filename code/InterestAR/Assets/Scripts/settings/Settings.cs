@@ -9,6 +9,5 @@ namespace Assets.Scripts
 {
     class Settings
     {
-        UserData userData = new UserData();
     }
 }
