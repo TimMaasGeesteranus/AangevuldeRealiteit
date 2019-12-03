@@ -4,9 +4,8 @@ using UnityEngine;
 using IBM.Cloud.SDK;
 using IBM.Cloud.SDK.Utilities;
 using IBM.Watson.TextToSpeech.V1;
-using IBM.Watson.LanguageTranslator.V3;
 using UnityEngine.UI;
-using IBM.Watson.LanguageTranslator.V3.Model;
+
 
 public class WatsonTTS : MonoBehaviour
 {
@@ -16,8 +15,6 @@ public class WatsonTTS : MonoBehaviour
     IEnumerator theCoroutine;
     AudioSource MyAudioSource;
 
-    LanguageTranslatorService languageTranslatorService;
-    private string versionDate = "2018-05-01";
 
     void Start()
     {
@@ -52,22 +49,6 @@ public class WatsonTTS : MonoBehaviour
 
         while (!textToSpeechService.Authenticator.CanAuthenticate())
             yield return null;
-
-        languageTranslatorService = new LanguageTranslatorService(versionDate);
-
-        while (!languageTranslatorService.Authenticator.CanAuthenticate())
-            yield return null;
-
-
-        languageTranslatorService.ListIdentifiableLanguages(
-            callback: (DetailedResponse<IdentifiableLanguages> response, IBMError error) =>
-            {
-                Debug.Log($"LanguageTranslatorServiceV3 ListIdentifiableLanguages result: {response.Response}");
-                //listIdentifiableLanguagesResponse = response.Result;
-            }
-        );
-
-
 
         byte[] synthesizeResponse = null;
         AudioClip clip = null;
