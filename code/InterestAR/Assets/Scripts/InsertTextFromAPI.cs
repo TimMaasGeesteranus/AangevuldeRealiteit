@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
+using System.Net;
 
 public class InsertTextFromAPI : MonoBehaviour
 {
@@ -66,15 +67,14 @@ public class InsertTextFromAPI : MonoBehaviour
             using (HttpContent content = res.Content)
             {
                 string response = await content.ReadAsStringAsync();
-                response = HttpUtility.HtmlDecode(response);
-
+                response = WebUtility.HtmlDecode(response);
+                
                 int indexFirstTag = response.IndexOf("<extract xml:space=\"preserve\">");
                 int indexLastTag = response.IndexOf("</extract>");
 
                 response = response.Substring(indexFirstTag, indexLastTag - indexFirstTag);
 
-                string acceptable = "b|i";
-                response = Regex.Replace(response, @"</?(?(?=" + acceptable + @")notag|[a-zA-Z0-9]+)(?:\s[a-zA-Z0-9\-]+=?(?:(["",']?).?\1?)?)\s*/?>", "");
+                response = Regex.Replace(response, @"<\/?(?!b)(?!i)\w*\b[^>]*>", "");
 
                 return response;
             }
