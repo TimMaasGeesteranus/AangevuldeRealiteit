@@ -10,9 +10,9 @@ using UnityEngine.UI;
 public class WatsonTTS : MonoBehaviour
 {
     public Button PlayButton;
-    TextToSpeechService textToSpeechService;
+    TextToSpeechService textToSpeechService; //niet
     bool isPlaying = false;
-    IEnumerator theCoroutine;
+    IEnumerator theCoroutine; //niet
     AudioSource MyAudioSource;
 
 
