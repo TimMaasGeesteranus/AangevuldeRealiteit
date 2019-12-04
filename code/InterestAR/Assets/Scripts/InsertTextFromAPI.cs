@@ -13,22 +13,24 @@ using System.Net;
 
 public class InsertTextFromAPI : MonoBehaviour
 {
-
     public Text ChangingText;
     public String Returnvalue;
+    public String input;
     async void Start()
     {
-        if (Returnvalue == "text")
+        switch (Returnvalue)
         {
-            ChangingText.text = await GetData("Eiffeltoren");
-        }
-        else if(Returnvalue == "title")
-        {
-            ChangingText.text = await GetOpenSearch("Eiffeltoren");
+            case "text":
+                ChangingText.text = await GetData(input);
+                break;
+            case "title":
+                ChangingText.text = await GetOpenSearch(input);
+                break;
+            default:
+                ChangingText.text = "oops, something went wrong";
+                break;
         }
     }
-
-
 
     static async Task<string> GetOpenSearch(string term)
     {
