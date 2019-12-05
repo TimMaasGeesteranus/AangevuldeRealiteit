@@ -15,7 +15,10 @@ public class WatsonTTS : MonoBehaviour
     bool isPlaying = false;
     IEnumerator theCoroutine;
     AudioSource MyAudioSource;
-    
+
+    public Sprite SoundImage;
+    public Sprite NoSoundImage;
+    Image ImageComponent;
 
 
     void Start()
@@ -23,6 +26,7 @@ public class WatsonTTS : MonoBehaviour
         MyAudioSource = GetComponent<AudioSource>();
         Button btn = PlayButton.GetComponent<Button>();
         btn.onClick.AddListener(Wrapper);
+        ImageComponent = GetComponent<Image>();
     }
 
     void Update()
@@ -35,11 +39,13 @@ public class WatsonTTS : MonoBehaviour
     {
         if (isPlaying)
         {
+            ImageComponent.sprite = SoundImage;
             isPlaying = false;
             MyAudioSource.Stop(); // This stops the audioplayer, StopCoroutine won't work here since this coroutine first has to finish for it to start talking. 
         }
         else
         {
+            ImageComponent.sprite = NoSoundImage;
             isPlaying = true;
             StartCoroutine(theCoroutine);
         }
