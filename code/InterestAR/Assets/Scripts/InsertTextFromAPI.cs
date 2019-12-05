@@ -20,11 +20,11 @@ public class InsertTextFromAPI : MonoBehaviour
     {
         if (Returnvalue == "text")
         {
-            ChangingText.text = await GetData("Battle of Noreia");
+            ChangingText.text = await GetData("Eiffeltower");
         }
         else if(Returnvalue == "title")
         {
-            ChangingText.text = await GetOpenSearch("Battle of Noreia");
+            ChangingText.text = await GetOpenSearch("Eiffeltower");
         }
     }
 
@@ -32,7 +32,7 @@ public class InsertTextFromAPI : MonoBehaviour
 
     static async Task<string> GetOpenSearch(string term)
     {
-        term = Regex.Replace(term, @"s", "_");
+        term = Regex.Replace(term, " ", "_");
         string openSearchUrl = $"https://en.wikipedia.org//w/api.php?action=opensearch&format=json&origin=*&search={term}";
 
         using (HttpClient client = new HttpClient())
@@ -47,7 +47,7 @@ public class InsertTextFromAPI : MonoBehaviour
                 .Skip(1)
                 .ToArray();
 
-            string title = stringArray[0].Replace(" ", "_");
+            string title = stringArray[0];
             if (title == string.Empty)
             {
                 throw new ArgumentNullException();
@@ -74,9 +74,9 @@ public class InsertTextFromAPI : MonoBehaviour
 
                 response = response.Substring(indexFirstTag, indexLastTag - indexFirstTag);
 
-                response = Regex.Replace(response, @"<\/?(?!b)(?!i)\w*\b[^>]*>", "");
+                response = Regex.Replace(response, "<[^>]*>", "");
 
-                return response;
+                return response.Trim();
             }
         }
         catch (Exception)
