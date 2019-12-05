@@ -8,12 +8,13 @@ public class MemoryDataService
 	private const string DISTANCE = "distance";
 
 	public static string Language { 
-		get { return PlayerPrefs.GetString(LANGUAGE, null); } 
+		get { return PlayerPrefs.GetString(LANGUAGE, "Englisch"); } 
 		set { PlayerPrefs.SetString(LANGUAGE,value); } 
 	}
-	public static int Distance { 
-		get { return PlayerPrefs.GetInt(DISTANCE, -1); }
-		set { PlayerPrefs.SetInt(DISTANCE, value); }
+	public static float Distance
+	{
+		get { return PlayerPrefs.GetFloat(DISTANCE, 50); }
+		set { PlayerPrefs.SetFloat(DISTANCE, value); }
 	}
 
 	public static void DirectSave()
