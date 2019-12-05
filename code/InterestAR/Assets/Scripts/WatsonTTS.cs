@@ -10,10 +10,12 @@ using UnityEngine.UI;
 public class WatsonTTS : MonoBehaviour
 {
     public Button PlayButton;
+    public Text Title;
     TextToSpeechService textToSpeechService;
     bool isPlaying = false;
     IEnumerator theCoroutine;
     AudioSource MyAudioSource;
+    
 
 
     void Start()
@@ -61,7 +63,7 @@ public class WatsonTTS : MonoBehaviour
                 audioSource.clip = clip;
                 audioSource.Play();
             },
-            text: "In the midst of chaos, there is also opportunity.",
+            text: Title.text,
             voice: "en-US_AllisonVoice",
             accept: "audio/wav"
         );

@@ -20,11 +20,11 @@ public class InsertTextFromAPI : MonoBehaviour
     {
         if (Returnvalue == "text")
         {
-            ChangingText.text = await GetData("Eiffeltoren");
+            ChangingText.text = await GetData("Battle of Noreia");
         }
         else if(Returnvalue == "title")
         {
-            ChangingText.text = await GetOpenSearch("Eiffeltoren");
+            ChangingText.text = await GetOpenSearch("Battle of Noreia");
         }
     }
 
@@ -33,7 +33,7 @@ public class InsertTextFromAPI : MonoBehaviour
     static async Task<string> GetOpenSearch(string term)
     {
         term = Regex.Replace(term, @"s", "_");
-        string openSearchUrl = $"https://nl.wikipedia.org//w/api.php?action=opensearch&format=json&origin=*&search={term}";
+        string openSearchUrl = $"https://en.wikipedia.org//w/api.php?action=opensearch&format=json&origin=*&search={term}";
 
         using (HttpClient client = new HttpClient())
         using (HttpResponseMessage res = await client.GetAsync(openSearchUrl))
@@ -60,7 +60,7 @@ public class InsertTextFromAPI : MonoBehaviour
         try
         {
             string article = await GetOpenSearch(args);
-            string dataUrl = $"https://nl.wikipedia.org/w/api.php?action=query&titles={article}&format=xml&redirects=true&prop=extracts";
+            string dataUrl = $"https://en.wikipedia.org/w/api.php?action=query&titles={article}&format=xml&redirects=true&prop=extracts";
 
             using (HttpClient client = new HttpClient())
             using (HttpResponseMessage res = await client.GetAsync(dataUrl))
