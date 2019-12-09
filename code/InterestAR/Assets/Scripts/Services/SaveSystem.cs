@@ -11,17 +11,18 @@ namespace Assets.Scripts.SaveSystem
 {
     static class SaveSystem
     {
-        private static string PerisistencePath = Path.Combine(Application.persistentDataPath, "settings.json");
+        private static string PersistencePath = Path.Combine(Application.persistentDataPath, "settings.json");
 
         // Saves the userdata to the persistent data directory
-        public static void saveSettings(UserData userData) {
-            File.WriteAllText(PerisistencePath, JsonUtility.ToJson(userData));
+        public static void saveSettings(UserData userData)
+        {
+            File.WriteAllText(PersistencePath, JsonUtility.ToJson(userData));
         }
 
         // Gets the userdata
         public static UserData loadSettings()
         {
-            StreamReader reader = new StreamReader(PerisistencePath);
+            StreamReader reader = new StreamReader(PersistencePath);
             string json = reader.ReadToEnd();
             return JsonUtility.FromJson<UserData>(json);
         }
