@@ -15,7 +15,7 @@ public class SettingsMenu : MonoBehaviour
     public Button saveButton;
     public Text distanceAmount;
     public Dropdown languageDropdown;
-    public Slider slider;
+    public Slider radiusSlider;
     public SVGImage radiusImage;
 
 
@@ -36,14 +36,14 @@ public class SettingsMenu : MonoBehaviour
     private void ChangeRadiusVector()
     {
         // Changes the scale of the circel vector
-        float step = 1 + (slider.value / 2);
+        float step = 1 + (radiusSlider.value / 2);
         radiusImage.rectTransform.localScale = new Vector2(step, step);
     }
 
     // Retrieves the values from the memory
     private void setupSlider()
     {
-        slider.value = distance / 50;
+        radiusSlider.value = distance / 50;
     }
 
     // Retrieves the values from the memory
