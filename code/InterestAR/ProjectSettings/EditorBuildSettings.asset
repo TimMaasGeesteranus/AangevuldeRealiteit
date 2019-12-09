@@ -5,16 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/HomeScreen.unity
     guid: 1deb3c1211057e94b8751b7658ccccb5
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/CameraScene.unity
     guid: 49dbde28a7a1bcf4b81784619b194da0
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/PromptPermissionScene.unity
     guid: 9adcda6e338a04f44b401dc5bf428c43
   - enabled: 1
     path: Assets/Scenes/WatsonScreen.unity
     guid: 546f4dccff44d4049b7350beb07c6789
+  - enabled: 1
+    path: Assets/Scenes/SettingsScreen.unity
+    guid: c7da0345bfa3ed146938dac3822da462
   m_configObjects: {}
