@@ -761,8 +761,8 @@ MonoBehaviour:
   saveButton: {fileID: 995115167}
   distanceAmount: {fileID: 1853229610}
   languageDropdown: {fileID: 756340261}
-  slider: {fileID: 175644873}
-  radiusImage: {fileID: 0}
+  radiusSlider: {fileID: 175644873}
+  radiusImage: {fileID: 230350849}
 --- !u!1 &702540552
 GameObject:
   m_ObjectHideFlags: 0
