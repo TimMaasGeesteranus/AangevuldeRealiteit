@@ -9,17 +9,17 @@ public class SettingsMenu : MonoBehaviour
     // Values
     private string language;
     private float distance = 0;
-    private List<string> languages = new List<string> { "Nederlands", "Englisch", "Deutsch" };
+    private List<string> languages = new List<string> { "Nederlands", "English", "Deutsch" };
 
     // Gameobjects
     public Button saveButton;
     public Text distanceAmount;
     public Dropdown languageDropdown;
     public Slider slider;
-    public SVGImage RadiusImage;
+    public SVGImage radiusImage;
 
 
-    // Start is called before the first frame update
+    // Setup methods for the settings menu
     void Start()
     {
         SetupInitialSettings();
@@ -27,6 +27,7 @@ public class SettingsMenu : MonoBehaviour
         setupSlider();
     }
 
+    // Changes the radius while moving the slider
     void Update()
     {
         ChangeRadiusVector();
@@ -34,15 +35,18 @@ public class SettingsMenu : MonoBehaviour
 
     private void ChangeRadiusVector()
     {
+        // Changes the scale of the circel vector
         float step = 1 + (slider.value / 2);
-        RadiusImage.rectTransform.localScale = new Vector2(step, step);
+        radiusImage.rectTransform.localScale = new Vector2(step, step);
     }
 
+    // Retrieves the values from the memory
     private void setupSlider()
     {
         slider.value = distance / 50;
     }
 
+    // Retrieves the values from the memory
     private void SetupInitialSettings()
     {
         distance = MemoryDataService.Distance;
@@ -50,6 +54,7 @@ public class SettingsMenu : MonoBehaviour
         distanceAmount.text = $"{distance} M";
     }
 
+    // Setup for the dropdown
     private void SetupDropdown()
     {
         languageDropdown.ClearOptions();
@@ -58,15 +63,15 @@ public class SettingsMenu : MonoBehaviour
         languageDropdown.value = languages.IndexOf(language);
     }
 
-
+    // Sets the slider and current text value
     public void SetSlider(float value)
     {
         distance = value * 50;
         distanceAmount.text = $"{distance} M";
     }
 
-
-    public void saveSettings()
+    // Saves the settings
+    public void SaveSettings()
     {
         MemoryDataService.Distance = distance;
         MemoryDataService.Language = language = languages[languageDropdown.value];
