@@ -13,10 +13,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - ARGameObject
+  - Map
+  - Path
+  - Both
   - 
   - 
   - 
