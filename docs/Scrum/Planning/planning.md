@@ -46,7 +46,7 @@ Omdat we deze planning niet haalden is de volgende planning vastgesteld:
 | 01-09-2019 | 29-09-2019 | Pregame      |
 | 30-09-2019 | 04-11-2019 | Sprint 1\*   |
 | 05-11-2019 | 08-12-2019 | Sprint 2     |
-| 09-12-2019 | 12-01-2209 | Sprint 3     |
+| 09-12-2019 | 12-01-2020 | Sprint 3     |
 | 13-01-2020 | 19-01-2020 | Sprint 4\*   |
 | 20-01-2020 | 23-01-2020 | Postgame     |
 
