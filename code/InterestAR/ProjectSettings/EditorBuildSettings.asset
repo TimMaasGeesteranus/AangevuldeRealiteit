@@ -17,10 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/WatsonScreen.unity
     guid: 546f4dccff44d4049b7350beb07c6789
-  - enabled: 0
-    path: Assets/Scenes/MapboxScene.unity
-    guid: b5530bc57b1ba2043b069472a066609f
   - enabled: 1
-    path: Assets/MapboxAR/Examples/Scenes/WorldScaleAR.unity
-    guid: c60dfd6bb74264e44b3dbf93e9d129c4
+    path: Assets/Scenes/SettingsScreen.unity
+    guid: c7da0345bfa3ed146938dac3822da462
   m_configObjects: {}
