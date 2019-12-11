@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.wikitude.unity_plugin">-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.wikitude.unity_plugin">
+  package="com.wikitude.unity_plugin"
+  xmlns:tools="http://schemas.android.com/tools">
 <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="24" />
 
 <uses-permission android:name="android.permission.CAMERA" />
@@ -35,6 +38,8 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
-    <meta-data android:name="com.google.ar.core" android:value="required" />
+    <!--<meta-data android:name="com.google.ar.core" android:value="required" />-->
+    <meta-data android:name="com.google.ar.core" android:value="required" tools:replace="android:value" />
+
 </application>
 </manifest>
