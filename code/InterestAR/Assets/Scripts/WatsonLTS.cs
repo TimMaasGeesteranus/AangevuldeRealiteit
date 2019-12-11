@@ -9,9 +9,11 @@ using IBM.Watson.LanguageTranslator.V3.Model;
 
 public class WatsonLTS : MonoBehaviour
 {
+    System.Int32 count = 30;
     IEnumerator translatorCoroutine;
     public Button PlayButton;
     LanguageTranslatorService languageTranslatorService;
+    DetailedResponse<IdentifiableLanguages> listIdentifiableLanguagesResponse;
     private string versionDate = "2018-05-01";
 
     // Start is called before the first frame update
@@ -42,8 +44,10 @@ public class WatsonLTS : MonoBehaviour
         languageTranslatorService.ListIdentifiableLanguages(
             callback: (DetailedResponse<IdentifiableLanguages> response, IBMError error) =>
             {
-                Debug.Log($"LanguageTranslatorServiceV3 ListIdentifiableLanguages result: {response.Response}");
-                //listIdentifiableLanguagesResponse = response.Result;
+                listIdentifiableLanguagesResponse = response;
+                string[] languageList = listIdentifiableLanguagesResponse.Response.Split("}", count , System.StringSplitOptions.RemoveEmptyEntries);
+                Debug.Log(listIdentifiableLanguagesResponse.Response);  
+
             }
         );
     }
