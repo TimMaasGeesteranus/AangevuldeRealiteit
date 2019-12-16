@@ -19,8 +19,4 @@ public class GoToCamera : MonoBehaviour
     {
         SceneManager.LoadScene("CameraScene");
     }
-
-    void Update()
-    {
-    }
 }

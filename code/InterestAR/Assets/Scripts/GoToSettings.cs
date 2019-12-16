@@ -19,8 +19,4 @@ public class GoToSettings : MonoBehaviour
     {
         SceneManager.LoadScene("SettingsScreen");
     }
-
-    void Update()
-    {
-    }
 }
