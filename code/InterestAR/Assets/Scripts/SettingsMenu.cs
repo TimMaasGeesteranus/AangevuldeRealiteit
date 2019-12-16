@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SettingsMenu : MonoBehaviour
 {
@@ -75,5 +76,11 @@ public class SettingsMenu : MonoBehaviour
     {
         MemoryDataService.Distance = distance;
         MemoryDataService.Language = language = languages[languageDropdown.value];
+        CloseSettings();
+    }
+
+    private void CloseSettings()
+    {
+        SceneManager.LoadScene("CameraScene");
     }
 }
