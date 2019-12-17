@@ -25,13 +25,18 @@ public class WatsonTTS : MonoBehaviour
     {
         MyAudioSource = GetComponent<AudioSource>();
         Button btn = PlayButton.GetComponent<Button>();
-        btn.onClick.AddListener(Wrapper);
+        //btn.onClick.AddListener(Wrapper);
         ImageComponent = GetComponent<Image>();
     }
 
     void Update()
     {
         theCoroutine = MyCoroutine(); // Coroutines always change and if not defined withing the Update it will be different and cant be started again.
+    }
+
+    public void playText()
+    {
+        //Wrapper();
     }
 
 
