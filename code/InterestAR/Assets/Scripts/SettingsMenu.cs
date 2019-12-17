@@ -73,16 +73,17 @@ namespace Assets.Scripts
         }
 
 
-    // Saves the settings
-    public void SaveSettings()
-    {
-        MemoryDataService.Distance = distance;
-        MemoryDataService.Language = language = languages[languageDropdown.value];
-        CloseSettings();
-    }
+        // Saves the settings
+        public void SaveSettings()
+        {
+            MemoryDataService.Distance = distance;
+            MemoryDataService.Language = language = languages[languageDropdown.value];
+            CloseSettings();
+        }
 
-    private void CloseSettings()
-    {
-        SceneManager.LoadScene("CameraScene");
+        private void CloseSettings()
+        {
+            SceneManager.LoadScene("CameraScene");
+        }
     }
 }
