@@ -4,13 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using IBM.Cloud.SDK;
+using IBM.Cloud.SDK.Utilities;
+using IBM.Watson.LanguageTranslator.V3;
+using IBM.Watson.LanguageTranslator.V3.Model;
+using System.Threading.Tasks;
 
 public class SettingsMenu : MonoBehaviour
 {
     // Values
     private string language;
     private float distance = 0;
-    private List<string> languages = new List<string> { "Nederlands", "English", "Deutsch" };
+    private List<string> languages = new List<string>();
 
     // Gameobjects
     public Button saveButton;
@@ -19,19 +24,24 @@ public class SettingsMenu : MonoBehaviour
     public Slider radiusSlider;
     public SVGImage radiusImage;
 
+    IEnumerator translatorCoroutine;
+    LanguageTranslatorService languageTranslatorService;
+    private string versionDate = "2018-05-01";
 
     // Setup methods for the settings menu
     void Start()
     {
-        SetupInitialSettings();
-        SetupDropdown();
-        setupSlider();
+        translatorCoroutine = GetLanguages();
+        DoFirst();
+
+
     }
 
     // Changes the radius while moving the slider
     void Update()
     {
         ChangeRadiusVector();
+        DoLast();
     }
 
     private void ChangeRadiusVector()
@@ -82,5 +92,35 @@ public class SettingsMenu : MonoBehaviour
     private void CloseSettings()
     {
         SceneManager.LoadScene("CameraScene");
+    }
+
+    public void DoFirst()
+    {
+        StartCoroutine(translatorCoroutine);
+    }
+
+    public void DoLast()
+    {
+        SetupInitialSettings();
+        SetupDropdown();
+        setupSlider();
+    }
+    public IEnumerator GetLanguages()
+    {
+
+        languageTranslatorService = new LanguageTranslatorService(versionDate);
+
+        while (!languageTranslatorService.Authenticator.CanAuthenticate())
+            yield return null;
+
+
+        languageTranslatorService.ListIdentifiableLanguages(
+             callback: (DetailedResponse<IdentifiableLanguages> response, IBMError error) =>
+             {
+             foreach (var element in response.Result.Languages){
+                     languages.Add(element.Name);
+                 Debug.Log(languages.Count);
+             }
+             });
     }
 }
