@@ -2,6 +2,7 @@
 using Assets.Scripts.Services;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts
 {
@@ -71,11 +72,17 @@ namespace Assets.Scripts
             distanceAmount.text = $"{distance} M";
         }
 
-        // Saves the settings
-        public void SaveSettings()
-        {
-            MemoryDataService.Distance = distance;
-            MemoryDataService.Language = language = languages[languageDropdown.value];
-        }
+
+    // Saves the settings
+    public void SaveSettings()
+    {
+        MemoryDataService.Distance = distance;
+        MemoryDataService.Language = language = languages[languageDropdown.value];
+        CloseSettings();
+    }
+
+    private void CloseSettings()
+    {
+        SceneManager.LoadScene("CameraScene");
     }
 }
