@@ -36,7 +36,7 @@ De originele planning is als volgt:
 | 30-09-2019 | 27-10-2019 | Sprint 1\*   |
 | 28-10-2019 | 17-11-2019 | Sprint 2     |
 | 18-11-2019 | 08-12-2019 | Sprint 3     |
-| 09-12-2019 | 12-01-2020 | Sprint 4\*   |
+| 09-12-2019 | 23-01-2020 | Sprint 4\*   |
 | 13-01-2020 | 23-01-2020 | Postgame     |
 
 Omdat we deze planning niet haalden is de volgende planning vastgesteld:
@@ -49,6 +49,16 @@ Omdat we deze planning niet haalden is de volgende planning vastgesteld:
 | 09-12-2019 | 12-01-2020 | Sprint 3     |
 | 13-01-2020 | 19-01-2020 | Sprint 4\*   |
 | 20-01-2020 | 23-01-2020 | Postgame     |
+
+De postgame is aangezien kort en heeft op 22 januari Ica Presents, daardoor blijven er 2 dagen postgame over. Omdat deze tijd erg kort is hebben wij ervoor gekozen om Sprint 4 en de postgame samen te voegen.
+
+| Datum van  | Datum tot  | Sprintnummer |
+| ---------- | ---------- | ------------ |
+| 01-09-2019 | 29-09-2019 | Pregame      |
+| 30-09-2019 | 04-11-2019 | Sprint 1\*   |
+| 05-11-2019 | 08-12-2019 | Sprint 2     |
+| 09-12-2019 | 12-01-2020 | Sprint 3     |
+| 13-01-2020 | 21-01-2020 | Sprint 4\*   |
 
 \*Deze sprints worden onderbroken door een vakantieperiode. Onderstaande tabel geeft deze weer.
 
