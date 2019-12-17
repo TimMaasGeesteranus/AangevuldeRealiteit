@@ -1,13 +1,8 @@
-﻿using Assets.Scripts.settings;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
+using Assets.Scripts.settings;
 using UnityEngine;
 
-namespace Assets.Scripts.SaveSystem
+namespace Assets.Scripts.Services
 {
     static class SaveSystem
     {

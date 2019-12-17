@@ -1,31 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Android;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PermissionRetry : MonoBehaviour
+namespace Assets.Scripts
 {
-    public Button promptButton;
-
-    // Start is called before the first frame update
-    void Start()
+    public class PermissionRetry : MonoBehaviour
     {
-        Button btn = promptButton.GetComponent<Button>();
-        btn.onClick.AddListener(TaskOnClick);
-    }
+        public Button promptButton;
 
-    void TaskOnClick()
-    {
-        Permission.RequestUserPermission(Permission.Camera);
-    }
-
-    void Update()
-    {
-        if (Permission.HasUserAuthorizedPermission(Permission.Camera))
+        // Start is called before the first frame update
+        void Start()
         {
-            SceneManager.LoadScene("CameraScene");
+            Button btn = promptButton.GetComponent<Button>();
+            btn.onClick.AddListener(TaskOnClick);
+        }
+
+        void TaskOnClick()
+        {
+            Permission.RequestUserPermission(Permission.Camera);
+        }
+
+        void Update()
+        {
+            if (Permission.HasUserAuthorizedPermission(Permission.Camera))
+            {
+                SceneManager.LoadScene("CameraScene");
+            }
         }
     }
 }

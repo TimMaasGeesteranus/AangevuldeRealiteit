@@ -11,77 +11,78 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Net;
 
-public class InsertTextFromAPI : MonoBehaviour
+namespace Assets.Scripts
 {
 
-    public Text ChangingText;
-    public String Returnvalue;
-    async void Start()
+    public class InsertTextFromAPI : MonoBehaviour
     {
-        if (Returnvalue == "text")
+        public Text ChangingText;
+        public String Returnvalue;
+        async void Start()
         {
-            ChangingText.text = await GetData("Eiffeltoren");
-        }
-        else if(Returnvalue == "title")
-        {
-            ChangingText.text = await GetOpenSearch("Eiffeltoren");
-        }
-    }
-
-
-
-    static async Task<string> GetOpenSearch(string term)
-    {
-        term = Regex.Replace(term, @"s", "_");
-        string openSearchUrl = $"https://nl.wikipedia.org//w/api.php?action=opensearch&format=json&origin=*&search={term}";
-
-        using (HttpClient client = new HttpClient())
-        using (HttpResponseMessage res = await client.GetAsync(openSearchUrl))
-        using (HttpContent content = res.Content)
-        {
-            string response = await content.ReadAsStringAsync();
-            response = response.Replace("[", "").Replace("]", "").Replace(",", "");
-            string[] stringArray = response
-                .Split('"')
-                .Where(x => !string.IsNullOrEmpty(x))
-                .Skip(1)
-                .ToArray();
-
-            string title = stringArray[0].Replace(" ", "_");
-            if (title == string.Empty)
+            if (Returnvalue == "text")
             {
-                throw new ArgumentNullException();
+                ChangingText.text = await GetData("Eiffeltoren");
             }
-            return title;
+            else if (Returnvalue == "title")
+            {
+                ChangingText.text = await GetOpenSearch("Eiffeltoren");
+            }
         }
-    }
-    private static async Task<string> GetData(string args)
-    {
-        try
+
+        static async Task<string> GetOpenSearch(string term)
         {
-            string article = await GetOpenSearch(args);
-            string dataUrl = $"https://nl.wikipedia.org/w/api.php?action=query&titles={article}&format=xml&redirects=true&prop=extracts";
+            term = Regex.Replace(term, @"s", "_");
+            string openSearchUrl = $"https://nl.wikipedia.org//w/api.php?action=opensearch&format=json&origin=*&search={term}";
 
             using (HttpClient client = new HttpClient())
-            using (HttpResponseMessage res = await client.GetAsync(dataUrl))
+            using (HttpResponseMessage res = await client.GetAsync(openSearchUrl))
             using (HttpContent content = res.Content)
             {
                 string response = await content.ReadAsStringAsync();
-                response = WebUtility.HtmlDecode(response);
-                
-                int indexFirstTag = response.IndexOf("<extract xml:space=\"preserve\">");
-                int indexLastTag = response.IndexOf("</extract>");
+                response = response.Replace("[", "").Replace("]", "").Replace(",", "");
+                string[] stringArray = response
+                    .Split('"')
+                    .Where(x => !string.IsNullOrEmpty(x))
+                    .Skip(1)
+                    .ToArray();
 
-                response = response.Substring(indexFirstTag, indexLastTag - indexFirstTag);
-
-                response = Regex.Replace(response, @"<\/?(?!b)(?!i)\w*\b[^>]*>", "");
-
-                return response;
+                string title = stringArray[0].Replace(" ", "_");
+                if (title == string.Empty)
+                {
+                    throw new ArgumentNullException();
+                }
+                return title;
             }
         }
-        catch (Exception)
+        private static async Task<string> GetData(string args)
         {
-            return "Could not load information";
+            try
+            {
+                string article = await GetOpenSearch(args);
+                string dataUrl = $"https://nl.wikipedia.org/w/api.php?action=query&titles={article}&format=xml&redirects=true&prop=extracts";
+
+                using (HttpClient client = new HttpClient())
+                using (HttpResponseMessage res = await client.GetAsync(dataUrl))
+                using (HttpContent content = res.Content)
+                {
+                    string response = await content.ReadAsStringAsync();
+                    response = WebUtility.HtmlDecode(response);
+
+                    int indexFirstTag = response.IndexOf("<extract xml:space=\"preserve\">");
+                    int indexLastTag = response.IndexOf("</extract>");
+
+                    response = response.Substring(indexFirstTag, indexLastTag - indexFirstTag);
+
+                    response = Regex.Replace(response, @"<\/?(?!b)(?!i)\w*\b[^>]*>", "");
+
+                    return response;
+                }
+            }
+            catch (Exception)
+            {
+                return "Could not load information";
+            }
         }
     }
 }
