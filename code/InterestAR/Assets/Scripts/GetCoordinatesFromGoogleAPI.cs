@@ -7,6 +7,7 @@ using UnityEngine;
 public class GetCoordinatesFromGoogleAPI : MonoBehaviour
 {
     public string PointOfInterest;
+    
     void Start()
     {
         var json = new WebClient().DownloadString("https://maps.googleapis.com/maps/api/place/textsearch/json?query=places+in+parijs&key=AIzaSyC3wh6HCkeu9LLjCvCq2CA0AWg-pfpoegc");
@@ -22,7 +23,5 @@ public class GetCoordinatesFromGoogleAPI : MonoBehaviour
                 Debug.Log(string.Concat("Let: ", ((obj["geometry"])["location"])["lng"]));
             };
         };
-
-
     }
 }
