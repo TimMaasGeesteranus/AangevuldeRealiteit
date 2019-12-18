@@ -1,0 +1,16 @@
+{
+    "name": "applicationAssembly",
+    "references": [
+        "GUID:09e6844a19c44194dae71b5f6d5e2f12",
+        "GUID:0b15967a880604f479f24c0af2bd5020",
+        "GUID:68550284b645f4b9894995579f34290a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
