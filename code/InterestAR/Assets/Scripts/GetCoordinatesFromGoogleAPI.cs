@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GetCoordinatesFromGoogleAPI : MonoBehaviour
 {
     public string PointOfInterest;
+    public Text ChangingText;
     
     void Start()
     {
@@ -17,10 +19,7 @@ public class GetCoordinatesFromGoogleAPI : MonoBehaviour
         {
             if (obj["name"].ToString() == PointOfInterest)
             {
-                Debug.Log(obj["name"]);
-
-                Debug.Log(string.Concat("Lat: ", ((obj["geometry"])["location"])["lat"]));
-                Debug.Log(string.Concat("Let: ", ((obj["geometry"])["location"])["lng"]));
+                ChangingText.text = string.Concat("Lat: ", ((obj["geometry"])["location"])["lat"], " - Let: ", ((obj["geometry"])["location"])["lng"]);
             };
         };
     }
