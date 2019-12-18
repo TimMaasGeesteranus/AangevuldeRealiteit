@@ -6,69 +6,71 @@ using IBM.Cloud.SDK.Utilities;
 using IBM.Watson.TextToSpeech.V1;
 using UnityEngine.UI;
 
-
-public class WatsonTTS : MonoBehaviour
+namespace Assets.Scripts
 {
-    public Button PlayButton;
-    TextToSpeechService textToSpeechService;
-    bool isPlaying = false;
-    IEnumerator theCoroutine;
-    AudioSource MyAudioSource;
-
-
-    void Start()
+    public class WatsonTTS : MonoBehaviour
     {
-        MyAudioSource = GetComponent<AudioSource>();
-        Button btn = PlayButton.GetComponent<Button>();
-        btn.onClick.AddListener(Wrapper);
-    }
-
-    void Update()
-    {
-        theCoroutine = MyCoroutine(); // Coroutines always change and if not defined withing the Update it will be different and cant be started again.
-    }
+        public Button PlayButton;
+        TextToSpeechService textToSpeechService;
+        bool isPlaying = false;
+        IEnumerator theCoroutine;
+        AudioSource MyAudioSource;
 
 
-    public void Wrapper()
-    {
-        if (isPlaying)
+        void Start()
         {
-            isPlaying = false;
-            MyAudioSource.Stop(); // This stops the audioplayer, StopCoroutine won't work here since this coroutine first has to finish for it to start talking. 
+            MyAudioSource = GetComponent<AudioSource>();
+            Button btn = PlayButton.GetComponent<Button>();
+            btn.onClick.AddListener(Wrapper);
         }
-        else
+
+        void Update()
         {
-            isPlaying = true;
-            StartCoroutine(theCoroutine);
+            theCoroutine = MyCoroutine(); // Coroutines always change and if not defined withing the Update it will be different and cant be started again.
         }
-    }
 
-    public IEnumerator MyCoroutine()
-    {
-        textToSpeechService = new TextToSpeechService();
 
-        while (!textToSpeechService.Authenticator.CanAuthenticate())
-            yield return null;
-
-        byte[] synthesizeResponse = null;
-        AudioClip clip = null;
-        textToSpeechService.Synthesize(
-            callback: (DetailedResponse<byte[]> response, IBMError error) =>
+        public void Wrapper()
+        {
+            if (isPlaying)
             {
-                synthesizeResponse = response.Result;
-                clip = WaveFile.ParseWAV("hello_world.wav", synthesizeResponse);
-                AudioSource audioSource = GetComponent<AudioSource>();
-                audioSource.clip = clip;
-                audioSource.Play();
-            },
-            text: "In the midst of chaos, there is also opportunity.",
-            voice: "en-US_AllisonVoice",
-            accept: "audio/wav"
-        );
+                isPlaying = false;
+                MyAudioSource.Stop(); // This stops the audioplayer, StopCoroutine won't work here since this coroutine first has to finish for it to start talking. 
+            }
+            else
+            {
+                isPlaying = true;
+                StartCoroutine(theCoroutine);
+            }
+        }
 
-        while (synthesizeResponse == null)
+        public IEnumerator MyCoroutine()
         {
-            yield return null;
+            textToSpeechService = new TextToSpeechService();
+
+            while (!textToSpeechService.Authenticator.CanAuthenticate())
+                yield return null;
+
+            byte[] synthesizeResponse = null;
+            AudioClip clip = null;
+            textToSpeechService.Synthesize(
+                callback: (DetailedResponse<byte[]> response, IBMError error) =>
+                {
+                    synthesizeResponse = response.Result;
+                    clip = WaveFile.ParseWAV("hello_world.wav", synthesizeResponse);
+                    AudioSource audioSource = GetComponent<AudioSource>();
+                    audioSource.clip = clip;
+                    audioSource.Play();
+                },
+                text: "In the midst of chaos, there is also opportunity.",
+                voice: "en-US_AllisonVoice",
+                accept: "audio/wav"
+            );
+
+            while (synthesizeResponse == null)
+            {
+                yield return null;
+            }
         }
     }
 }

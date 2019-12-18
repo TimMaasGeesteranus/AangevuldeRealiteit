@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToggleVisibility : MonoBehaviour
+namespace Assets.Scripts
 {
-    public GameObject Object;
-
-    public void OnMouseDown()
+    public class ToggleVisibility : MonoBehaviour
     {
-        Debug.Log("TOGGLING ACITVATED");
-        if(Object != null)
+        public GameObject Object;
+
+        public void OnMouseDown()
         {
-            Object.SetActive(!Object.activeSelf);
+            Debug.Log("TOGGLING ACITVATED");
+            if (Object != null)
+            {
+                Object.SetActive(!Object.activeSelf);
+            }
         }
     }
-
-
 }

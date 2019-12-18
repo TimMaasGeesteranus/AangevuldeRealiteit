@@ -1,86 +1,89 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Assets.Scripts.Services;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class SettingsMenu : MonoBehaviour
+namespace Assets.Scripts
 {
-    // Values
-    private string language;
-    private float distance = 0;
-    private List<string> languages = new List<string> { "Nederlands", "English", "Deutsch" };
-
-    // Gameobjects
-    public Button saveButton;
-    public Text distanceAmount;
-    public Dropdown languageDropdown;
-    public Slider radiusSlider;
-    public SVGImage radiusImage;
-
-
-    // Setup methods for the settings menu
-    void Start()
+    public class SettingsMenu : MonoBehaviour
     {
-        SetupInitialSettings();
-        SetupDropdown();
-        setupSlider();
-    }
+        // Values
+        private string language;
+        private float distance = 0;
+        private List<string> languages = new List<string> { "Nederlands", "English", "Deutsch" };
 
-    // Changes the radius while moving the slider
-    void Update()
-    {
-        ChangeRadiusVector();
-    }
+        // Gameobjects
+        public Button saveButton;
+        public Text distanceAmount;
+        public Dropdown languageDropdown;
+        public Slider radiusSlider;
+        public SVGImage radiusImage;
 
-    private void ChangeRadiusVector()
-    {
-        // Changes the scale of the circel vector
-        float step = 1 + (radiusSlider.value / 2);
-        radiusImage.rectTransform.localScale = new Vector2(step, step);
-    }
 
-    // Retrieves the values from the memory
-    private void setupSlider()
-    {
-        radiusSlider.value = distance / 50;
-    }
+        // Setup methods for the settings menu
+        void Start()
+        {
+            SetupInitialSettings();
+            SetupDropdown();
+            setupSlider();
+        }
 
-    // Retrieves the values from the memory
-    private void SetupInitialSettings()
-    {
-        distance = MemoryDataService.Distance;
-        language = MemoryDataService.Language;
-        distanceAmount.text = $"{distance} M";
-    }
+        // Changes the radius while moving the slider
+        void Update()
+        {
+            ChangeRadiusVector();
+        }
 
-    // Setup for the dropdown
-    private void SetupDropdown()
-    {
-        languageDropdown.ClearOptions();
-        languageDropdown.AddOptions(languages);
-        languageDropdown.RefreshShownValue();
-        languageDropdown.value = languages.IndexOf(language);
-    }
+        private void ChangeRadiusVector()
+        {
+            // Changes the scale of the circel vector
+            float step = 1 + (radiusSlider.value / 2);
+            radiusImage.rectTransform.localScale = new Vector2(step, step);
+        }
 
-    // Sets the slider and current text value
-    public void SetSlider(float value)
-    {
-        distance = value * 50;
-        distanceAmount.text = $"{distance} M";
-    }
+        // Retrieves the values from the memory
+        private void setupSlider()
+        {
+            radiusSlider.value = distance / 50;
+        }
 
-    // Saves the settings
-    public void SaveSettings()
-    {
-        MemoryDataService.Distance = distance;
-        MemoryDataService.Language = language = languages[languageDropdown.value];
-        CloseSettings();
-    }
+        // Retrieves the values from the memory
+        private void SetupInitialSettings()
+        {
+            distance = MemoryDataService.Distance;
+            language = MemoryDataService.Language;
+            distanceAmount.text = $"{distance} M";
+        }
 
-    private void CloseSettings()
-    {
-        SceneManager.LoadScene("CameraScene");
+        // Setup for the dropdown
+        private void SetupDropdown()
+        {
+            languageDropdown.ClearOptions();
+            languageDropdown.AddOptions(languages);
+            languageDropdown.RefreshShownValue();
+            languageDropdown.value = languages.IndexOf(language);
+        }
+
+        // Sets the slider and current text value
+        public void SetSlider(float value)
+        {
+            distance = value * 50;
+            distanceAmount.text = $"{distance} M";
+        }
+
+
+        // Saves the settings
+        public void SaveSettings()
+        {
+            MemoryDataService.Distance = distance;
+            MemoryDataService.Language = language = languages[languageDropdown.value];
+            CloseSettings();
+        }
+
+        private void CloseSettings()
+        {
+            SceneManager.LoadScene("CameraScene");
+        }
     }
 }
