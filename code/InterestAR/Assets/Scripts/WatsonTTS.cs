@@ -21,6 +21,7 @@ public class WatsonTTS : MonoBehaviour
         MyAudioSource = GetComponent<AudioSource>();
         Button btn = PlayButton.GetComponent<Button>();
         btn.onClick.AddListener(Wrapper);
+        Debug.Log("HALLO");
     }
 
     void Update()
@@ -61,7 +62,7 @@ public class WatsonTTS : MonoBehaviour
                 audioSource.clip = clip;
                 audioSource.Play();
             },
-            text: "In the midst of chaos, there is also opportunity.",
+            text: "Test.",
             voice: "en-US_AllisonVoice",
             accept: "audio/wav"
         );

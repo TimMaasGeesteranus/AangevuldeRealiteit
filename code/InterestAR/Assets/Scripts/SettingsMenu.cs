@@ -34,7 +34,7 @@ public class SettingsMenu : MonoBehaviour
     {
         translatorCoroutine = GetLanguages();
         DoFirst();
-        StartCoroutine(DoLast);
+        StartCoroutine(DoLast());
     }
 
     // Changes the radius while moving the slider
