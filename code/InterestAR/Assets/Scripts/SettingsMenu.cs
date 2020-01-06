@@ -25,16 +25,20 @@ public class SettingsMenu : MonoBehaviour
     public SVGImage radiusImage;
 
     // Language select
-    IEnumerator translatorCoroutine;
+    IEnumerator languagesCoroutine;
+    IEnumerator setupCoroutine;
+
     LanguageTranslatorService languageTranslatorService;
     private string versionDate = "2018-05-01";
 
     // Setup methods for the settings menu
     void Start()
     {
-        translatorCoroutine = GetLanguages();
-        DoFirst();
-        StartCoroutine(DoLast);
+        languagesCoroutine = GetLanguages();
+        setupCoroutine = DoLast();
+
+        StartCoroutine(languagesCoroutine);
+        StartCoroutine(setupCoroutine);
     }
 
     // Changes the radius while moving the slider
@@ -70,7 +74,7 @@ public class SettingsMenu : MonoBehaviour
         languageDropdown.ClearOptions();
         languageDropdown.AddOptions(languages);
         languageDropdown.RefreshShownValue();
-        languageDropdown.value = languages.IndexOf(language);
+        languageDropdown.value = languages.IndexOf(language.ToString());
     }
 
     // Sets the slider and current text value
@@ -93,11 +97,6 @@ public class SettingsMenu : MonoBehaviour
         SceneManager.LoadScene("CameraScene");
     }
 
-    public void DoFirst()
-    {
-        StartCoroutine(translatorCoroutine);
-    }
-
     public IEnumerator Wait(int seconds)
     {
         yield return new WaitForSeconds(seconds);
@@ -105,7 +104,7 @@ public class SettingsMenu : MonoBehaviour
 
     public IEnumerator DoLast()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         SetupInitialSettings();
         SetupDropdown();
         setupSlider();
@@ -123,8 +122,7 @@ public class SettingsMenu : MonoBehaviour
              callback: (DetailedResponse<IdentifiableLanguages> response, IBMError error) =>
              {
                  foreach (var element in response.Result.Languages){
-                         languages.Add(element.Name);
-                         Debug.Log(languages.Count);
+                         languages.Add(element.Name.ToString());
              }
         });
     }
