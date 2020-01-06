@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -11,15 +12,32 @@ namespace MediaWikiTest
     {
         static void Main(string[] args)
         {
-            string text = GetData(String.Join("", args)).Result;
+            string language = "fr";
+            string text = string.Empty;
+            
+            text = fullSearch(string.Join("", args), language).Result;
+            
             Console.WriteLine(text);
             Console.ReadKey();
         }
 
-        static async Task<string> GetOpenSearch(string term)
+        static async Task<string> fullSearch(string term, string language){
+            string text = await GetData(term, language);
+           
+                if(string.IsNullOrEmpty(text)){
+                    text = await GetData(term);
+                }
+
+                if(string.IsNullOrEmpty(text)){
+                    text = "No information found";
+             }
+                return text;
+        }
+
+        static async Task<string> GetOpenSearch(string term, string language)
         {
-            term = Regex.Replace(term, " ", "_");
-            string openSearchUrl = $"https://nl.wikipedia.org//w/api.php?action=opensearch&format=json&origin=*&search={term}";
+            term = Regex.Replace(term, @"s", "_");
+            string openSearchUrl = $"https://{language}.wikipedia.org//w/api.php?action=opensearch&format=json&origin=*&search={term}";
 
             using (HttpClient client = new HttpClient())
             using (HttpResponseMessage res = await client.GetAsync(openSearchUrl))
@@ -32,21 +50,32 @@ namespace MediaWikiTest
                     .Where(x => !string.IsNullOrEmpty(x))
                     .Skip(1)
                     .ToArray();
+                
+                string title = string.Empty;
 
-                string title = stringArray[0].Replace(" ", "_");
+                try
+                {
+                    title = stringArray[0].Replace(" ", "_");
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    title = string.Empty;
+                }
+
                 if (title == string.Empty)
                 {
                     throw new ArgumentNullException();
                 }
+
                 return title;
             }
         }
-        private static async Task<string> GetData(string args)
+        private static async Task<string> GetData(string args, string language = "en")
         {
             try
             {
-                string article = await GetOpenSearch(args);
-                string dataUrl = $"https://nl.wikipedia.org/w/api.php?action=query&titles={article}&format=xml&redirects=true&prop=extracts";
+                string article = await GetOpenSearch(args, language);
+                string dataUrl = $"https://{language}.wikipedia.org/w/api.php?action=query&titles={article}&format=xml&redirects=true&prop=extracts";
 
                 using (HttpClient client = new HttpClient())
                 using (HttpResponseMessage res = await client.GetAsync(dataUrl))
@@ -60,15 +89,14 @@ namespace MediaWikiTest
 
                     response = response.Substring(indexFirstTag, indexLastTag - indexFirstTag);
 
-                    string acceptable = "b|i";
-                    response = Regex.Replace(response, @"</?(?(?=" + acceptable + @")notag|[a-zA-Z0-9]+)(?:\s[a-zA-Z0-9\-]+=?(?:(["",']?).*?\1?)?)*\s*/?>", "");
-
+                    response = Regex.Replace(response, @"<\/?(?!b)(?!i)\w*\b[^>]*>", "");
+                    
                     return response;
                 }
             }
-            catch (Exception)
+            catch (Exception ex) when (ex is ArgumentNullException || ex is AggregateException)
             {
-                return "Could not load information";
+                return string.Empty;
             }
         }
     }
