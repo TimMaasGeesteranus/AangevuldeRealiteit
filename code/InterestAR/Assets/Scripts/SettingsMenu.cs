@@ -24,6 +24,7 @@ public class SettingsMenu : MonoBehaviour
     public Slider radiusSlider;
     public SVGImage radiusImage;
 
+    // Language select
     IEnumerator translatorCoroutine;
     LanguageTranslatorService languageTranslatorService;
     private string versionDate = "2018-05-01";
@@ -33,15 +34,13 @@ public class SettingsMenu : MonoBehaviour
     {
         translatorCoroutine = GetLanguages();
         DoFirst();
-
-
+        StartCoroutine(DoLast);
     }
 
     // Changes the radius while moving the slider
     void Update()
     {
         ChangeRadiusVector();
-        DoLast();
     }
 
     private void ChangeRadiusVector()
@@ -99,15 +98,21 @@ public class SettingsMenu : MonoBehaviour
         StartCoroutine(translatorCoroutine);
     }
 
-    public void DoLast()
+    public IEnumerator Wait(int seconds)
     {
+        yield return new WaitForSeconds(seconds);
+    }
+
+    public IEnumerator DoLast()
+    {
+        yield return new WaitForSeconds(3);
         SetupInitialSettings();
         SetupDropdown();
         setupSlider();
     }
+
     public IEnumerator GetLanguages()
     {
-
         languageTranslatorService = new LanguageTranslatorService(versionDate);
 
         while (!languageTranslatorService.Authenticator.CanAuthenticate())
@@ -117,10 +122,10 @@ public class SettingsMenu : MonoBehaviour
         languageTranslatorService.ListIdentifiableLanguages(
              callback: (DetailedResponse<IdentifiableLanguages> response, IBMError error) =>
              {
-             foreach (var element in response.Result.Languages){
-                     languages.Add(element.Name);
-                 Debug.Log(languages.Count);
+                 foreach (var element in response.Result.Languages){
+                         languages.Add(element.Name);
+                         Debug.Log(languages.Count);
              }
-             });
+        });
     }
 }
