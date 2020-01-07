@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class WatsonTTS : MonoBehaviour
 {
     public Button PlayButton;
+    public Text Text;
     TextToSpeechService textToSpeechService;
     bool isPlaying = false;
     IEnumerator theCoroutine;
@@ -46,6 +47,38 @@ public class WatsonTTS : MonoBehaviour
 
     public IEnumerator MyCoroutine()
     {
+        string voice = "en-US_AllisonVoice";
+        string text = "Hallo lees deze tekst voor";
+        string language = MemoryDataService.Language;
+
+        switch (language)
+        {
+            case "German":
+                voice = "de-DE_BirgitVoice";
+                break;
+            case "English":
+                voice = "en-US_AllisonVoice";
+                break;
+            case "Spanish":
+                voice = "es-ES_EnriqueVoice";
+                break;
+            case "French":
+                voice = "fr-FR_ReneeVoice";
+                break;
+            case "Italian":
+                voice = "it-IT_FrancescaVoice";
+                break;
+            case "Japanese":
+                voice = "ja-JP_EmiVoice";
+                break;
+           case "Portuguese":
+                voice = "pt-BR_IsabelaVoice";
+                break;
+            default:
+                voice = "en-US_AllisonVoice";
+                break;
+        }
+
         textToSpeechService = new TextToSpeechService();
 
         while (!textToSpeechService.Authenticator.CanAuthenticate())
@@ -62,8 +95,8 @@ public class WatsonTTS : MonoBehaviour
                 audioSource.clip = clip;
                 audioSource.Play();
             },
-            text: "Test.",
-            voice: "en-US_AllisonVoice",
+            text: text,
+            voice: voice,
             accept: "audio/wav"
         );
 
