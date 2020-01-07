@@ -15,10 +15,12 @@ public class WatsonTTS : MonoBehaviour
     bool isPlaying = false;
     IEnumerator theCoroutine;
     AudioSource MyAudioSource;
+    string voice;
 
 
     void Start()
     {
+        checkIfLanguageIsSupported();
         MyAudioSource = GetComponent<AudioSource>();
         Button btn = PlayButton.GetComponent<Button>();
         btn.onClick.AddListener(Wrapper);
@@ -30,26 +32,11 @@ public class WatsonTTS : MonoBehaviour
         theCoroutine = MyCoroutine(); // Coroutines always change and if not defined withing the Update it will be different and cant be started again.
     }
 
-
-    public void Wrapper()
+    public void checkIfLanguageIsSupported()
     {
-        if (isPlaying)
-        {
-            isPlaying = false;
-            MyAudioSource.Stop(); // This stops the audioplayer, StopCoroutine won't work here since this coroutine first has to finish for it to start talking. 
-        }
-        else
-        {
-            isPlaying = true;
-            StartCoroutine(theCoroutine);
-        }
-    }
 
-    public IEnumerator MyCoroutine()
-    {
-        string voice = "en-US_AllisonVoice";
-        string text = "Hallo lees deze tekst voor";
         string language = MemoryDataService.Language;
+
 
         switch (language)
         {
@@ -71,13 +58,34 @@ public class WatsonTTS : MonoBehaviour
             case "Japanese":
                 voice = "ja-JP_EmiVoice";
                 break;
-           case "Portuguese":
+            case "Portuguese":
                 voice = "pt-BR_IsabelaVoice";
                 break;
             default:
                 voice = "en-US_AllisonVoice";
                 break;
         }
+
+    }
+
+
+    public void Wrapper()
+    {
+        if (isPlaying)
+        {
+            isPlaying = false;
+            MyAudioSource.Stop(); // This stops the audioplayer, StopCoroutine won't work here since this coroutine first has to finish for it to start talking. 
+        }
+        else
+        {
+            isPlaying = true;
+            StartCoroutine(theCoroutine);
+        }
+    }
+
+    public IEnumerator MyCoroutine()
+    {
+        string text = "Hallo lees deze tekst voor";
 
         textToSpeechService = new TextToSpeechService();
 
