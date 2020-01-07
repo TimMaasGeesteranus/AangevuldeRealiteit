@@ -16,6 +16,7 @@ public class SettingsMenu : MonoBehaviour
     private string language;
     private float distance = 0;
     private List<string> languages = new List<string>();
+    private Dictionary<String, String> languages2 = new Dictionary<string, string>();
 
     // Gameobjects
     public Button saveButton;
@@ -35,7 +36,7 @@ public class SettingsMenu : MonoBehaviour
     void Start()
     {
         languagesCoroutine = GetLanguages();
-        setupCoroutine = DoLast();
+        setupCoroutine = SetupMenu();
 
         StartCoroutine(languagesCoroutine);
         StartCoroutine(setupCoroutine);
@@ -74,7 +75,7 @@ public class SettingsMenu : MonoBehaviour
         languageDropdown.ClearOptions();
         languageDropdown.AddOptions(languages);
         languageDropdown.RefreshShownValue();
-        languageDropdown.value = languages.IndexOf(language.ToString());
+        languageDropdown.value = languages.IndexOf(language);
     }
 
     // Sets the slider and current text value
@@ -102,12 +103,13 @@ public class SettingsMenu : MonoBehaviour
         yield return new WaitForSeconds(seconds);
     }
 
-    public IEnumerator DoLast()
+    public IEnumerator SetupMenu()
     {
         yield return new WaitForSeconds(2);
-        SetupInitialSettings();
+
         SetupDropdown();
         setupSlider();
+        SetupInitialSettings();
     }
 
     public IEnumerator GetLanguages()
@@ -122,7 +124,8 @@ public class SettingsMenu : MonoBehaviour
              callback: (DetailedResponse<IdentifiableLanguages> response, IBMError error) =>
              {
                  foreach (var element in response.Result.Languages){
-                         languages.Add(element.Name.ToString());
+                         languages.Add(element.Language);
+                        languages2.Add(element.Language, element.Name);
              }
         });
     }
