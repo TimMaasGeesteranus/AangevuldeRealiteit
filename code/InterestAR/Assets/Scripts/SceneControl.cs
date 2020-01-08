@@ -4,45 +4,48 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Android;
 
-public class SceneControl : MonoBehaviour
+namespace Assets.Scripts
 {
-
-    // Start is called before the first frame update
-    void Start()
+    public class SceneControl : MonoBehaviour
     {
-        PermissionHandler();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        GoToRetry();
-        ClickToContinue();
-    }
-
-    void ClickToContinue()
-    {
-        if (Input.touchCount > 0 && Permission.HasUserAuthorizedPermission(Permission.Camera))
+        // Start is called before the first frame update
+        void Start()
         {
-            SceneManager.LoadScene("CameraScene");
+            PermissionHandler();
         }
-    }
 
-    public void PermissionHandler()
-    {
-        /* Ask for permission */
-        if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
+        // Update is called once per frame
+        void Update()
         {
-            Permission.RequestUserPermission(Permission.Camera);
+            GoToRetry();
+            ClickToContinue();
         }
-    }
 
-    public void GoToRetry()
-    {
-        /* No permission, go to prompt*/
-        if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
+        void ClickToContinue()
         {
-            SceneManager.LoadScene("PromptPermissionScene");
+            if (Input.touchCount > 0 && Permission.HasUserAuthorizedPermission(Permission.Camera))
+            {
+                SceneManager.LoadScene("CameraScene");
+            }
+        }
+
+        public void PermissionHandler()
+        {
+            /* Ask for permission */
+            if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
+            {
+                Permission.RequestUserPermission(Permission.Camera);
+            }
+        }
+
+        public void GoToRetry()
+        {
+            /* No permission, go to prompt*/
+            if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
+            {
+                SceneManager.LoadScene("PromptPermissionScene");
+            }
         }
     }
 }
