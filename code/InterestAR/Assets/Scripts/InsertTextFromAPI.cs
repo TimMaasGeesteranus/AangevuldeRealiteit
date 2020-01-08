@@ -20,9 +20,11 @@ namespace Assets.Scripts
         public String Returnvalue;
         async void Start()
         {
+            string language = "fr";
+
             if (Returnvalue == "text")
             {
-                ChangingText.text = await GetData("Eiffeltoren");
+                ChangingText.text = await FullSearch("Eiffeltoren", language);
             }
             else if (Returnvalue == "title")
             {
@@ -30,10 +32,20 @@ namespace Assets.Scripts
             }
         }
 
-        static async Task<string> GetOpenSearch(string term)
+        static async Task<string> FullSearch(string term, string language)
+        {
+            string text = await GetData(term, language);
+
+            if (string.IsNullOrEmpty(text)) text = await GetData(term);
+
+            if (string.IsNullOrEmpty(text)) text = "No information found";
+            return text;
+        }
+
+        static async Task<string> GetOpenSearch(string term, string language = "en")
         {
             term = Regex.Replace(term, @"s", "_");
-            string openSearchUrl = $"https://nl.wikipedia.org//w/api.php?action=opensearch&format=json&origin=*&search={term}";
+            string openSearchUrl = $"https://{language}.wikipedia.org//w/api.php?action=opensearch&format=json&origin=*&search={term}";
 
             using (HttpClient client = new HttpClient())
             using (HttpResponseMessage res = await client.GetAsync(openSearchUrl))
@@ -47,20 +59,28 @@ namespace Assets.Scripts
                     .Skip(1)
                     .ToArray();
 
-                string title = stringArray[0].Replace(" ", "_");
-                if (title == string.Empty)
+                string title = string.Empty;
+                
+                try
                 {
-                    throw new ArgumentNullException();
+                    title = stringArray[0].Replace(" ", "_");
                 }
+                catch (IndexOutOfRangeException)
+                {
+                    title = string.Empty;
+                }
+
+                if (title == string.Empty) throw new ArgumentNullException();
+
                 return title;
             }
         }
-        private static async Task<string> GetData(string args)
+        private static async Task<string> GetData(string args, string language = "en")
         {
             try
             {
-                string article = await GetOpenSearch(args);
-                string dataUrl = $"https://nl.wikipedia.org/w/api.php?action=query&titles={article}&format=xml&redirects=true&prop=extracts";
+                string article = await GetOpenSearch(args, language);
+                string dataUrl = $"https://{language}.wikipedia.org/w/api.php?action=query&titles={article}&format=xml&redirects=true&prop=extracts";
 
                 using (HttpClient client = new HttpClient())
                 using (HttpResponseMessage res = await client.GetAsync(dataUrl))
@@ -79,9 +99,9 @@ namespace Assets.Scripts
                     return response;
                 }
             }
-            catch (Exception)
+            catch (Exception ex) when (ex is ArgumentNullException || ex is AggregateException)
             {
-                return "Could not load information";
+                return string.Empty;
             }
         }
     }
