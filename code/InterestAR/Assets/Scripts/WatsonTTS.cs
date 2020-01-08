@@ -9,8 +9,10 @@ using UnityEngine.UI;
 
 public class WatsonTTS : MonoBehaviour
 {
+    public GameObject ObjectToToggle;
     public Button PlayButton;
     public Text Text;
+    public GameObject script;
     TextToSpeechService textToSpeechService;
     bool isPlaying = false;
     IEnumerator theCoroutine;
@@ -20,11 +22,9 @@ public class WatsonTTS : MonoBehaviour
 
     void Start()
     {
-        checkIfLanguageIsSupported();
         MyAudioSource = GetComponent<AudioSource>();
         Button btn = PlayButton.GetComponent<Button>();
         btn.onClick.AddListener(Wrapper);
-        Debug.Log("HALLO");
     }
 
     void Update()
@@ -32,54 +32,58 @@ public class WatsonTTS : MonoBehaviour
         theCoroutine = MyCoroutine(); // Coroutines always change and if not defined withing the Update it will be different and cant be started again.
     }
 
-    public void checkIfLanguageIsSupported()
+    public bool checkIfLanguageIsSupported()
     {
-
         string language = MemoryDataService.Language;
-
 
         switch (language)
         {
-            case "German":
+            case "de":
                 voice = "de-DE_BirgitVoice";
                 break;
-            case "English":
+            case "en":
                 voice = "en-US_AllisonVoice";
                 break;
-            case "Spanish":
+            case "es":
                 voice = "es-ES_EnriqueVoice";
                 break;
-            case "French":
+            case "fr":
                 voice = "fr-FR_ReneeVoice";
                 break;
-            case "Italian":
+            case "it":
                 voice = "it-IT_FrancescaVoice";
                 break;
-            case "Japanese":
+            case "ja":
                 voice = "ja-JP_EmiVoice";
                 break;
-            case "Portuguese":
+            case "pt":
                 voice = "pt-BR_IsabelaVoice";
                 break;
             default:
-                voice = "en-US_AllisonVoice";
-                break;
+                Debug.Log("This language is not supported ): ");
+                if (ObjectToToggle != null)
+                {
+                    ObjectToToggle.SetActive(!ObjectToToggle.activeSelf);
+                }
+                return false;
         }
-
+        return true;
     }
-
 
     public void Wrapper()
     {
-        if (isPlaying)
+        if (checkIfLanguageIsSupported() == true)
         {
-            isPlaying = false;
-            MyAudioSource.Stop(); // This stops the audioplayer, StopCoroutine won't work here since this coroutine first has to finish for it to start talking. 
-        }
-        else
-        {
-            isPlaying = true;
-            StartCoroutine(theCoroutine);
+            if (isPlaying)
+            {
+                isPlaying = false;
+                MyAudioSource.Stop(); // This stops the audioplayer, StopCoroutine won't work here since this coroutine first has to finish for it to start talking. 
+            }
+            else
+            {
+                isPlaying = true;
+                StartCoroutine(theCoroutine);
+            }
         }
     }
 

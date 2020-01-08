@@ -1406,6 +1406,7 @@ GameObject:
   - component: {fileID: 1271852776}
   - component: {fileID: 1271852775}
   - component: {fileID: 1271852777}
+  - component: {fileID: 1271852778}
   m_Layer: 5
   m_Name: SoundButton
   m_TagString: Untagged
@@ -1511,6 +1512,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1271852778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271852773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ed7dc88dd4b814caadd35713864b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Object: {fileID: 1944466532}
 --- !u!1 &1297302274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,6 +1618,7 @@ GameObject:
   - component: {fileID: 1328142945}
   - component: {fileID: 1328142946}
   - component: {fileID: 1328142947}
+  - component: {fileID: 1328142948}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1719,8 +1734,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e1d6ed5a1e7fa64ebb5786e116f4273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ObjectToToggle: {fileID: 1944466532}
   PlayButton: {fileID: 1271852777}
   Text: {fileID: 384588649}
+  script: {fileID: 0}
 --- !u!82 &1328142946
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1829,6 +1846,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7022782cbe79494daee82251bfc5f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1328142948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328142939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ed7dc88dd4b814caadd35713864b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Object: {fileID: 0}
 --- !u!1 &1594571488
 GameObject:
   m_ObjectHideFlags: 0
@@ -2508,7 +2538,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1944466533
 RectTransform:
   m_ObjectHideFlags: 0
