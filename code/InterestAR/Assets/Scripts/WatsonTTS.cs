@@ -5,6 +5,7 @@ using IBM.Cloud.SDK;
 using IBM.Cloud.SDK.Utilities;
 using IBM.Watson.TextToSpeech.V1;
 using UnityEngine.UI;
+using Assets.Scripts.Services;
 
 namespace Assets.Scripts
 {

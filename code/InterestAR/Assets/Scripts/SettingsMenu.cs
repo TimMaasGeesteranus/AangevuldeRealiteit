@@ -9,6 +9,8 @@ using IBM.Cloud.SDK.Utilities;
 using IBM.Watson.LanguageTranslator.V3;
 using IBM.Watson.LanguageTranslator.V3.Model;
 using System.Threading.Tasks;
+using Assets.Scripts.Services;
+
 
 public class SettingsMenu : MonoBehaviour
 {
