@@ -11,6 +11,10 @@ Notulist: Kay
 
 - Planning
 - Reflectie sprint 3
+  - Planning sprints
+  - Planning meetings
+  - Burndownchart
+  - Sprintboard Github  
 - Bespreking rollen
 - Rondvraag
 
