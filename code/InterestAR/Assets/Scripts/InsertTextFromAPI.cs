@@ -20,7 +20,7 @@ public class InsertTextFromAPI : MonoBehaviour
     async void Start()
     {
         string language = MemoryDataService.Language;
-        Debug.Log(language);
+
         if (Returnvalue == "text")
         {
             ChangingText.text = await GetData("Eiffeltoren");
@@ -34,7 +34,6 @@ public class InsertTextFromAPI : MonoBehaviour
     static async Task<string> GetOpenSearch(string term)
     {
         string language = MemoryDataService.Language;
-        Debug.Log(language);
         term = Regex.Replace(term, @"s", "_");
         string openSearchUrl = $"https://{language}.wikipedia.org//w/api.php?action=opensearch&format=json&origin=*&search={term}";
 
@@ -63,7 +62,6 @@ public class InsertTextFromAPI : MonoBehaviour
         try
         {
             string language = MemoryDataService.Language;
-            Debug.Log(language);
 
             string article = await GetOpenSearch(args);
             string dataUrl = $"https://{language}.wikipedia.org/w/api.php?action=query&titles={article}&format=xml&redirects=true&prop=extracts";
