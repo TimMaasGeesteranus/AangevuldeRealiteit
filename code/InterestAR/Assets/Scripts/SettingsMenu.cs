@@ -76,7 +76,8 @@ public class SettingsMenu : MonoBehaviour
         languageDropdown.ClearOptions();
         languageDropdown.AddOptions(languages);
         languageDropdown.RefreshShownValue();
-        languageDropdown.value = languages.IndexOf(language);
+
+        languageDropdown.value = languagesShort.FindIndex(a => a == language);
     }
 
     // Sets the slider and current text value
@@ -89,13 +90,8 @@ public class SettingsMenu : MonoBehaviour
     // Saves the settings
     public void SaveSettings()
     {
-        if (languageDropdown.value != -1)
-        {
-            Debug.Log(languagesShort[languageDropdown.value]);
-        }
-
         MemoryDataService.Distance = distance;
-        MemoryDataService.Language = language = languages[languageDropdown.value];
+        MemoryDataService.Language = language = languagesShort[languageDropdown.value];
         CloseSettings();
     }
 
