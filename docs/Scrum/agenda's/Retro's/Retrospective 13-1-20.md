@@ -60,7 +60,7 @@ Per persoon:
 - Wat is jouw rol binnen het team?
 - Hoe veel ben je met jouw rol bezig geweest?
 - Hoe nuttig voelde je je binnen jouw rol?
-- Zijn er dingen die 
+- Zijn er dingen die jij kan doen om jouw rol beter uit te voeren?
 
 ## Rondvraag
 
