@@ -16,22 +16,23 @@ Notulist: Kay
 
 ## Planning
 
-###Planning sprints:
+### Planning sprints:
 
 | Datum van  | Datum tot  | Sprintnummer |
 | ---------- | ---------- | ------------ |
 | 09-12-2019 | 12-01-2020 | Sprint 3     |
-| 13-01-2020 | 19-01-2020 | Sprint 4\*   |
-| 20-01-2020 | 23-01-2020 | Postgame     |
+| 13-01-2020 | 23-01-2020 | Sprint 4\*   |
 
-###Planning meetings
+### Planning meetings
 
 | Datum      | Tijd  | Beschrijving          |
 | ---------- | ----- | --------------------- |
-| 13-01-2020 | 10:00 | Retrospective meeting |
+| 13-01-2020 | 10:00 | Retrospective meeting sprint 3 |
 | 13-01-2020 | 13:00 | Sprintplanning sprint 4 |
-| 20-01-2020 | 10:00 | Retrospective meeting |
-| 20-01-2020 | 13:00 | Sprintplanning Postgame |
+| 20-01-2020 | 10:00 | Retrospective meeting sprint 4 |
+
+### Burndownchart
+https://www.burndownfortrello.com/index.php#
 
 ## Reflectie Sprint 3
 Door middel van post-its en het whiteboard.
@@ -47,6 +48,7 @@ Per persoon:
 - Wat is jouw rol binnen het team?
 - Hoe veel ben je met jouw rol bezig geweest?
 - Hoe nuttig voelde je je binnen jouw rol?
+- Zijn er dingen die 
 
 ## Rondvraag
 
