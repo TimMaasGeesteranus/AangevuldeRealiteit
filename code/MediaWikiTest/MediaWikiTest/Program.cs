@@ -53,18 +53,11 @@ namespace MediaWikiTest
                 
                 string title = string.Empty;
 
-                try
-                {
+                if(stringArray.Length > 0){
                     title = stringArray[0].Replace(" ", "_");
-                }
-                catch (IndexOutOfRangeException)
-                {
-                    title = string.Empty;
-                }
-
-                if (title == string.Empty)
-                {
-                    throw new ArgumentNullException();
+                } else {
+                    Console.WriteLine("ArgumentNullException");
+                throw new ArgumentNullException();
                 }
 
                 return title;
