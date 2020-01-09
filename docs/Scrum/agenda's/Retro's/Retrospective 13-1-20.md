@@ -1,48 +1,32 @@
-# Retrospective 29-10-2019
+# Retrospective 13-1-20
 
-Scrum Master: Randy <br>
-Notulist: Reno
+Scrum Master: Tim <br>
+Notulist: Kay
 
 ## Mededelingen
 
 ## Agenda vaststellen
 
 - Planning
-- Demo
-- Reflectie sprint
-- Rollen bespreken
-
-## Demo
-
-## Reflectie sprint
-
-- Wat ging goed?
-
-- Wat ging niet goed?
-
-- Waar moeten we mee stoppen?
-
-- Waar moeten we mee doorgaan?
+- 
 
 ## Planning
 
-| Datum      | Tijd  | Beschrijving                          |
-| ---------- | ----- | ------------------------------------- |
-| 20-09-2019 | 16:00 | **Inlevermoment Plan van Aanpak**     |
-| 20-09-2019 | 16:00 | **Inlevermoment Storyboard**          |
-| 07-10-2019 | 17:00 | **Deadline Usecase vaststellen**      |
-| 08-10-2019 | 17:00 | **Deelvraag 1 afgerond**              |
-| 22-10-2019 | 17:00 | **Deelvraag 3 afgerond**              |
-| 26-10-2019 | 17:00 | **Deelvraag 4 afgerond**              |
-| 28-10-2019 | 17:00 | **Deelvraag 2 afgerond**              |
-| 31-10-2019 | 16:00 | **Inlevermoment Onderzoeksverslag**   |
-| 31-10-2019 | 16:00 | **Inlevermoment Tussentijds product** |
-| 23-01-2020 | 16:00 | **Inlevermoment Eindproduct**         |
+###Planning sprints:
 
-Alle deelvragen zijn klaar (met uitzondering van deelvraag 2) maar wel 1 dag later dan gepland.
+| Datum van  | Datum tot  | Sprintnummer |
+| ---------- | ---------- | ------------ |
+| 09-12-2019 | 12-01-2020 | Sprint 3     |
+| 13-01-2020 | 19-01-2020 | Sprint 4\*   |
+| 20-01-2020 | 23-01-2020 | Postgame     |
 
-## Rollen
+###Planning meetings
 
-Is iedereen tevreden met de uitvoering van de verschillende rollen en is iedereen tevreden met zijn huidige rol?
+| Datum      | Tijd  | Beschrijving          |
+| ---------- | ----- | --------------------- |
+| 13-01-2020 | 10:00 | Retrospective meeting |
+| 13-01-2020 | 13:00 | Sprintplanning sprint 4 |
+| 20-01-2020 | 10:00 | Retrospective meeting |
+| 20-01-2020 | 13:00 | Sprintplanning Postgame |
 
-## Vragenrondje
+
