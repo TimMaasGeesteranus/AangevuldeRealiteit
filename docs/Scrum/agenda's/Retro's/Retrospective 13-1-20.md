@@ -34,8 +34,8 @@ Afwezig: Jeannette Danes
 
 | Datum      | Tijd  | Beschrijving          |
 | ---------- | ----- | --------------------- |
-| 13-01-2020 | 10:00 | Retrospective meeting sprint 3 |
-| 13-01-2020 | 13:00 | Sprintplanning sprint 4 |
+| 13-01-2020 | 12:30 | Retrospective meeting sprint 3 |
+| 13-01-2020 | 14:30 | Sprintplanning sprint 4 |
 | 20-01-2020 | 10:00 | Retrospective meeting sprint 4 |
 | 23-01-2020 | 13:00 | ICA-Presents |
 
