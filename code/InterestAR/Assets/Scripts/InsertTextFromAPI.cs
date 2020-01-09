@@ -19,23 +19,20 @@ public class InsertTextFromAPI : MonoBehaviour
 
     async void Start()
     {
-        string language = MemoryDataService.Language;
-
         if (Returnvalue == "text")
         {
-            ChangingText.text = await GetData("Eiffeltoren");
+            ChangingText.text = await GetData("Kruittoren (Nijmegen)");
         }
         else if(Returnvalue == "title")
         {
-            ChangingText.text = await GetOpenSearch("Eiffeltoren");
+            ChangingText.text = await GetOpenSearch("Kruittoren (Nijmegen)");
         }
     }
 
     static async Task<string> GetOpenSearch(string term)
     {
-        string language = MemoryDataService.Language;
         term = Regex.Replace(term, @"s", "_");
-        string openSearchUrl = $"https://{language}.wikipedia.org//w/api.php?action=opensearch&format=json&origin=*&search={term}";
+        string openSearchUrl = $"https://{MemoryDataService.Language}.wikipedia.org//w/api.php?action=opensearch&format=json&origin=*&search={term}";
 
         using (HttpClient client = new HttpClient())
         using (HttpResponseMessage res = await client.GetAsync(openSearchUrl))
@@ -61,10 +58,8 @@ public class InsertTextFromAPI : MonoBehaviour
     {
         try
         {
-            string language = MemoryDataService.Language;
-
             string article = await GetOpenSearch(args);
-            string dataUrl = $"https://{language}.wikipedia.org/w/api.php?action=query&titles={article}&format=xml&redirects=true&prop=extracts";
+            string dataUrl = $"https://{MemoryDataService.Language}.wikipedia.org/w/api.php?action=query&titles={article}&format=xml&redirects=true&prop=extracts";
 
             using (HttpClient client = new HttpClient())
             using (HttpResponseMessage res = await client.GetAsync(dataUrl))
