@@ -32,17 +32,23 @@ namespace Assets.Scripts
             }
         }
 
-        static async Task<string> FullSearch(string term, string language)
+        static async Task<string> fullSearch(string term, string language)
         {
             string text = await GetData(term, language);
 
-            if (string.IsNullOrEmpty(text)) text = await GetData(term);
+            if (string.IsNullOrEmpty(text))
+            {
+                text = await GetData(term);
+            }
 
-            if (string.IsNullOrEmpty(text)) text = "No information found";
+            if (string.IsNullOrEmpty(text))
+            {
+                text = "No information found";
+            }
             return text;
         }
 
-        static async Task<string> GetOpenSearch(string term, string language = "en")
+        static async Task<string> GetOpenSearch(string term, string language)
         {
             term = Regex.Replace(term, @"s", "_");
             string openSearchUrl = $"https://{language}.wikipedia.org//w/api.php?action=opensearch&format=json&origin=*&search={term}";
@@ -60,34 +66,35 @@ namespace Assets.Scripts
                     .ToArray();
 
                 string title = string.Empty;
-                
-                try
+
+                if (stringArray.Length > 0)
                 {
                     title = stringArray[0].Replace(" ", "_");
                 }
-                catch (IndexOutOfRangeException)
+                else
                 {
-                    title = string.Empty;
+                    return string.Empty;
                 }
-
-                if (title == string.Empty) throw new ArgumentNullException();
 
                 return title;
             }
         }
         private static async Task<string> GetData(string args, string language = "en")
         {
-            try
+            string response = string.Empty;
+            string article = await GetOpenSearch(args, language);
+
+            if (!string.IsNullOrEmpty(article))
             {
-                string article = await GetOpenSearch(args, language);
+
                 string dataUrl = $"https://{language}.wikipedia.org/w/api.php?action=query&titles={article}&format=xml&redirects=true&prop=extracts";
 
                 using (HttpClient client = new HttpClient())
                 using (HttpResponseMessage res = await client.GetAsync(dataUrl))
                 using (HttpContent content = res.Content)
                 {
-                    string response = await content.ReadAsStringAsync();
-                    response = WebUtility.HtmlDecode(response);
+                    response = await content.ReadAsStringAsync();
+                    response = HttpUtility.HtmlDecode(response);
 
                     int indexFirstTag = response.IndexOf("<extract xml:space=\"preserve\">");
                     int indexLastTag = response.IndexOf("</extract>");
@@ -95,14 +102,9 @@ namespace Assets.Scripts
                     response = response.Substring(indexFirstTag, indexLastTag - indexFirstTag);
 
                     response = Regex.Replace(response, @"<\/?(?!b)(?!i)\w*\b[^>]*>", "");
-
-                    return response;
                 }
             }
-            catch (Exception ex) when (ex is ArgumentNullException || ex is AggregateException)
-            {
-                return string.Empty;
-            }
+            return response;
         }
     }
 }
