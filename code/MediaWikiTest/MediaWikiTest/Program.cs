@@ -56,8 +56,7 @@ namespace MediaWikiTest
                 if(stringArray.Length > 0){
                     title = stringArray[0].Replace(" ", "_");
                 } else {
-                    Console.WriteLine("ArgumentNullException");
-                throw new ArgumentNullException();
+                    return string.Empty;
                 }
 
                 return title;
@@ -65,16 +64,18 @@ namespace MediaWikiTest
         }
         private static async Task<string> GetData(string args, string language = "en")
         {
-            try
-            {
+                string response = string.Empty;
                 string article = await GetOpenSearch(args, language);
+
+                if(!string.IsNullOrEmpty(article)){
+
                 string dataUrl = $"https://{language}.wikipedia.org/w/api.php?action=query&titles={article}&format=xml&redirects=true&prop=extracts";
 
                 using (HttpClient client = new HttpClient())
                 using (HttpResponseMessage res = await client.GetAsync(dataUrl))
                 using (HttpContent content = res.Content)
                 {
-                    string response = await content.ReadAsStringAsync();
+                    response = await content.ReadAsStringAsync();
                     response = HttpUtility.HtmlDecode(response);
 
                     int indexFirstTag = response.IndexOf("<extract xml:space=\"preserve\">");
@@ -83,14 +84,9 @@ namespace MediaWikiTest
                     response = response.Substring(indexFirstTag, indexLastTag - indexFirstTag);
 
                     response = Regex.Replace(response, @"<\/?(?!b)(?!i)\w*\b[^>]*>", "");
-                    
-                    return response;
                 }
-            }
-            catch (Exception ex) when (ex is ArgumentNullException || ex is AggregateException)
-            {
-                return string.Empty;
-            }
+                }
+                return response;
         }
     }
 }
