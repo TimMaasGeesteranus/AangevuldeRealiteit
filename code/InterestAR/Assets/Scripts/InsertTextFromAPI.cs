@@ -28,8 +28,6 @@ public class InsertTextFromAPI : MonoBehaviour
         }
     }
 
-
-
     static async Task<string> GetOpenSearch(string term)
     {
         term = Regex.Replace(term, @"s", "_");
