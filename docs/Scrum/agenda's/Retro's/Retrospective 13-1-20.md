@@ -10,11 +10,11 @@ Notulist: Kay
 ## Agenda vaststellen
 
 - Planning
-- Reflectie sprint 3
   - Planning sprints
   - Planning meetings
   - Burndownchart
   - Sprintboard Github  
+- Reflectie sprint 3
 - Bespreking rollen
 - Rondvraag
 
