@@ -30,9 +30,14 @@ Notulist: Kay
 | 13-01-2020 | 10:00 | Retrospective meeting sprint 3 |
 | 13-01-2020 | 13:00 | Sprintplanning sprint 4 |
 | 20-01-2020 | 10:00 | Retrospective meeting sprint 4 |
+| 23-01-2020 | 13:00 | ICA-Presents |
+
 
 ### Burndownchart
 https://www.burndownfortrello.com/index.php#
+
+### Sprintboard Github
+https://github.com/TimMaasGeesteranus/AangevuldeRealiteit/projects/7
 
 ## Reflectie Sprint 3
 Door middel van post-its en het whiteboard.
