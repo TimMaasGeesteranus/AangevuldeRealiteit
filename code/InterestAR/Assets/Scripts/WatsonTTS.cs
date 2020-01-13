@@ -21,7 +21,6 @@ namespace Assets.Scripts
         AudioSource MyAudioSource;
         string voice;
 
-
         void Start()
         {
             MyAudioSource = GetComponent<AudioSource>();

@@ -11,7 +11,6 @@ using IBM.Watson.LanguageTranslator.V3.Model;
 using System.Threading.Tasks;
 using Assets.Scripts.Services;
 
-
 public class SettingsMenu : MonoBehaviour
 {
     // Values
@@ -111,7 +110,6 @@ public class SettingsMenu : MonoBehaviour
         SetupInitialSettings();
         SetupDropdown();
         setupSlider();
-
     }
 
     public IEnumerator GetLanguages()
@@ -120,7 +118,6 @@ public class SettingsMenu : MonoBehaviour
 
         while (!languageTranslatorService.Authenticator.CanAuthenticate())
             yield return null;
-
 
         languageTranslatorService.ListIdentifiableLanguages(
              callback: (DetailedResponse<IdentifiableLanguages> response, IBMError error) =>
