@@ -1,8 +1,8 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 using System;
 using System.Linq;
 using System.Net.Http;
@@ -24,11 +24,11 @@ namespace Assets.Scripts
 
             if (Returnvalue == "text")
             {
-                ChangingText.text = await FullSearch("Eiffeltoren", language);
+                ChangingText.text = await fullSearch("Eiffeltoren", language);
             }
             else if (Returnvalue == "title")
             {
-                ChangingText.text = await GetOpenSearch("Eiffeltoren");
+                ChangingText.text = await GetOpenSearch("Eiffeltoren", language);
             }
         }
 
@@ -94,7 +94,7 @@ namespace Assets.Scripts
                 using (HttpContent content = res.Content)
                 {
                     response = await content.ReadAsStringAsync();
-                    response = HttpUtility.HtmlDecode(response);
+                    response = WebUtility.HtmlDecode(response);
 
                     int indexFirstTag = response.IndexOf("<extract xml:space=\"preserve\">");
                     int indexLastTag = response.IndexOf("</extract>");
