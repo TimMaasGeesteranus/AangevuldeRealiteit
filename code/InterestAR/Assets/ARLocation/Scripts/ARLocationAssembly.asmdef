@@ -1,10 +1,9 @@
 {
-    "name": "ApplicationAssembly",
+    "name": "ARLocationAssembly",
     "references": [
-        "GUID:09e6844a19c44194dae71b5f6d5e2f12",
-        "GUID:0b15967a880604f479f24c0af2bd5020",
-        "GUID:68550284b645f4b9894995579f34290a",
-        "GUID:ffdca731eb05db140a6620d5788b1e01"
+        "GUID:a9420e37d7990b54abdef6688edbe313",
+        "GUID:92703082f92b41ba80f0d6912de66115",
+        "GUID:9e6bdf94fcb245c585c26819fa23a202"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
