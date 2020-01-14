@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
+using Assets.Scripts.Services;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,8 +20,7 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-            settingsMenu = new SettingsMenu();
-            settingsMenuObject = new GameObject().AddComponent<SettingsMenu>();
+            settingsMenu = new GameObject().AddComponent<SettingsMenu>();
 
             settingsMenu.saveButton = new GameObject().AddComponent<Button>();
             settingsMenu.distanceAmount = new GameObject().AddComponent<Text>();
@@ -85,8 +85,17 @@ namespace Tests
         }
 
         [UnityTest]
-        public void InitialStateTest()
+        public IEnumerator Awake_WhenInvoked_SetInitialState()
         {
+            string language = "English";
+            var DropdownValue = settingsMenu.languageDropdown.value;
+            MemoryDataService.Language = "English";
+            MemoryDataService.Distance = 0;
+
+            yield return null;
+
+            Assert.AreEqual(0, DropdownValue);
+            Assert.AreEqual(settingsMenu.languageDropdown.options[DropdownValue].text, language);
 
         }
     }
