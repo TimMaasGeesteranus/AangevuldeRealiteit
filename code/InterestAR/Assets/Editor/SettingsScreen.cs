@@ -9,9 +9,10 @@ using UnityEngine.UI;
 
 namespace Tests
 {
-    public class SettingsScreen
+    public class SettingsScreen : MonoBehaviour
     {
         private SettingsMenu settingsMenu;
+        private GameObject settingsMenuObject;
         private Component[] components;
 
 
@@ -19,67 +20,74 @@ namespace Tests
         public void Setup()
         {
             settingsMenu = new SettingsMenu();
-            Scene scene = SceneManager.GetSceneByName("SettingsScreen");
+            settingsMenuObject = new GameObject().AddComponent<SettingsMenu>();
 
-            var ui = SearchGameObject("UI",scene.GetRootGameObjects());
-            components = ui.GetComponentsInChildren(GetType());
+            settingsMenu.saveButton = new GameObject().AddComponent<Button>();
+            settingsMenu.distanceAmount = new GameObject().AddComponent<Text>();
+            settingsMenu.languageDropdown = new GameObject().AddComponent<Dropdown>();
+            settingsMenu.radiusSlider = new GameObject().AddComponent<Slider>();
+            settingsMenu.radiusImage = new GameObject().AddComponent<SVGImage>();
 
-            settingsMenu.saveButton = (Button)SearchComponents("SaveButton", components);
-            settingsMenu.distanceAmount = (Text)SearchComponents("Label (Distance)", components);
-            settingsMenu.languageDropdown = (Dropdown)SearchComponents("Dropdown", components);
-            settingsMenu.radiusSlider = (Slider)SearchComponents("Slider", components);
-            settingsMenu.radiusImage = (SVGImage) SearchComponents("RadiusImage", components);
+            //Scene scene = SceneManager.GetSceneByName("SettingsScreen");
+            //components = ui.GetComponentsInChildren(scene);\
+            //var ui = SearchGameObject("UI",scene.GetRootGameObjects());
+
+            //settingsMenu.saveButton = (Button)SearchComponents("SaveButton", components);
+            //settingsMenu.distanceAmount = (Text)SearchComponents("Label (Distance)", components);
+            //settingsMenu.languageDropdown = (Dropdown)SearchComponents("Dropdown", components);
+            //settingsMenu.radiusSlider = (Slider)SearchComponents("Slider", components);
+            //settingsMenu.radiusImage = (SVGImage) SearchComponents("RadiusImage", components);
         }
 
-        private static GameObject SearchGameObject(string name, GameObject[] objects)
-        {
-            GameObject selected = null;
-            foreach (var gameobject in objects)
-            {
-                if (gameobject.name == name)
-                {
-                    selected = gameobject;
-                    break;
-                }
-            }
-            return selected;
-        }
+        //private static GameObject SearchGameObject(string name, GameObject[] objects)
+        //{
+        //    GameObject selected = null;
+        //    foreach (var gameobject in objects)
+        //    {
+        //        if (gameobject.name == name)
+        //        {
+        //            selected = gameobject;
+        //            break;
+        //        }
+        //    }
+        //    return selected;
+        //}
 
-        private static Component SearchComponents(string name, Component[] objects)
-        {
-            Component selected = null;
-            foreach (var component in objects)
-            {
+        //private static Component SearchComponents(string name, Component[] objects)
+        //{
+        //    Component selected = null;
+        //    foreach (var component in objects)
+        //    {
 
-                if (component.name == name)
-                {
-                    selected = component;
-                    break;
-                }
-            }
-            return selected;
-        }
+        //        if (component.name == name)
+        //        {
+        //            selected = component;
+        //            break;
+        //        }
+        //    }
+        //    return selected;
+        //}
 
         [TearDown]
         public void Teardown()
         {
-            Object.Destroy(settingsMenu);
+            DestroyImmediate(settingsMenu);
         }
 
-        // A Test behaves as an ordinary method
+        // Set slider tests
         [Test]
-        public void SettingsScreenTestSimplePasses()
+        public void SetSliderTest()
         {
-           
+            int value = 1;
+            settingsMenu.SetSlider(value);
+
+            Assert.AreEqual($"{value * settingsMenu.DistanceStep} M", settingsMenu.distanceAmount.text);
         }
 
-
-        [Test]
-        public IEnumerator SettingsScreenTestWithEnumeratorPasses()
+        [UnityTest]
+        public void InitialStateTest()
         {
-            // Use the Assert class to test conditions.
-            // Use yield to skip a frame.
-            yield return null;
+
         }
     }
 }

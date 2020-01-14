@@ -9,9 +9,11 @@ namespace Assets.Scripts
     public class SettingsMenu : MonoBehaviour
     {
         // Values
-        private string language;
-        private float distance = 0;
-        private List<string> languages = new List<string> { "Nederlands", "English", "Deutsch" };
+        public string language;
+        public float distance = 0;
+        public List<string> languages = new List<string> { "Nederlands", "English", "Deutsch" };
+
+        public int DistanceStep = 50;
 
         // Gameobjects
         public Button saveButton;
@@ -45,7 +47,7 @@ namespace Assets.Scripts
         // Retrieves the values from the memory
         private void setupSlider()
         {
-            radiusSlider.value = distance / 50;
+            radiusSlider.value = distance / DistanceStep;
         }
 
         // Retrieves the values from the memory
@@ -68,7 +70,7 @@ namespace Assets.Scripts
         // Sets the slider and current text value
         public void SetSlider(float value)
         {
-            distance = value * 50;
+            distance = value * DistanceStep;
             distanceAmount.text = $"{distance} M";
         }
 
