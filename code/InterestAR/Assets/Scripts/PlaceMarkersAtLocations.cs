@@ -1,18 +1,38 @@
-﻿using System.Collections;
+﻿using ARLocation;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaceMarkersAtLocations : MonoBehaviour
+namespace Assets.Scripts
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PlaceMarkersAtLocations : MonoBehaviour
     {
-        
-    }
+        public GameObject Marker;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Start()
+        {
+            AddLocation(51.826474, 5.864405);
+        }
+
+        public void AddLocation(double latitude, double longitude)
+        {
+            var loc = new Location()
+            {
+                Latitude = latitude,
+                Longitude = longitude,
+                Altitude = 0,
+                AltitudeMode = AltitudeMode.GroundRelative
+            };
+
+            var opts = new PlaceAtLocation.PlaceAtOptions()
+            {
+                HideObjectUntilItIsPlaced = true,
+                MaxNumberOfLocationUpdates = 0,
+                MovementSmoothing = 0.1f,
+                UseMovingAverage = false
+            };
+
+            PlaceAtLocation.AddPlaceAtComponent(Marker, loc, opts);
+        }
     }
 }

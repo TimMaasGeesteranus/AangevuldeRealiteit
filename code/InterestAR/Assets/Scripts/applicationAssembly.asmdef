@@ -1,5 +1,5 @@
 {
-    "name": "applicationAssembly",
+    "name": "ApplicationAssembly",
     "references": [
         "GUID:09e6844a19c44194dae71b5f6d5e2f12",
         "GUID:0b15967a880604f479f24c0af2bd5020",
