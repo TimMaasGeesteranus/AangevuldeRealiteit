@@ -2848,7 +2848,7 @@ GameObject:
   - component: {fileID: 2117646838}
   - component: {fileID: 2117646837}
   m_Layer: 5
-  m_Name: ' Label (Distance)'
+  m_Name: Label (Distance)
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: 49679f302ac6408697f6b9314a38985c, type: 3}
   m_NavMeshLayer: 0
