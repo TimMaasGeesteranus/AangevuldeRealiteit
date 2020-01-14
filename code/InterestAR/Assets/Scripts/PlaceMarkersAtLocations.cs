@@ -8,10 +8,17 @@ namespace Assets.Scripts
     public class PlaceMarkersAtLocations : MonoBehaviour
     {
         public GameObject Marker;
+        public GoogleMapsService mapsService = new GoogleMapsService();
 
         private void Start()
         {
-            AddLocation(51.826474, 5.864405);
+
+            var places =  mapsService.GetCoördinates("51.825764", "5.865534", 100);
+
+            foreach(var place in places) {
+                AddLocation(place.Lat, place.Lng);
+            }
+           
         }
 
         public void AddLocation(double latitude, double longitude)
