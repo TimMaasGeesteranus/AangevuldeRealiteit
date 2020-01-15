@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class GoogleMapsService
 {
 
-    public List<Place> GetCoördinates(string latitude, string longitude, int radius)
+    public List<Place> GetCoordinates(string latitude, string longitude, int radius)
     {
         string googleMapsURL = $"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={latitude},{longitude}&radius={radius}&type=point_of_interest&key=AIzaSyDWnKL07Y0zk_IHGypBUiUF2Tz_INMeu6c";
         //string googleMapsURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=51.825764,%205.865534&radius=1000&type=point_of_interest&key=AIzaSyDWnKL07Y0zk_IHGypBUiUF2Tz_INMeu6c";
