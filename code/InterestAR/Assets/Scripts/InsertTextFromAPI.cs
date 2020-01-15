@@ -1,8 +1,8 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 using System;
 using System.Linq;
 using System.Net.Http;
@@ -11,76 +11,100 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Net;
 
-public class InsertTextFromAPI : MonoBehaviour
+namespace Assets.Scripts
 {
 
-    public Text ChangingText;
-    public String Returnvalue;
-
-    async void Start()
+    public class InsertTextFromAPI : MonoBehaviour
     {
-        if (Returnvalue == "text")
+        public Text ChangingText;
+        public String Returnvalue;
+        async void Start()
         {
-            ChangingText.text = await GetData("Kruittoren (Nijmegen)");
-        }
-        else if(Returnvalue == "title")
-        {
-            ChangingText.text = await GetOpenSearch("Kruittoren (Nijmegen)");
-        }
-    }
+            string language = "fr";
 
-    static async Task<string> GetOpenSearch(string term)
-    {
-        term = Regex.Replace(term, @"s", "_");
-        string openSearchUrl = $"https://{MemoryDataService.Language}.wikipedia.org//w/api.php?action=opensearch&format=json&origin=*&search={term}";
-
-        using (HttpClient client = new HttpClient())
-        using (HttpResponseMessage res = await client.GetAsync(openSearchUrl))
-        using (HttpContent content = res.Content)
-        {
-            string response = await content.ReadAsStringAsync();
-            response = response.Replace("[", "").Replace("]", "").Replace(",", "");
-            string[] stringArray = response
-                .Split('"')
-                .Where(x => !string.IsNullOrEmpty(x))
-                .Skip(1)
-                .ToArray();
-
-            string title = stringArray[0].Replace(" ", "_");
-            if (title == string.Empty)
+            if (Returnvalue == "text")
             {
-                throw new ArgumentNullException();
+                ChangingText.text = await fullSearch("Eiffeltoren", language);
             }
-            return title;
+            else if (Returnvalue == "title")
+            {
+                ChangingText.text = await GetOpenSearch("Eiffeltoren", language);
+            }
         }
-    }
-    private static async Task<string> GetData(string args)
-    {
-        try
+
+        static async Task<string> fullSearch(string term, string language)
         {
-            string article = await GetOpenSearch(args);
-            string dataUrl = $"https://{MemoryDataService.Language}.wikipedia.org/w/api.php?action=query&titles={article}&format=xml&redirects=true&prop=extracts";
+            string text = await GetData(term, language);
+
+            if (string.IsNullOrEmpty(text))
+            {
+                text = await GetData(term);
+            }
+
+            if (string.IsNullOrEmpty(text))
+            {
+                text = "No information found";
+            }
+            return text;
+        }
+
+        static async Task<string> GetOpenSearch(string term, string language)
+        {
+            term = Regex.Replace(term, @"s", "_");
+            string openSearchUrl = $"https://{language}.wikipedia.org//w/api.php?action=opensearch&format=json&origin=*&search={term}";
 
             using (HttpClient client = new HttpClient())
-            using (HttpResponseMessage res = await client.GetAsync(dataUrl))
+            using (HttpResponseMessage res = await client.GetAsync(openSearchUrl))
             using (HttpContent content = res.Content)
             {
                 string response = await content.ReadAsStringAsync();
-                response = WebUtility.HtmlDecode(response);
-                
-                int indexFirstTag = response.IndexOf("<extract xml:space=\"preserve\">");
-                int indexLastTag = response.IndexOf("</extract>");
+                response = response.Replace("[", "").Replace("]", "").Replace(",", "");
+                string[] stringArray = response
+                    .Split('"')
+                    .Where(x => !string.IsNullOrEmpty(x))
+                    .Skip(1)
+                    .ToArray();
 
-                response = response.Substring(indexFirstTag, indexLastTag - indexFirstTag);
+                string title = string.Empty;
 
-                response = Regex.Replace(response, @"<\/?(?!b)(?!i)\w*\b[^>]*>", "");
+                if (stringArray.Length > 0)
+                {
+                    title = stringArray[0].Replace(" ", "_");
+                }
+                else
+                {
+                    return string.Empty;
+                }
 
-                return response;
+                return title;
             }
         }
-        catch (Exception)
+        private static async Task<string> GetData(string args, string language = "en")
         {
-            return "Could not load information";
+            string response = string.Empty;
+            string article = await GetOpenSearch(args, language);
+
+            if (!string.IsNullOrEmpty(article))
+            {
+
+                string dataUrl = $"https://{language}.wikipedia.org/w/api.php?action=query&titles={article}&format=xml&redirects=true&prop=extracts";
+
+                using (HttpClient client = new HttpClient())
+                using (HttpResponseMessage res = await client.GetAsync(dataUrl))
+                using (HttpContent content = res.Content)
+                {
+                    response = await content.ReadAsStringAsync();
+                    response = WebUtility.HtmlDecode(response);
+
+                    int indexFirstTag = response.IndexOf("<extract xml:space=\"preserve\">");
+                    int indexLastTag = response.IndexOf("</extract>");
+
+                    response = response.Substring(indexFirstTag, indexLastTag - indexFirstTag);
+
+                    response = Regex.Replace(response, @"<\/?(?!b)(?!i)\w*\b[^>]*>", "");
+                }
+            }
+            return response;
         }
     }
 }

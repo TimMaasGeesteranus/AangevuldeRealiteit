@@ -5,116 +5,117 @@ using IBM.Cloud.SDK;
 using IBM.Cloud.SDK.Utilities;
 using IBM.Watson.TextToSpeech.V1;
 using UnityEngine.UI;
+using Assets.Scripts.Services;
 
-
-public class WatsonTTS : MonoBehaviour
+namespace Assets.Scripts
 {
-    public GameObject ObjectToToggle;
-    public Button PlayButton;
-    public Text Text;
-    public GameObject script;
-    TextToSpeechService textToSpeechService;
-    bool isPlaying = false;
-    IEnumerator theCoroutine;
-    AudioSource MyAudioSource;
-    string voice;
-
-
-    void Start()
+    public class WatsonTTS : MonoBehaviour
     {
-        MyAudioSource = GetComponent<AudioSource>();
-        Button btn = PlayButton.GetComponent<Button>();
-        btn.onClick.AddListener(Wrapper);
-    }
+        public GameObject ObjectToToggle;
+        public Button PlayButton;
+        public Text Text;
+        public GameObject script;
+        TextToSpeechService textToSpeechService;
+        bool isPlaying = false;
+        IEnumerator theCoroutine;
+        AudioSource MyAudioSource;
+        string voice;
 
-    void Update()
-    {
-        theCoroutine = MyCoroutine(); // Coroutines always change and if not defined withing the Update it will be different and cant be started again.
-    }
-
-    public bool checkIfLanguageIsSupported()
-    {
-        string language = MemoryDataService.Language;
-
-        switch (language)
+        void Start()
         {
-            case "de":
-                voice = "de-DE_BirgitVoice";
-                break;
-            case "en":
-                voice = "en-US_AllisonVoice";
-                break;
-            case "es":
-                voice = "es-ES_EnriqueVoice";
-                break;
-            case "fr":
-                voice = "fr-FR_ReneeVoice";
-                break;
-            case "it":
-                voice = "it-IT_FrancescaVoice";
-                break;
-            case "ja":
-                voice = "ja-JP_EmiVoice";
-                break;
-            case "pt":
-                voice = "pt-BR_IsabelaVoice";
-                break;
-            default:
-                Debug.Log("This language is not supported ): ");
-                if (ObjectToToggle != null)
+            MyAudioSource = GetComponent<AudioSource>();
+            Button btn = PlayButton.GetComponent<Button>();
+            btn.onClick.AddListener(Wrapper);
+        }
+
+        void Update()
+        {
+            theCoroutine = MyCoroutine(); // Coroutines always change and if not defined withing the Update it will be different and cant be started again.
+        }
+
+        public bool checkIfLanguageIsSupported()
+        {
+            string language = MemoryDataService.Language;
+            switch (language)
+            {
+                case "de":
+                    voice = "de-DE_BirgitVoice";
+                    break;
+                case "en":
+                    voice = "en-US_AllisonVoice";
+                    break;
+                case "es":
+                    voice = "es-ES_EnriqueVoice";
+                    break;
+                case "fr":
+                    voice = "fr-FR_ReneeVoice";
+                    break;
+                case "it":
+                    voice = "it-IT_FrancescaVoice";
+                    break;
+                case "ja":
+                    voice = "ja-JP_EmiVoice";
+                    break;
+                case "pt":
+                    voice = "pt-BR_IsabelaVoice";
+                    break;
+                default:
+                    Debug.Log("This language is not supported ): ");
+                    if (ObjectToToggle != null)
+                    {
+                        ObjectToToggle.SetActive(!ObjectToToggle.activeSelf);
+                    }
+                    return false;
+            }
+            return true;
+        }
+
+        public void Wrapper()
+        {
+            if (checkIfLanguageIsSupported() == true)
+            {
+                if (isPlaying)
                 {
-                    ObjectToToggle.SetActive(!ObjectToToggle.activeSelf);
+                    isPlaying = false;
+                    MyAudioSource.Stop(); // This stops the audioplayer, StopCoroutine won't work here since this coroutine first has to finish for it to start talking. 
                 }
-                return false;
+                else
+                {
+                    isPlaying = true;
+                    StartCoroutine(theCoroutine);
+                }
+            }
         }
-        return true;
-    }
 
-    public void Wrapper()
-    {
-        if (checkIfLanguageIsSupported() == true)
+        public IEnumerator MyCoroutine()
         {
-            if (isPlaying)
-            {
-                isPlaying = false;
-                MyAudioSource.Stop(); // This stops the audioplayer, StopCoroutine won't work here since this coroutine first has to finish for it to start talking. 
-            }
-            else
-            {
-                isPlaying = true;
-                StartCoroutine(theCoroutine);
-            }
-        }
-    }
+            string text = "Hallo lees deze tekst voor";
 
-    public IEnumerator MyCoroutine()
-    {
-        string text = "Hallo lees deze tekst voor";
+            textToSpeechService = new TextToSpeechService();
 
-        textToSpeechService = new TextToSpeechService();
+            while (!textToSpeechService.Authenticator.CanAuthenticate())
+                yield return null;
 
-        while (!textToSpeechService.Authenticator.CanAuthenticate())
-            yield return null;
-
-        byte[] synthesizeResponse = null;
-        AudioClip clip = null;
-        textToSpeechService.Synthesize(
-            callback: (DetailedResponse<byte[]> response, IBMError error) =>
-            {
-                synthesizeResponse = response.Result;
-                clip = WaveFile.ParseWAV("hello_world.wav", synthesizeResponse);
-                AudioSource audioSource = GetComponent<AudioSource>();
+            byte[] synthesizeResponse = null;
+            AudioClip clip = null;
+            textToSpeechService.Synthesize(
+                callback: (DetailedResponse<byte[]> response, IBMError error) =>
+                {
+                    synthesizeResponse = response.Result;
+                    clip = WaveFile.ParseWAV("hello_world.wav", synthesizeResponse);
+                    AudioSource audioSource = GetComponent<AudioSource>();
                 audioSource.clip = clip;
-                audioSource.Play();
-            },
-            text: text,
-            voice: voice,
-            accept: "audio/wav"
-        );
+                    audioSource.Play();
+                },
+                text: text,
+                voice: voice,
+                accept: "audio/wav"
+            );
 
-        while (synthesizeResponse == null)
-        {
-            yield return null;
+            while (synthesizeResponse == null)
+            {
+                yield return null;
+            }
         }
     }
 }
