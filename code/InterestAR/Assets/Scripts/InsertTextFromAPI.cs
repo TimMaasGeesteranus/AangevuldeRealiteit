@@ -20,15 +20,15 @@ namespace Assets.Scripts
         public String Returnvalue;
         async void Start()
         {
-            string language = "en";
+            string language = "fr";
 
             if (Returnvalue == "text")
             {
-                ChangingText.text = await fullSearch("Eiffel Tower", language);
+                ChangingText.text = await fullSearch("Eiffeltoren", language);
             }
             else if (Returnvalue == "title")
             {
-                ChangingText.text = await GetOpenSearch("Eiffel Tower", language);
+                ChangingText.text = await GetOpenSearch("Eiffeltoren", language);
             }
         }
 
