@@ -13,7 +13,7 @@ namespace Assets.Scripts
         private void Start()
         {
 
-            var places =  mapsService.GetCoördinates("51.825764", "5.865534", 100);
+            var places =  mapsService.GetCoordinates("51.825764", "5.865534", 100);
 
             foreach(var place in places) {
                 AddLocation(place.Lat, place.Lng);
