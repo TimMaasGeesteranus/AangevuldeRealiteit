@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class GoogleMapsService
 {
-
     public List<Place> GetCoordinates(string latitude, string longitude, int radius)
     {
         string googleMapsURL = $"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={latitude},{longitude}&radius={radius}&type=point_of_interest&key=AIzaSyDWnKL07Y0zk_IHGypBUiUF2Tz_INMeu6c";
@@ -21,7 +20,6 @@ public class GoogleMapsService
         List<Place> places = new List<Place>();
         foreach(var location in locations)
         {
-     
             double.TryParse(location["geometry"]["location"]["lat"].ToString(), out double lat);
             double.TryParse(location["geometry"]["location"]["lng"].ToString(), out double lng);
             double.TryParse(location["name"].ToString(), out double ba);
@@ -33,7 +31,6 @@ public class GoogleMapsService
                 Name = location["name"].ToString()
             });
         }
-
         return places;
      }
 }
