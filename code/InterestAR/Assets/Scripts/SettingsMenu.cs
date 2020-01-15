@@ -9,6 +9,7 @@ using IBM.Cloud.SDK.Utilities;
 using IBM.Watson.LanguageTranslator.V3;
 using IBM.Watson.LanguageTranslator.V3.Model;
 using System.Threading.Tasks;
+using System.Linq;
 using Assets.Scripts.Services;
 
 public class SettingsMenu : MonoBehaviour
@@ -17,6 +18,7 @@ public class SettingsMenu : MonoBehaviour
     private string language;
     private float distance = 0;
     private List<string> languages = new List<string>();
+    private List<string> languagesShort = new List<string>();
 
     // Gameobjects
     public Button saveButton;
@@ -35,6 +37,8 @@ public class SettingsMenu : MonoBehaviour
     // Setup methods for the settings menu
     void Start()
     {
+        Debug.Log("hoi");
+
         languagesCoroutine = GetLanguages();
         setupCoroutine = SetupMenu();
 
@@ -89,9 +93,13 @@ public class SettingsMenu : MonoBehaviour
     // Saves the settings
     public void SaveSettings()
     {
+        Debug.Log("a");
         MemoryDataService.Distance = distance;
+        Debug.Log("b");
         MemoryDataService.Language = language = languagesShort[languageDropdown.value];
+        Debug.Log("c");
         CloseSettings();
+        Debug.Log("d");
     }
 
     private void CloseSettings()
@@ -123,9 +131,11 @@ public class SettingsMenu : MonoBehaviour
         languageTranslatorService.ListIdentifiableLanguages(
              callback: (DetailedResponse<IdentifiableLanguages> response, IBMError error) =>
              {
-                 foreach (var element in response.Result.Languages){
-                         languages.Add(element.Language);
-             }
-        });
+                 foreach (var element in response.Result.Languages)
+                 {
+                     languages.Add(element.Name);
+                     languagesShort.Add(element.Language);
+                 }
+             });
     }
 }
