@@ -10,7 +10,6 @@ namespace Assets.Scripts
 
         public void OnMouseDown()
         {
-            Debug.Log("TOGGLING ACITVATED");
             if (Object != null)
             {
                 Object.SetActive(!Object.activeSelf);
