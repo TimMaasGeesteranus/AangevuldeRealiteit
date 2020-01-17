@@ -37,8 +37,6 @@ public class SettingsMenu : MonoBehaviour
     // Setup methods for the settings menu
     void Start()
     {
-        Debug.Log("hoi");
-
         languagesCoroutine = GetLanguages();
         setupCoroutine = SetupMenu();
 
@@ -93,13 +91,9 @@ public class SettingsMenu : MonoBehaviour
     // Saves the settings
     public void SaveSettings()
     {
-        Debug.Log("a");
         MemoryDataService.Distance = distance;
-        Debug.Log("b");
         MemoryDataService.Language = language = languagesShort[languageDropdown.value];
-        Debug.Log("c");
         CloseSettings();
-        Debug.Log("d");
     }
 
     private void CloseSettings()

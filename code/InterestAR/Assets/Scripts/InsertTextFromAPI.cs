@@ -1,5 +1,4 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,29 +9,29 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Net;
+using Assets.Scripts.Services;
 
 namespace Assets.Scripts
 {
-
     public class InsertTextFromAPI : MonoBehaviour
     {
         public Text ChangingText;
         public String Returnvalue;
         async void Start()
         {
-            string language = "fr";
+            string language = MemoryDataService.Language;
 
             if (Returnvalue == "text")
             {
-                ChangingText.text = await fullSearch("Eiffeltoren", language);
+                ChangingText.text = await fullSearch("Eiffel Tower", language);
             }
             else if (Returnvalue == "title")
             {
-                ChangingText.text = await GetOpenSearch("Eiffeltoren", language);
+                ChangingText.text = await GetOpenSearch("Eiffel Tower", language);
             }
         }
 
-        static async Task<string> fullSearch(string term, string language)
+        public static async Task<string> fullSearch(string term, string language)
         {
             string text = await GetData(term, language);
 
@@ -48,7 +47,7 @@ namespace Assets.Scripts
             return text;
         }
 
-        static async Task<string> GetOpenSearch(string term, string language)
+        public static async Task<string> GetOpenSearch(string term, string language)
         {
             term = Regex.Replace(term, @"s", "_");
             string openSearchUrl = $"https://{language}.wikipedia.org//w/api.php?action=opensearch&format=json&origin=*&search={term}";
