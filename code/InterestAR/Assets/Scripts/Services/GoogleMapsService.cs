@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Assets.Scripts.Dto;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,9 +21,8 @@ public class GoogleMapsService
         List<Place> places = new List<Place>();
         foreach(var location in locations)
         {
-            double.TryParse(location["geometry"]["location"]["lat"].ToString(), out double lat);
-            double.TryParse(location["geometry"]["location"]["lng"].ToString(), out double lng);
-            double.TryParse(location["name"].ToString(), out double ba);
+           double.TryParse(location["geometry"]["location"]["lat"].ToString(), out double lat);
+           double.TryParse(location["geometry"]["location"]["lng"].ToString(), out double lng);
 
            places.Add(new Place()
             {

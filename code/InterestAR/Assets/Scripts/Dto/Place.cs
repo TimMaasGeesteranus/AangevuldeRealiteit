@@ -1,6 +1,12 @@
-﻿public class Place
+﻿using UnityEngine;
+
+namespace Assets.Scripts.Dto
 {
-    public double Lat { get; set; }
-    public double Lng { get; set; }
-    public string Name { get; set; }
+    public class Place
+    {
+        public GameObject MarkerModel { get; set; }
+        public double Lat { get; set; }
+        public double Lng { get; set; }
+        public string Name { get; set; }
+    }
 }
