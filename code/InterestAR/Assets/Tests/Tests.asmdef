@@ -3,7 +3,8 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "applicationAssembly"
+        "applicationAssembly",
+        "Unity.VectorGraphics"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

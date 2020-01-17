@@ -27,46 +27,8 @@ namespace Tests
             settingsMenu.languageDropdown = new GameObject().AddComponent<Dropdown>();
             settingsMenu.radiusSlider = new GameObject().AddComponent<Slider>();
             settingsMenu.radiusImage = new GameObject().AddComponent<SVGImage>();
-
-            //Scene scene = SceneManager.GetSceneByName("SettingsScreen");
-            //components = ui.GetComponentsInChildren(scene);\
-            //var ui = SearchGameObject("UI",scene.GetRootGameObjects());
-
-            //settingsMenu.saveButton = (Button)SearchComponents("SaveButton", components);
-            //settingsMenu.distanceAmount = (Text)SearchComponents("Label (Distance)", components);
-            //settingsMenu.languageDropdown = (Dropdown)SearchComponents("Dropdown", components);
-            //settingsMenu.radiusSlider = (Slider)SearchComponents("Slider", components);
-            //settingsMenu.radiusImage = (SVGImage) SearchComponents("RadiusImage", components);
         }
 
-        //private static GameObject SearchGameObject(string name, GameObject[] objects)
-        //{
-        //    GameObject selected = null;
-        //    foreach (var gameobject in objects)
-        //    {
-        //        if (gameobject.name == name)
-        //        {
-        //            selected = gameobject;
-        //            break;
-        //        }
-        //    }
-        //    return selected;
-        //}
-
-        //private static Component SearchComponents(string name, Component[] objects)
-        //{
-        //    Component selected = null;
-        //    foreach (var component in objects)
-        //    {
-
-        //        if (component.name == name)
-        //        {
-        //            selected = component;
-        //            break;
-        //        }
-        //    }
-        //    return selected;
-        //}
 
         [TearDown]
         public void Teardown()
@@ -79,24 +41,9 @@ namespace Tests
         public void SetSliderTest()
         {
             int value = 1;
-            settingsMenu.SetSlider(value);
 
             Assert.AreEqual($"{value * settingsMenu.DistanceStep} M", settingsMenu.distanceAmount.text);
         }
 
-        [UnityTest]
-        public IEnumerator Awake_WhenInvoked_SetInitialState()
-        {
-            string language = "English";
-            var DropdownValue = settingsMenu.languageDropdown.value;
-            MemoryDataService.Language = "English";
-            MemoryDataService.Distance = 0;
-
-            yield return null;
-
-            Assert.AreEqual(0, DropdownValue);
-            Assert.AreEqual(settingsMenu.languageDropdown.options[DropdownValue].text, language);
-
-        }
     }
 }

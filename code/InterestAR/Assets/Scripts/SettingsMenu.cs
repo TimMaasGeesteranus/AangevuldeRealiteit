@@ -14,6 +14,7 @@ namespace Assets.Scripts
         public List<string> languages = new List<string> { "Nederlands", "English", "Deutsch" };
 
         public int DistanceStep = 50;
+        public float test = 0;
 
         // Gameobjects
         public Button saveButton;
@@ -55,6 +56,7 @@ namespace Assets.Scripts
         {
             distance = MemoryDataService.Distance;
             language = MemoryDataService.Language;
+
             distanceAmount.text = $"{distance} M";
         }
 
@@ -85,6 +87,7 @@ namespace Assets.Scripts
 
         private void CloseSettings()
         {
+            MemoryDataService.DirectSave();
             SceneManager.LoadScene("CameraScene");
         }
     }

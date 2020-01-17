@@ -1,34 +1,37 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using Assets.Scripts;
+using Assets.Scripts.Services;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
+using UnityEngine.UI;
 
 namespace Tests
 {
     public class SettingsScreenTest
     {
         private SettingsMenu settingsMenu;
-        GameObject[] gameObjects;
+        private GameObject settingsMenuObject;
+        private Component[] components;
 
 
         [SetUp]
         public void Setup()
         {
-            Scene s = SceneManager.GetSceneByName("SettingsScreen");
-            GameObject[] gameObjects = s.GetRootGameObjects();
+            settingsMenu = new GameObject().AddComponent<SettingsMenu>();
 
-            Debug.Log(gameObjects.Length);
+            settingsMenu.saveButton = new GameObject().AddComponent<Button>();
+            settingsMenu.distanceAmount = new GameObject().AddComponent<Text>();
+            settingsMenu.languageDropdown = new GameObject().AddComponent<Dropdown>();
+            settingsMenu.radiusSlider = new GameObject().AddComponent<Slider>();
+            settingsMenu.radiusImage = new GameObject().AddComponent<SVGImage>();
 
-            settingsMenu = new SettingsMenu();
-            //settingsMenu.saveButton = new Button();
+            settingsMenu.radiusSlider.minValue = 1;
+            settingsMenu.radiusSlider.maxValue = 20;
 
-            //GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
-            //List<GameObject> objList = GameObjectEventsHandler.specificSceneObjects["your scene you want"];
-
-            //MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefabs/Game"));
+            MemoryDataService.Language = "Deutsch";
+            MemoryDataService.Distance = 1000;
+            MemoryDataService.DirectSave();
 
         }
 
@@ -38,20 +41,37 @@ namespace Tests
             Object.Destroy(settingsMenu);
         }
 
-        // A Test behaves as an ordinary method
-        [Test]
-        public void SettingsScreenTestSimplePasses()
+        [UnityTest]
+        public IEnumerator Awake_WhenInvoked_SetDropdown()
         {
-            Assert.AreEqual(-1, gameObjects.Length);
+            string expected = "Deutsch";
+            var DropdownValue = settingsMenu.languageDropdown.value;
+            
+            yield return null;
+
+            Assert.AreEqual(expected, settingsMenu.languageDropdown.options[DropdownValue].text);
+
+        }
+
+        [UnityTest]
+        public IEnumerator Awake_WhenInvoked_SetupInitialSettings()
+        {
+            string expected = "1000 M";
+
+            yield return null;
+
+            Assert.AreEqual(expected, settingsMenu.distanceAmount.text);
         }
 
 
-        [Test]
-        public IEnumerator SettingsScreenTestWithEnumeratorPasses()
+        [UnityTest]
+        public IEnumerator Awake_WhenInvoked_SetSlider()
         {
-            // Use the Assert class to test conditions.
-            // Use yield to skip a frame.
+            float expected = 1000 / settingsMenu.DistanceStep;
+
             yield return null;
+
+            Assert.AreEqual(expected, settingsMenu.radiusSlider.value);
         }
     }
 }
