@@ -9,6 +9,7 @@ using IBM.Cloud.SDK.Utilities;
 using IBM.Watson.LanguageTranslator.V3;
 using IBM.Watson.LanguageTranslator.V3.Model;
 using System.Threading.Tasks;
+using System.Linq;
 using Assets.Scripts.Services;
 
 public class SettingsMenu : MonoBehaviour
@@ -17,6 +18,7 @@ public class SettingsMenu : MonoBehaviour
     private string language;
     private float distance = 0;
     private List<string> languages = new List<string>();
+    private List<string> languagesShort = new List<string>();
 
     // Gameobjects
     public Button saveButton;
@@ -75,7 +77,8 @@ public class SettingsMenu : MonoBehaviour
         languageDropdown.ClearOptions();
         languageDropdown.AddOptions(languages);
         languageDropdown.RefreshShownValue();
-        languageDropdown.value = languages.IndexOf(language);
+
+        languageDropdown.value = languagesShort.FindIndex(a => a == language);
     }
 
     // Sets the slider and current text value
@@ -89,7 +92,7 @@ public class SettingsMenu : MonoBehaviour
     public void SaveSettings()
     {
         MemoryDataService.Distance = distance;
-        MemoryDataService.Language = language = languages[languageDropdown.value];
+        MemoryDataService.Language = language = languagesShort[languageDropdown.value];
         CloseSettings();
     }
 
@@ -122,9 +125,11 @@ public class SettingsMenu : MonoBehaviour
         languageTranslatorService.ListIdentifiableLanguages(
              callback: (DetailedResponse<IdentifiableLanguages> response, IBMError error) =>
              {
-                 foreach (var element in response.Result.Languages){
-                         languages.Add(element.Language);
-             }
-        });
+                 foreach (var element in response.Result.Languages)
+                 {
+                     languages.Add(element.Name);
+                     languagesShort.Add(element.Language);
+                 }
+             });
     }
 }
