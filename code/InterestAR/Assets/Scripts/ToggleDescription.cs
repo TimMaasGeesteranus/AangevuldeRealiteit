@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.Dto;
+using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
@@ -9,17 +10,14 @@ namespace Assets.Scripts
     {
         public void OnMouseDown()
         {
-            if (gameObject != null)
+            Markers.MarkersWithDescriptions.TryGetValue(gameObject, out GameObject description);
+
+            if (description != null)
             {
-                Markers.MarkersWithDescriptions.TryGetValue(gameObject, out GameObject description);
+                Text scrollable = description.transform.GetChild(0).GetChild(0).GetComponent<Text>();
+                Text title = description.transform.GetChild(1).GetChild(0).GetComponent<Text>();
 
-                if (description != null)
-                {
-                    GameObject scrollable = description.transform.GetChild(0).gameObject;
-                    GameObject title = description.transform.GetChild(1).gameObject;
-
-                    description.SetActive(!description.activeSelf);
-                }
+                description.SetActive(!description.activeSelf);
             }
         }
     }
