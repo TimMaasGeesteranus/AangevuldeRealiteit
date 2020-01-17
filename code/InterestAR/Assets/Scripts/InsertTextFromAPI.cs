@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Net;
+using Assets.Scripts.Services;
 
 namespace Assets.Scripts
 {
@@ -20,7 +21,7 @@ namespace Assets.Scripts
         public String Returnvalue;
         async void Start()
         {
-            string language = "en";
+            string language = MemoryDataService.Language;
 
             if (Returnvalue == "text")
             {
@@ -32,7 +33,7 @@ namespace Assets.Scripts
             }
         }
 
-        static async Task<string> fullSearch(string term, string language)
+        public static async Task<string> fullSearch(string term, string language)
         {
             string text = await GetData(term, language);
 
@@ -48,7 +49,7 @@ namespace Assets.Scripts
             return text;
         }
 
-        static async Task<string> GetOpenSearch(string term, string language)
+        public static async Task<string> GetOpenSearch(string term, string language)
         {
             term = Regex.Replace(term, @"s", "_");
             string openSearchUrl = $"https://{language}.wikipedia.org//w/api.php?action=opensearch&format=json&origin=*&search={term}";
