@@ -19,7 +19,7 @@ public class GetCoordinatesFromGoogleAPI : MonoBehaviour
         {
             if (obj["name"].ToString() == PointOfInterest)
             {
-                ChangingText.text = string.Concat("Lat: ", ((obj["geometry"])["location"])["lat"], " - Let: ", ((obj["geometry"])["location"])["lng"]);
+                ChangingText.text = string.Concat("Lat: ", ((obj["geometry"])["location"])["lat"], " - Lng: ", ((obj["geometry"])["location"])["lng"]);
             };
         };
     }
