@@ -19,18 +19,17 @@ namespace Assets.Scripts
     {
         public Text ChangingText;
         public String Returnvalue;
-        async void Start()
+        void Start()
         {
-            string language = MemoryDataService.Language;
 
-            if (Returnvalue == "text")
-            {
-                ChangingText.text = await fullSearch("Eiffel Tower", language);
-            }
-            else if (Returnvalue == "title")
-            {
-                ChangingText.text = await GetOpenSearch("Eiffel Tower", language);
-            }
+            //if (Returnvalue == "text")
+            //{
+            //    ChangingText.text = await fullSearch("Eiffel Tower", language);
+            //}
+            //else if (Returnvalue == "title")
+            //{
+            //    ChangingText.text = await GetOpenSearch("Eiffel Tower", language);
+            //}
         }
 
         public static async Task<string> fullSearch(string term, string language)

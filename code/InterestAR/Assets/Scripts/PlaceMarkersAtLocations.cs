@@ -1,7 +1,7 @@
 ﻿using ARLocation;
-using System.Collections;
-using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using Debug = System.Diagnostics.Debug;
 
 namespace Assets.Scripts
 {
@@ -10,12 +10,13 @@ namespace Assets.Scripts
         public GameObject Marker;
         public GoogleMapsService mapsService = new GoogleMapsService();
 
-        private void Start()
+        private async void Start()
         {
-
-            var places =  mapsService.GetCoordinates("51.825764", "5.865534", 100);
-
+            var places =  await mapsService.GetCoordinatesAsync("51.598190700981874", "6.054871073400005", 10000);
+            Debug.WriteLine(places.Count);
             foreach(var place in places) {
+                Debug.WriteLine(place.Lat);
+                Debug.WriteLine(place.Lng);
                 AddLocation(place.Lat, place.Lng);
             }
            
