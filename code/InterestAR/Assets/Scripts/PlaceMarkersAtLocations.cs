@@ -12,7 +12,7 @@ namespace Assets.Scripts
 
         private async void Start()
         {
-            var places =  await mapsService.GetCoordinatesAsync("51.598190700981874", "6.054871073400005", 10000);
+            var places =  await mapsService.GetCoordinatesAsync("51.598190700981874", "6.054871073400005", 1000);
             Debug.WriteLine(places.Count);
             foreach(var place in places) {
                 Debug.WriteLine(place.Lat);

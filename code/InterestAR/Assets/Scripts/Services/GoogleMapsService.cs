@@ -23,11 +23,11 @@ public class GoogleMapsService
     {
         List<Place> locations = new List<Place>();
         string url = $"{_baseUrl}?location={latitude},{longitude}&radius={radius}&type=point_of_interest&language=en&key={_apiKey}";
-
+        Debug.WriteLine(url);
         var next_page_token = "";
         while (next_page_token != null)
         {
-            HttpResponseMessage response = await _client.GetAsync(url + next_page_token);
+            HttpResponseMessage response = await _client.GetAsync($"{url}&next_page_token={next_page_token}");
             if (response.IsSuccessStatusCode)
             {
                 var json = await response.Content.ReadAsStringAsync();
