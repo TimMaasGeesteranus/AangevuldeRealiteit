@@ -1,16 +1,19 @@
-# Retrospective Notulen 13-1-20
+# Retrospective Notulen 13-1-20 #
 
 Scrummaster: Tim </br>
 Notulist: Kay
 
-Aanwezig: Tim Maas Geesteranus, Kay Verhaegh, Kevin Van Schaijk, Jim Van De Ligt, Reno Rovers, Randy Grouls, Marcel Verheij
+Aanwezig: Tim Maas Geesteranus, Kay Verhaegh, Kevin Van Schaijk, Jim Van De Ligt, Reno Rovers, Randy Grouls, Marcel Verheij <br/>
 Afwezig: Jeannette Danes
+
 ---
 Laatste sprint dag naar 22 Januari zetten staat nu nog op dezelfde dag als Ica Presents
+
 ---
 Backlog goed bijhouden,
 Maak een burndown voor de backlog,
 Maak een burndown chart die nuttig is en dat kan wel gewoon in excel zodat we iets hebben om te laten zien.
+
 ---
 
 Stoppen met klagen over het verleden van het project,
