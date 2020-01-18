@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Dto
 {
-    public static class Markers
+    public static class MarkerStorage
     {
         public static Dictionary<GameObject, GameObject> MarkersWithDescriptions = new Dictionary<GameObject, GameObject>();
     }
