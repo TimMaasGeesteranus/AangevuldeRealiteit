@@ -1,6 +1,6 @@
 # Retrospective Notulen 13-1-20
 
-Scrummaster: Tim
+Scrummaster: Tim </br>
 Notulist: Kay
 
 Aanwezig: Tim Maas Geesteranus, Kay Verhaegh, Kevin Van Schaijk, Jim Van De Ligt, Reno Rovers, Randy Grouls, Marcel Verheij
