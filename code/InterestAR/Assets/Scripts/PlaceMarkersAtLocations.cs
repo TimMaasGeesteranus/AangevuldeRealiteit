@@ -10,7 +10,6 @@ namespace Assets.Scripts
     {
         public GameObject Marker;
         public GoogleMapsService mapsService = new GoogleMapsService();
-        public GameObject PlaceOfInterestDescription;
 
         private void Start()
         {
@@ -46,12 +45,9 @@ namespace Assets.Scripts
             place.MarkerModel = GameObject.Instantiate(Marker);
             place.MarkerModel.name = place.Name;
 
-            //create a copy of the description for individual interaction
-            GameObject description = GameObject.Instantiate(PlaceOfInterestDescription);
+            PlaceAtLocation marker = PlaceAtLocation.AddPlaceAtComponent(place.MarkerModel, loc, opts);
 
-            PlaceAtLocation.AddPlaceAtComponent(place.MarkerModel, loc, opts);
-
-            MarkerStorage.MarkersWithDescriptions.Add(place.MarkerModel, description);
+            MarkerStorage.ActiveMarkers.Add(place.MarkerModel, marker);
         }
     }
 }

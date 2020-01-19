@@ -847,7 +847,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Marker: {fileID: 1382916368}
-  PlaceOfInterestDescription: {fileID: 322054384}
 --- !u!1 &530262127
 GameObject:
   m_ObjectHideFlags: 0
@@ -2152,7 +2151,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 857f5318cfd8c384bbbda756ff0e617e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 857f5318cfd8c384bbbda756ff0e617e,
         type: 3}
@@ -2244,6 +2243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6b0ed88017b6d41984106a3fc929ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceOfInterestDescription: {fileID: 322054384}
 --- !u!1 &1510639264
 GameObject:
   m_ObjectHideFlags: 0
@@ -2255,7 +2255,6 @@ GameObject:
   - component: {fileID: 1510639265}
   - component: {fileID: 1510639268}
   - component: {fileID: 1510639267}
-  - component: {fileID: 1510639266}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2282,20 +2281,6 @@ RectTransform:
   m_AnchoredPosition: {x: 35, y: 0.9}
   m_SizeDelta: {x: 300, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1510639266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1510639264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ead1f5bf8a441e409cd814c1f18b505, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ChangingText: {fileID: 1510639267}
-  Returnvalue: title
 --- !u!114 &1510639267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2563,7 +2548,6 @@ GameObject:
   - component: {fileID: 1780709495}
   - component: {fileID: 1780709498}
   - component: {fileID: 1780709497}
-  - component: {fileID: 1780709496}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2590,20 +2574,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -865.0006}
   m_SizeDelta: {x: 350, y: 2000}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1780709496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1780709494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ead1f5bf8a441e409cd814c1f18b505, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ChangingText: {fileID: 1780709497}
-  Returnvalue: text
 --- !u!114 &1780709497
 MonoBehaviour:
   m_ObjectHideFlags: 0
