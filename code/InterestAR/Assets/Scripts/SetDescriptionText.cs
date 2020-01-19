@@ -12,7 +12,7 @@ namespace Assets.Scripts
     {
         public GameObject PlaceOfInterestDescription;
 
-        public void OnMouseDown()
+        public async void OnMouseDown()
         {
             if (PlaceOfInterestDescription != null)
             {
@@ -28,7 +28,7 @@ namespace Assets.Scripts
                     PlaceOfInterestDescription.SetActive(true);
 
                     title.text = gameObject.name;
-                    scrollable.text = "Test";
+                    scrollable.text = await WikipediaService.FullSearch(gameObject.name);
                 }
             }
         }
