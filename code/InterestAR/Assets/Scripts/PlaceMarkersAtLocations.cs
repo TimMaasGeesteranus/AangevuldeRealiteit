@@ -2,7 +2,7 @@
 using Assets.Scripts.Services;
 using System.Collections.Generic;
 using UnityEngine;
-using Debug = System.Diagnostics.Debug;
+using System.Threading.Tasks;
 
 namespace Assets.Scripts
 {
@@ -11,28 +11,31 @@ namespace Assets.Scripts
         public GameObject Marker;
         public GameObject LocationProvider;
         public GoogleMapsService mapsService = new GoogleMapsService();
-        public LocationReading locationProvider;
-        public LocationReading userLocation;
+        public ARLocationProvider provider;
+
         private List<Place> places;
 
         public void Start()
         {
-            ARLocationProvider provider = LocationProvider.GetComponent<ARLocationProvider>();
-            locationProvider = provider.CurrentLocation;
-            Debug.WriteLine(locationProvider);
+            provider = LocationProvider.GetComponent<ARLocationProvider>();
+
         }
 
-        public async void Update()
+        public async void UpdateAsync()
         {
-            Debug.WriteLine(locationProvider);
+            var userLocation = provider.CurrentLocation;
             if (places.Count <= 0)
             {
                 string lat = userLocation.latitude.ToString();
                 string lng = userLocation.longitude.ToString();
 
+                Debug.Log("hier");
+                Debug.Log(lat);
+                Debug.Log(lng);
+
                 int distance = (int)MemoryDataService.Distance;
                 places = await mapsService.GetCoordinatesAsync(lat, lng, distance);
-                Debug.WriteLine(places.Count);
+
                 foreach (var place in places)
                 {
                     AddLocation(place.Lat, place.Lng);
