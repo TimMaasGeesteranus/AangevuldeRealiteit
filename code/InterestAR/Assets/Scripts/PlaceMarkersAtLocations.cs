@@ -1,5 +1,6 @@
 ﻿using ARLocation;
-using System.Diagnostics;
+using Assets.Scripts.Services;
+using System.Collections.Generic;
 using UnityEngine;
 using Debug = System.Diagnostics.Debug;
 
@@ -8,18 +9,36 @@ namespace Assets.Scripts
     public class PlaceMarkersAtLocations : MonoBehaviour
     {
         public GameObject Marker;
+        public GameObject LocationProvider;
         public GoogleMapsService mapsService = new GoogleMapsService();
+        public LocationReading locationProvider;
+        public LocationReading userLocation;
+        private List<Place> places;
 
-        private async void Start()
+        public void Start()
         {
-            var places =  await mapsService.GetCoordinatesAsync("51.598190700981874", "6.054871073400005", 1000);
-            Debug.WriteLine(places.Count);
-            foreach(var place in places) {
-                Debug.WriteLine(place.Lat);
-                Debug.WriteLine(place.Lng);
-                AddLocation(place.Lat, place.Lng);
+            ARLocationProvider provider = LocationProvider.GetComponent<ARLocationProvider>();
+            locationProvider = provider.CurrentLocation;
+            Debug.WriteLine(locationProvider);
+        }
+
+        public async void Update()
+        {
+            Debug.WriteLine(locationProvider);
+            if (places.Count <= 0)
+            {
+                string lat = userLocation.latitude.ToString();
+                string lng = userLocation.longitude.ToString();
+
+                int distance = (int)MemoryDataService.Distance;
+                places = await mapsService.GetCoordinatesAsync(lat, lng, distance);
+                Debug.WriteLine(places.Count);
+                foreach (var place in places)
+                {
+                    AddLocation(place.Lat, place.Lng);
+                }
+
             }
-           
         }
 
         public void AddLocation(double latitude, double longitude)

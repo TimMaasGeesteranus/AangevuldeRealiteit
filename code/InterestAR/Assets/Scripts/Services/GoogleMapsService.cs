@@ -14,7 +14,7 @@ public class GoogleMapsService
 
     public GoogleMapsService()
     {
-        _apiKey = "AIzaSyDWnKL07Y0zk_IHGypBUiUF2Tz_INMeu6c";
+        _apiKey = "AIzaSyCSwFHHUayqGhURtesFuYteVv7ouKYi8MQ";
         _baseUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
         _client = new HttpClient();
     }
@@ -39,6 +39,11 @@ public class GoogleMapsService
             }
         }
         return locations;
+    }
+
+    internal Task GetCoordinatesAsync(object lat, string lng, int distance)
+    {
+        throw new NotImplementedException();
     }
 
     private List<Place> GetPlaces(JToken locations)
