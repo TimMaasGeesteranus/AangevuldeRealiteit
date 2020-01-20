@@ -13,14 +13,12 @@ namespace Assets.Scripts
 
         private void Start()
         {
-            //var places =  mapsService.GetCoordinates("51.825764", "5.865534", 100);
+            var places = mapsService.GetCoordinates("51.825764", "5.865534", 100);
 
-            //foreach(var place in places) {
-            //    AddLocation(place);
-            //}
-
-            AddLocation(new Place { Lat = 51.826330, Lng = 5.865145, Name = "Eiffel Tower" });
-            AddLocation(new Place { Lat = 51.826309, Lng = 5.865148, Name = "Notre-Dame" });
+            foreach (var place in places)
+            {
+                AddLocation(place);
+            }
         }
 
         public void AddLocation(Place place)
