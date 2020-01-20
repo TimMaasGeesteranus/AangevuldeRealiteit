@@ -1,4 +1,5 @@
 ﻿using ARLocation;
+using Assets.Scripts.Dto;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,21 +13,20 @@ namespace Assets.Scripts
 
         private void Start()
         {
+            var places = mapsService.GetCoordinates("51.825764", "5.865534", 100);
 
-            var places =  mapsService.GetCoordinates("51.825764", "5.865534", 100);
-
-            foreach(var place in places) {
-                AddLocation(place.Lat, place.Lng);
+            foreach (var place in places)
+            {
+                AddLocation(place);
             }
-           
         }
 
-        public void AddLocation(double latitude, double longitude)
+        public void AddLocation(Place place)
         {
             var loc = new Location()
             {
-                Latitude = latitude,
-                Longitude = longitude,
+                Latitude = place.Lat,
+                Longitude = place.Lng,
                 Altitude = 0,
                 AltitudeMode = AltitudeMode.GroundRelative
             };
@@ -39,7 +39,14 @@ namespace Assets.Scripts
                 UseMovingAverage = false
             };
 
-            PlaceAtLocation.AddPlaceAtComponent(Marker, loc, opts);
+            //create a copy of the model for individual interaction
+            place.MarkerModel = GameObject.Instantiate(Marker);
+            place.MarkerModel.name = place.Name;
+            place.MarkerModel.SetActive(true);
+
+            PlaceAtLocation marker = PlaceAtLocation.AddPlaceAtComponent(place.MarkerModel, loc, opts);
+
+            MarkerStorage.ActiveMarkers.Add(place.MarkerModel, marker);
         }
     }
 }
