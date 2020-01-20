@@ -3,42 +3,36 @@ using Assets.Scripts.Services;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
     public class PlaceMarkersAtLocations : MonoBehaviour
     {
         public GameObject Marker;
-        public GameObject LocationProvider;
         public GoogleMapsService mapsService = new GoogleMapsService();
         public ARLocationProvider provider;
+        public Text text;
 
-        private List<Place> places;
+        private List<Place> places = new List<Place>();
 
-        public void Start()
-        {
-            provider = LocationProvider.GetComponent<ARLocationProvider>();
-
-        }
-
-        public async void UpdateAsync()
+        public async void Update()
         {
             var userLocation = provider.CurrentLocation;
             if (places.Count <= 0)
             {
-                string lat = userLocation.latitude.ToString();
-                string lng = userLocation.longitude.ToString();
-
-                Debug.Log("hier");
-                Debug.Log(lat);
-                Debug.Log(lng);
-
-                int distance = (int)MemoryDataService.Distance;
-                places = await mapsService.GetCoordinatesAsync(lat, lng, distance);
-
-                foreach (var place in places)
+                if (userLocation.latitude + userLocation.latitude > 0)
                 {
-                    AddLocation(place.Lat, place.Lng);
+                    string lat = userLocation.latitude.ToString();
+                    string lng = userLocation.longitude.ToString();
+
+                    int distance = (int)MemoryDataService.Distance;
+                    places = await mapsService.GetCoordinatesAsync(lat, lng, distance);
+
+                    foreach (var place in places)
+                    {
+                        AddLocation(place.Lat, place.Lng);
+                    }
                 }
 
             }
