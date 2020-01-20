@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Assets.Scripts.Dto;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,7 +24,6 @@ public class GoogleMapsService
     {
         List<Place> locations = new List<Place>();
         string url = $"{_baseUrl}?location={latitude},{longitude}&radius={radius}&type=point_of_interest&language=en&key={_apiKey}";
-        Debug.WriteLine(url);
         var next_page_token = "";
         while (next_page_token != null)
         {
@@ -34,16 +34,10 @@ public class GoogleMapsService
                 var details = JObject.Parse(json);
                 var places = GetPlaces(details["results"]);
                 locations.AddRange(places);
-                Debug.WriteLine(locations[0].Name);
                 next_page_token = details.TryGetValue("next_page_token", out JToken value) ? value.ToString() : null;
             }
         }
         return locations;
-    }
-
-    internal Task GetCoordinatesAsync(object lat, string lng, int distance)
-    {
-        throw new NotImplementedException();
     }
 
     private List<Place> GetPlaces(JToken locations)
@@ -59,7 +53,6 @@ public class GoogleMapsService
                 Lng = lng,
                 Name = location["name"].ToString()
             });
-            Debug.WriteLine(places[0].Name);
         }
         return places;
     }

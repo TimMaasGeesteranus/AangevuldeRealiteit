@@ -1,38 +1,17 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using System;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Web;
-using System.Net;
-using Assets.Scripts.Services;
+using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Services
 {
-
-    public class InsertTextFromAPI : MonoBehaviour
+    public class WikipediaService
     {
-        public Text ChangingText;
-        public String Returnvalue;
-        void Start()
-        {
-
-            //if (Returnvalue == "text")
-            //{
-            //    ChangingText.text = await fullSearch("Eiffel Tower", language);
-            //}
-            //else if (Returnvalue == "title")
-            //{
-            //    ChangingText.text = await GetOpenSearch("Eiffel Tower", language);
-            //}
-        }
-
-        public static async Task<string> fullSearch(string term, string language)
+        public static async Task<string> FullSearch(string term, string language)
         {
             string text = await GetData(term, language);
 
@@ -69,7 +48,7 @@ namespace Assets.Scripts
 
                 if (stringArray.Length > 0)
                 {
-                    title = stringArray[0].Replace(" ", "_");
+                    title = stringArray[0];
                 }
                 else
                 {
@@ -86,7 +65,6 @@ namespace Assets.Scripts
 
             if (!string.IsNullOrEmpty(article))
             {
-
                 string dataUrl = $"https://{language}.wikipedia.org/w/api.php?action=query&titles={article}&format=xml&redirects=true&prop=extracts";
 
                 using (HttpClient client = new HttpClient())
