@@ -11,9 +11,9 @@ namespace Assets.Scripts.Services
 {
     public class WikipediaService
     {
-        public static async Task<string> FullSearch(string term)
+        public static async Task<string> FullSearch(string term, string language)
         {
-            string text = await GetData(term, MemoryDataService.Language);
+            string text = await GetData(term, language);
 
             if (string.IsNullOrEmpty(text))
             {
@@ -48,7 +48,7 @@ namespace Assets.Scripts.Services
 
                 if (stringArray.Length > 0)
                 {
-                    title = stringArray[0].Replace(" ", "_");
+                    title = stringArray[0];
                 }
                 else
                 {
@@ -65,7 +65,6 @@ namespace Assets.Scripts.Services
 
             if (!string.IsNullOrEmpty(article))
             {
-
                 string dataUrl = $"https://{language}.wikipedia.org/w/api.php?action=query&titles={article}&format=xml&redirects=true&prop=extracts";
 
                 using (HttpClient client = new HttpClient())

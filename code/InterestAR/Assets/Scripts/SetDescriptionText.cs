@@ -5,30 +5,36 @@ using Assets.Scripts.Dto;
 using UnityEngine.UI;
 using Assets.Scripts.Services;
 using System.Threading.Tasks;
+using ARLocation;
 
 namespace Assets.Scripts
 {
     public class SetDescriptionText : MonoBehaviour
     {
         public GameObject PlaceOfInterestDescription;
+        public Text Title;
+        public Text Description;
+
+        private static GameObject lastClickedMarker;
 
         public async void OnMouseDown()
         {
-            if (PlaceOfInterestDescription != null)
-            {
-                Text scrollable = PlaceOfInterestDescription.transform.GetChild(0).GetChild(0).GetComponent<Text>();
-                Text title = PlaceOfInterestDescription.transform.GetChild(1).GetChild(0).GetComponent<Text>();
+            MarkerStorage.ActiveMarkers.TryGetValue(gameObject, out PlaceAtLocation marker);
 
-                if (title.text == gameObject.name && PlaceOfInterestDescription.activeSelf)
+            if (PlaceOfInterestDescription != null && marker != null)
+            {
+                if (lastClickedMarker == gameObject && PlaceOfInterestDescription.activeSelf)
                 {
                     PlaceOfInterestDescription.SetActive(false);
                 }
-                else if (MarkerStorage.ActiveMarkers.ContainsKey(gameObject))
+                else
                 {
                     PlaceOfInterestDescription.SetActive(true);
 
-                    title.text = gameObject.name;
-                    scrollable.text = await WikipediaService.FullSearch(gameObject.name);
+                    lastClickedMarker = gameObject;
+
+                    Title.text = await WikipediaService.GetOpenSearch(gameObject.name, MemoryDataService.Language);
+                    Description.text = await WikipediaService.FullSearch(gameObject.name, MemoryDataService.Language);
                 }
             }
         }

@@ -19,8 +19,8 @@ namespace Assets.Scripts
             //    AddLocation(place);
             //}
 
-            AddLocation(new Place { Lat = 51.713682, Lng = 5.887977, Name = "Eiffel Tower" });
-            AddLocation(new Place { Lat = 51.713682, Lng = 5.887984, Name = "Notre-Dame" });
+            AddLocation(new Place { Lat = 51.826330, Lng = 5.865145, Name = "Eiffel Tower" });
+            AddLocation(new Place { Lat = 51.826309, Lng = 5.865148, Name = "Notre-Dame" });
         }
 
         public void AddLocation(Place place)
@@ -44,6 +44,7 @@ namespace Assets.Scripts
             //create a copy of the model for individual interaction
             place.MarkerModel = GameObject.Instantiate(Marker);
             place.MarkerModel.name = place.Name;
+            place.MarkerModel.SetActive(true);
 
             PlaceAtLocation marker = PlaceAtLocation.AddPlaceAtComponent(place.MarkerModel, loc, opts);
 

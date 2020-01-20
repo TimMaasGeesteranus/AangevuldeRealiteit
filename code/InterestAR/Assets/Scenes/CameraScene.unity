@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43667546, g: 0.48427135, b: 0.5645225, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -412,8 +412,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46883e3536c25f248a8c41ceae89e4a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChangingText: {fileID: 1780709497}
-  ChangingTitle: {fileID: 1510639267}
+  Title: {fileID: 0}
+  Description: {fileID: 0}
 --- !u!1 &186887440
 GameObject:
   m_ObjectHideFlags: 0
@@ -2148,6 +2148,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: model
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 857f5318cfd8c384bbbda756ff0e617e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 857f5318cfd8c384bbbda756ff0e617e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2244,6 +2249,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlaceOfInterestDescription: {fileID: 322054384}
+  Title: {fileID: 1510639267}
+  Description: {fileID: 1780709497}
 --- !u!1 &1510639264
 GameObject:
   m_ObjectHideFlags: 0
