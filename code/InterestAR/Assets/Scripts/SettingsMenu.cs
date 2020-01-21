@@ -93,6 +93,7 @@ public class SettingsMenu : MonoBehaviour
     {
         MemoryDataService.Distance = distance;
         MemoryDataService.Language = language = languagesShort[languageDropdown.value];
+        MemoryDataService.DirectSave();
         CloseSettings();
     }
 
@@ -119,7 +120,6 @@ public class SettingsMenu : MonoBehaviour
     public IEnumerator GetLanguages()
     {
         languageTranslatorService = new LanguageTranslatorService(versionDate);
-
         while (!languageTranslatorService.Authenticator.CanAuthenticate())
             yield return null;
 
