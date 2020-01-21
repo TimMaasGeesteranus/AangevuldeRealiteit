@@ -11,12 +11,11 @@ namespace Assets.Scripts
 {
     public class PlaceMarkersAtLocations : MonoBehaviour
     {
+        private List<Place> places = new List<Place>();
+        
         public GameObject Marker;
         public GoogleMapsService mapsService = new GoogleMapsService();
         public ARLocationProvider provider;
-        public Text text;
-
-        private List<Place> places = new List<Place>();
 
         public async void Update()
         {
@@ -30,7 +29,6 @@ namespace Assets.Scripts
 
                     int distance = (int)MemoryDataService.Distance;
                     places = await mapsService.GetCoordinatesAsync(lat, lng, distance);
-
                     foreach (var place in places)
                     {
                         AddLocation(place);
@@ -58,7 +56,7 @@ namespace Assets.Scripts
             };
 
             //create a copy of the model for individual interaction
-            place.MarkerModel = GameObject.Instantiate(Marker);
+            place.MarkerModel = Instantiate(Marker);
             place.MarkerModel.name = place.Name;
             place.MarkerModel.SetActive(true);
 
