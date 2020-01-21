@@ -1,23 +1,40 @@
 ﻿using ARLocation;
+using Assets.Scripts.Services;
 using Assets.Scripts.Dto;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
+using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
     public class PlaceMarkersAtLocations : MonoBehaviour
     {
+        private List<Place> places = new List<Place>();
+        
         public GameObject Marker;
         public GoogleMapsService mapsService = new GoogleMapsService();
+        public ARLocationProvider provider;
 
-        private void Start()
+        public async void Update()
         {
-            var places = mapsService.GetCoordinates("51.825764", "5.865534", 100);
 
-            foreach (var place in places)
+            var userLocation = provider.CurrentLocation;
+            if (places.Count <= 0)
             {
-                AddLocation(place);
+                if (userLocation.latitude + userLocation.latitude > 0)
+                {
+                    string lat = userLocation.latitude.ToString();
+                    string lng = userLocation.longitude.ToString();
+
+                    int distance = (int)MemoryDataService.Distance;
+                    places = await mapsService.GetCoordinatesAsync(lat, lng, distance);
+                    foreach (var place in places)
+                    {
+                        AddLocation(place);
+                    }
+                }
             }
         }
 
@@ -40,7 +57,7 @@ namespace Assets.Scripts
             };
 
             //create a copy of the model for individual interaction
-            place.MarkerModel = GameObject.Instantiate(Marker);
+            place.MarkerModel = Instantiate(Marker);
             place.MarkerModel.name = place.Name;
             place.MarkerModel.SetActive(true);
 
