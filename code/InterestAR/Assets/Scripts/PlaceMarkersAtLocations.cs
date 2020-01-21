@@ -19,7 +19,6 @@ namespace Assets.Scripts
 
         public async void Update()
         {
-
             var userLocation = provider.CurrentLocation;
             if (places.Count <= 0)
             {
