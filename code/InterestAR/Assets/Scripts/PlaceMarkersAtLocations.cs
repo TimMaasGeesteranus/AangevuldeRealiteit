@@ -11,11 +11,11 @@ namespace Assets.Scripts
 {
     public class PlaceMarkersAtLocations : MonoBehaviour
     {
+        private List<Place> places = new List<Place>();
+        
         public GameObject Marker;
         public GoogleMapsService mapsService = new GoogleMapsService();
         public ARLocationProvider provider;
-
-        private List<Place> places = new List<Place>();
 
         public async void Update()
         {
