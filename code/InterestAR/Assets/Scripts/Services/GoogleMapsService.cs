@@ -23,14 +23,16 @@ public class GoogleMapsService
         var nextPageToken = "";
         while (nextPageToken != null)
         {
-            HttpResponseMessage response = await _client.GetAsync($"{url}&next_page_token={nextPageToken}");
-            if (response.IsSuccessStatusCode)
+            using (HttpResponseMessage response = await _client.GetAsync($"{url}&next_page_token={nextPageToken}"))
             {
-                var json = await response.Content.ReadAsStringAsync();
-                var details = JObject.Parse(json);
-                var places = GetPlaces(details["results"]);
-                locations.AddRange(places);
-                nextPageToken = details.TryGetValue("next_page_token", out JToken value) ? value.ToString() : null;
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+                    var details = JObject.Parse(json);
+                    var places = GetPlaces(details["results"]);
+                    locations.AddRange(places);
+                    nextPageToken = details.TryGetValue("next_page_token", out JToken value) ? value.ToString() : null;
+                }
             }
         }
         return locations;
