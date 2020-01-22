@@ -764,6 +764,7 @@ MonoBehaviour:
   languageDropdown: {fileID: 756340261}
   radiusSlider: {fileID: 175644873}
   radiusImage: {fileID: 230350849}
+  DistanceStep: 50
 --- !u!1 &702540552
 GameObject:
   m_ObjectHideFlags: 0
@@ -1702,6 +1703,7 @@ MonoBehaviour:
   languageDropdown: {fileID: 756340261}
   radiusSlider: {fileID: 175644873}
   radiusImage: {fileID: 230350849}
+  DistanceStep: 50
 --- !u!1 &1041732879
 GameObject:
   m_ObjectHideFlags: 0
@@ -2556,8 +2558,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -100, y: -100}
-  m_SizeDelta: {x: 300, y: 300}
+  m_AnchoredPosition: {x: -80, y: -80}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1898185671
 MonoBehaviour:
@@ -2866,7 +2868,7 @@ GameObject:
   - component: {fileID: 2117646838}
   - component: {fileID: 2117646837}
   m_Layer: 5
-  m_Name: ' Label (Distance)'
+  m_Name: Label (Distance)
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: 49679f302ac6408697f6b9314a38985c, type: 3}
   m_NavMeshLayer: 0

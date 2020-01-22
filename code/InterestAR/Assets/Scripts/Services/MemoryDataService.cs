@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Services
 {
-    public class MemoryDataService
+    public static class MemoryDataService
     {
         private const string LANGUAGE = "language";
         private const string DISTANCE = "distance";
