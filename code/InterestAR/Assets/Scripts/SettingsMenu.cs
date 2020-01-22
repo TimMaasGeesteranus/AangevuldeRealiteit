@@ -1,94 +1,148 @@
-﻿using System.Collections.Generic;
-using Assets.Scripts.Services;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using IBM.Cloud.SDK;
+using IBM.Cloud.SDK.Utilities;
+using IBM.Watson.LanguageTranslator.V3;
+using IBM.Watson.LanguageTranslator.V3.Model;
+using System.Threading.Tasks;
+using System.Linq;
+using Assets.Scripts.Services;
+using IBM.Cloud.SDK.Authentication.Iam;
 
-namespace Assets.Scripts
+public class SettingsMenu : MonoBehaviour
 {
-    public class SettingsMenu : MonoBehaviour
+    // Values
+    private string language;
+    private float distance = 0;
+    private List<string> languages = new List<string>();
+    private List<string> languagesShort = new List<string>();
+
+    // Gameobjects
+    public Button saveButton;
+    public Text distanceAmount;
+    public Dropdown languageDropdown;
+    public Slider radiusSlider;
+    public SVGImage radiusImage;
+
+    // Language select
+    IEnumerator languagesCoroutine;
+    IEnumerator setupCoroutine;
+
+    LanguageTranslatorService languageTranslatorService;
+    private string versionDate = "2018-05-01";
+    private IamAuthenticator authenticator;
+
+    // Setup methods for the settings menu
+    void Start()
     {
-        // Values
-        public string language;
-        public float distance = 0;
-        public List<string> languages = new List<string> { "Nederlands", "English", "Deutsch" };
+        authenticator = new IamAuthenticator("zHZnKAxIRAsSBbW5nGGOrtiOCMX6Nw8tnjqhjPHtiHSl");
 
-        public int DistanceStep = 50;
-        public float test = 0;
+        languagesCoroutine = GetLanguages();
+        setupCoroutine = SetupMenu();
 
-        // Gameobjects
-        public Button saveButton;
-        public Text distanceAmount;
-        public Dropdown languageDropdown;
-        public Slider radiusSlider;
-        public SVGImage radiusImage;
+        StartCoroutine(languagesCoroutine);
+        StartCoroutine(setupCoroutine);
+    }
 
+    // Changes the radius while moving the slider
+    void Update()
+    {
+        ChangeRadiusVector();
+    }
 
-        // Setup methods for the settings menu
-        void Start()
-        {
-            SetupInitialSettings();
-            SetupDropdown();
-            setupSlider();
-        }
+    private void ChangeRadiusVector()
+    {
+        // Changes the scale of the circel vector
+        float step = 1 + (radiusSlider.value / 2);
+        radiusImage.rectTransform.localScale = new Vector2(step, step);
+    }
 
-        // Changes the radius while moving the slider
-        void Update()
-        {
-            ChangeRadiusVector();
-        }
+    // Retrieves the values from the memory
+    private void setupSlider()
+    {
+        radiusSlider.value = distance / 50;
+    }
 
-        private void ChangeRadiusVector()
-        {
-            // Changes the scale of the circel vector
-            float step = 1 + (radiusSlider.value / 2);
-            radiusImage.rectTransform.localScale = new Vector2(step, step);
-        }
+    // Retrieves the values from the memory
+    private void SetupInitialSettings()
+    {
+        distance = MemoryDataService.Distance;
+        language = MemoryDataService.Language;
+        distanceAmount.text = $"{distance} M";
+    }
 
-        // Retrieves the values from the memory
-        private void setupSlider()
-        {
-            radiusSlider.value = distance / DistanceStep;
-        }
+    // Setup for the dropdown
+    private void SetupDropdown()
+    {
+        languageDropdown.ClearOptions();
+        languageDropdown.AddOptions(languages);
+        languageDropdown.RefreshShownValue();
 
-        // Retrieves the values from the memory
-        private void SetupInitialSettings()
-        {
-            distance = MemoryDataService.Distance;
-            language = MemoryDataService.Language;
+        languageDropdown.value = languagesShort.FindIndex(a => a == language);
+    }
 
-            distanceAmount.text = $"{distance} M";
-        }
+    // Sets the slider and current text value
+    public void SetSlider(float value)
+    {
+        distance = value * 50;
+        distanceAmount.text = $"{distance} M";
+    }
 
-        // Setup for the dropdown
-        private void SetupDropdown()
-        {
-            languageDropdown.ClearOptions();
-            languageDropdown.AddOptions(languages);
-            languageDropdown.RefreshShownValue();
-            languageDropdown.value = languages.IndexOf(language);
-        }
+    // Saves the settings
+    public void SaveSettings()
+    {
+        MemoryDataService.Distance = distance;
+        MemoryDataService.Language = language = languagesShort[languageDropdown.value];
+        MemoryDataService.DirectSave();
+        CloseSettings();
+    }
 
-        // Sets the slider and current text value
-        public void SetSlider(float value)
-        {
-            distance = value * DistanceStep;
-            distanceAmount.text = $"{distance} M";
-        }
+    private void CloseSettings()
+    {
+        SceneManager.LoadScene("CameraScene");
+    }
 
+    public IEnumerator Wait(int seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+    }
 
-        // Saves the settings
-        public void SaveSettings()
-        {
-            MemoryDataService.Distance = distance;
-            MemoryDataService.Language = language = languages[languageDropdown.value];
-            CloseSettings();
-        }
+    public IEnumerator SetupMenu()
+    {
+        yield return new WaitForSeconds(2);
 
-        private void CloseSettings()
-        {
-            MemoryDataService.DirectSave();
-            SceneManager.LoadScene("CameraScene");
-        }
+        SetupInitialSettings();
+        SetupDropdown();
+        setupSlider();
+
+    }
+
+    public IEnumerator GetLanguages()
+    {
+        while (!authenticator.CanAuthenticate())
+            yield return null;
+
+        languageTranslatorService = new LanguageTranslatorService(versionDate, authenticator);
+        languageTranslatorService.SetServiceUrl("https://gateway-lon.watsonplatform.net/language-translator/api");
+
+        languageTranslatorService.ListIdentifiableLanguages(
+             callback: (DetailedResponse<IdentifiableLanguages> response, IBMError error) =>
+             {
+
+                 if (error != null) 
+                 {
+                     return;
+                 }
+
+                 foreach (var element in response.Result.Languages)
+                 {
+                     languages.Add(element.Name);
+                     languagesShort.Add(element.Language);
+                 }
+             });
     }
 }

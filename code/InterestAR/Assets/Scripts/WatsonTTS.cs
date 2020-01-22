@@ -6,6 +6,9 @@ using IBM.Cloud.SDK.Utilities;
 using IBM.Watson.TextToSpeech.V1;
 using UnityEngine.UI;
 using Assets.Scripts.Services;
+using System;
+using IBM.Cloud.SDK.Authentication;
+using IBM.Cloud.SDK.Authentication.Iam;
 
 namespace Assets.Scripts
 {
@@ -14,18 +17,20 @@ namespace Assets.Scripts
         public GameObject ObjectToToggle;
         public Button PlayButton;
         public Text Text;
-        public GameObject script;
         TextToSpeechService textToSpeechService;
         bool isPlaying = false;
         IEnumerator theCoroutine;
         AudioSource MyAudioSource;
         string voice;
+        private IamAuthenticator authenticator;
 
         void Start()
         {
             MyAudioSource = GetComponent<AudioSource>();
             Button btn = PlayButton.GetComponent<Button>();
             btn.onClick.AddListener(Wrapper);
+
+            authenticator = new IamAuthenticator("3TgGgAetV1wI6uanhdXBawlwpdYozI_TogKJPqgmksjK");
         }
 
         void Update()
@@ -89,12 +94,13 @@ namespace Assets.Scripts
 
         public IEnumerator MyCoroutine()
         {
-            string text = "Hallo lees deze tekst voor";
+            string text = Text.text;
 
-            textToSpeechService = new TextToSpeechService();
-
-            while (!textToSpeechService.Authenticator.CanAuthenticate())
+            while (!authenticator.CanAuthenticate())
                 yield return null;
+
+            textToSpeechService = new TextToSpeechService(authenticator);
+            textToSpeechService.SetServiceUrl("https://gateway-lon.watsonplatform.net/text-to-speech/api");
 
             byte[] synthesizeResponse = null;
             AudioClip clip = null;

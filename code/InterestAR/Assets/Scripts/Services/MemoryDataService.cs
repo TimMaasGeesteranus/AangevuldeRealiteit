@@ -9,7 +9,7 @@ namespace Assets.Scripts.Services
 
         public static string Language
         {
-            get { return PlayerPrefs.GetString(LANGUAGE, "English"); }
+            get { return PlayerPrefs.GetString(LANGUAGE, "en"); }
             set { PlayerPrefs.SetString(LANGUAGE, value); }
         }
         public static float Distance
