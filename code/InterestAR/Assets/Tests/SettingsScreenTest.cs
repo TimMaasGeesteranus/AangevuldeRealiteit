@@ -29,7 +29,7 @@ namespace Tests
             settingsMenu.radiusSlider.minValue = 1;
             settingsMenu.radiusSlider.maxValue = 20;
 
-            MemoryDataService.Language = "Deutsch";
+            MemoryDataService.Language = "de";
             MemoryDataService.Distance = 1000;
             MemoryDataService.DirectSave();
 
@@ -44,11 +44,11 @@ namespace Tests
         [UnityTest]
         public IEnumerator Awake_WhenInvoked_SetDropdown()
         {
-            string expected = "Deutsch";
+            string expected = "German";
+
+            yield return Wait(2);
+
             var DropdownValue = settingsMenu.languageDropdown.value;
-
-            yield return null;
-
             Assert.AreEqual(expected, settingsMenu.languageDropdown.options[DropdownValue].text);
 
         }
@@ -58,7 +58,7 @@ namespace Tests
         {
             string expected = "1000 M";
 
-            yield return null;
+            yield return Wait(2);
 
             Assert.AreEqual(expected, settingsMenu.distanceAmount.text);
         }
@@ -69,9 +69,14 @@ namespace Tests
         {
             float expected = 1000 / settingsMenu.DistanceStep;
 
-            yield return null;
+            yield return Wait(2);
 
             Assert.AreEqual(expected, settingsMenu.radiusSlider.value);
+        }
+
+        public IEnumerator Wait(int seconds)
+        {
+            yield return new WaitForSeconds(seconds);
         }
     }
 }

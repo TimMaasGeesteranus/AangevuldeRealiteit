@@ -41,7 +41,7 @@ namespace Tests
         public void SetSliderTest()
         {
             int value = 1;
-
+            settingsMenu.SetSlider(value);
             Assert.AreEqual($"{value * settingsMenu.DistanceStep} M", settingsMenu.distanceAmount.text);
         }
 

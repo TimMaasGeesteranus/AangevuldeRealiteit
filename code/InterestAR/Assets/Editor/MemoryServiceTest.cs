@@ -11,12 +11,12 @@ namespace Assets.Editor
         [Test]
         public void MemoryDataServiceShouldSaveLanguage()
         {
-            string language = "Nederlands";
+            string language = "de";
             // Makes sure initial value is returned
             MemoryDataService.ClearData();
 
             // Should return English as initial value
-            Assert.AreEqual("English", MemoryDataService.Language);
+            Assert.AreEqual("en", MemoryDataService.Language);
             MemoryDataService.Language = language;
 
             // Save directly instead saving on closure

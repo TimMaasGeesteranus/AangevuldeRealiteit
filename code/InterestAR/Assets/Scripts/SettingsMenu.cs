@@ -17,9 +17,17 @@ public class SettingsMenu : MonoBehaviour
 {
     // Values
     private string language;
-    private float distance = 0;
+    private static float distance = 0;
     private List<string> languages = new List<string>();
     private List<string> languagesShort = new List<string>();
+
+    // Language select
+    private IEnumerator languagesCoroutine;
+    private IEnumerator setupCoroutine;
+
+    private LanguageTranslatorService languageTranslatorService;
+    private string versionDate = "2018-05-01";
+    private IamAuthenticator authenticator;
 
     // Gameobjects
     public Button saveButton;
@@ -27,14 +35,7 @@ public class SettingsMenu : MonoBehaviour
     public Dropdown languageDropdown;
     public Slider radiusSlider;
     public SVGImage radiusImage;
-
-    // Language select
-    IEnumerator languagesCoroutine;
-    IEnumerator setupCoroutine;
-
-    LanguageTranslatorService languageTranslatorService;
-    private string versionDate = "2018-05-01";
-    private IamAuthenticator authenticator;
+    public int DistanceStep = 50;
 
     // Setup methods for the settings menu
     void Start()
@@ -52,6 +53,7 @@ public class SettingsMenu : MonoBehaviour
     void Update()
     {
         ChangeRadiusVector();
+        Debug.Log(distance);
     }
 
     private void ChangeRadiusVector()
@@ -64,7 +66,7 @@ public class SettingsMenu : MonoBehaviour
     // Retrieves the values from the memory
     private void setupSlider()
     {
-        radiusSlider.value = distance / 50;
+        radiusSlider.value = distance / DistanceStep;
     }
 
     // Retrieves the values from the memory
@@ -88,7 +90,7 @@ public class SettingsMenu : MonoBehaviour
     // Sets the slider and current text value
     public void SetSlider(float value)
     {
-        distance = value * 50;
+        distance = value * DistanceStep;
         distanceAmount.text = $"{distance} M";
     }
 
@@ -116,9 +118,8 @@ public class SettingsMenu : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         SetupInitialSettings();
-        SetupDropdown();
         setupSlider();
-
+        SetupDropdown();
     }
 
     public IEnumerator GetLanguages()
@@ -133,7 +134,7 @@ public class SettingsMenu : MonoBehaviour
              callback: (DetailedResponse<IdentifiableLanguages> response, IBMError error) =>
              {
 
-                 if (error != null) 
+                 if (error != null)
                  {
                      return;
                  }
