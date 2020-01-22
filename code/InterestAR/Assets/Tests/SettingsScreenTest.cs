@@ -46,7 +46,7 @@ namespace Tests
         {
             string expected = "Deutsch";
             var DropdownValue = settingsMenu.languageDropdown.value;
-            
+
             yield return null;
 
             Assert.AreEqual(expected, settingsMenu.languageDropdown.options[DropdownValue].text);
