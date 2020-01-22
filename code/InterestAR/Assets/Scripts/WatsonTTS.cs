@@ -41,7 +41,7 @@ namespace Assets.Scripts
         public bool checkIfLanguageIsSupported()
         {
             string language = MemoryDataService.Language;
-            Debug.Log(language);
+
             switch (language)
             {
                 case "de":
