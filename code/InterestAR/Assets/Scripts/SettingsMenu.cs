@@ -11,6 +11,7 @@ using IBM.Watson.LanguageTranslator.V3.Model;
 using System.Threading.Tasks;
 using System.Linq;
 using Assets.Scripts.Services;
+using IBM.Cloud.SDK.Authentication.Iam;
 
 public class SettingsMenu : MonoBehaviour
 {
@@ -33,10 +34,13 @@ public class SettingsMenu : MonoBehaviour
 
     LanguageTranslatorService languageTranslatorService;
     private string versionDate = "2018-05-01";
+    private IamAuthenticator authenticator;
 
     // Setup methods for the settings menu
     void Start()
     {
+        authenticator = new IamAuthenticator("zHZnKAxIRAsSBbW5nGGOrtiOCMX6Nw8tnjqhjPHtiHSl");
+
         languagesCoroutine = GetLanguages();
         setupCoroutine = SetupMenu();
 
@@ -93,6 +97,7 @@ public class SettingsMenu : MonoBehaviour
     {
         MemoryDataService.Distance = distance;
         MemoryDataService.Language = language = languagesShort[languageDropdown.value];
+        MemoryDataService.DirectSave();
         CloseSettings();
     }
 
@@ -118,15 +123,21 @@ public class SettingsMenu : MonoBehaviour
 
     public IEnumerator GetLanguages()
     {
-        languageTranslatorService = new LanguageTranslatorService(versionDate);
-
-        while (!languageTranslatorService.Authenticator.CanAuthenticate())
+        while (!authenticator.CanAuthenticate())
             yield return null;
 
+        languageTranslatorService = new LanguageTranslatorService(versionDate, authenticator);
+        languageTranslatorService.SetServiceUrl("https://gateway-lon.watsonplatform.net/language-translator/api");
 
         languageTranslatorService.ListIdentifiableLanguages(
              callback: (DetailedResponse<IdentifiableLanguages> response, IBMError error) =>
              {
+
+                 if (error != null) 
+                 {
+                     return;
+                 }
+
                  foreach (var element in response.Result.Languages)
                  {
                      languages.Add(element.Name);

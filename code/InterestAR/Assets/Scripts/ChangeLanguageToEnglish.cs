@@ -12,8 +12,11 @@ public class ChangeLanguageToEnglish : MonoBehaviour
 
     public async void OnMouseDown()
     {
-        MemoryDataService.Language = "en";
-        Title.text = await WikipediaService.GetOpenSearch(Title.text, MemoryDataService.Language);
-        Description.text = await WikipediaService.FullSearch(Title.text, MemoryDataService.Language);
+        if (Title != null && Description != null)
+        {
+            MemoryDataService.Language = "en";
+            Title.text = await WikipediaService.GetOpenSearch(Title.text, MemoryDataService.Language);
+            Description.text = await WikipediaService.FullSearch(Title.text, MemoryDataService.Language);
+        }
     }
 }
