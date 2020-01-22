@@ -2,6 +2,9 @@
 using UnityEngine.Android;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Assets.Scripts
 {
@@ -13,19 +16,52 @@ namespace Assets.Scripts
         void Start()
         {
             Button btn = promptButton.GetComponent<Button>();
-            btn.onClick.AddListener(TaskOnClick);
+            btn.onClick.AddListener(() => StartCoroutine(AskForPermissions()));
         }
 
-        void TaskOnClick()
+        private IEnumerator AskForPermissions()
         {
-            Permission.RequestUserPermission(Permission.Camera);
-        }
+            List<bool> permissions = new List<bool>() { false, false };
+            List<bool> permissionsAsked = new List<bool>() { false, false };
 
-        void Update()
-        {
-            if (Permission.HasUserAuthorizedPermission(Permission.Camera))
+            List<Action> actions = new List<Action>()
             {
-                SceneManager.LoadScene("CameraScene");
+                new Action(() =>
+                {
+                    permissions[0] = Permission.HasUserAuthorizedPermission(Permission.Camera);
+                    if (!permissions[0] && !permissionsAsked[0])
+                    {
+                        Permission.RequestUserPermission(Permission.Camera);
+                        permissionsAsked[0] = true;
+                        return;
+                    }
+                }),
+                  new Action(() =>
+                {
+                    permissions[1] = Permission.HasUserAuthorizedPermission(Permission.FineLocation);
+                    if (!permissions[1] && !permissionsAsked[1])
+                    {
+                        Permission.RequestUserPermission(Permission.FineLocation);
+                        permissionsAsked[1] = true;
+                        return;
+                    }
+                })
+            };
+
+            for (int i = 0; i < permissionsAsked.Count;)
+            {
+                actions[i].Invoke();
+                if (permissions[i])
+                {
+                    ++i;
+                }
+
+                if (Permission.HasUserAuthorizedPermission(Permission.Camera) && Permission.HasUserAuthorizedPermission(Permission.FineLocation))
+                {
+                    SceneManager.LoadScene("CameraScene");
+                }
+
+                yield return new WaitForEndOfFrame();
             }
         }
     }
