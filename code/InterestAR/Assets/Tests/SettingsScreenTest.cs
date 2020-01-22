@@ -14,7 +14,6 @@ namespace Tests
         private GameObject settingsMenuObject;
         private Component[] components;
 
-
         [SetUp]
         public void Setup()
         {
@@ -32,7 +31,6 @@ namespace Tests
             MemoryDataService.Language = "de";
             MemoryDataService.Distance = 1000;
             MemoryDataService.DirectSave();
-
         }
 
         [TearDown]
@@ -50,7 +48,6 @@ namespace Tests
 
             var DropdownValue = settingsMenu.languageDropdown.value;
             Assert.AreEqual(expected, settingsMenu.languageDropdown.options[DropdownValue].text);
-
         }
 
         [UnityTest]
@@ -62,7 +59,6 @@ namespace Tests
 
             Assert.AreEqual(expected, settingsMenu.distanceAmount.text);
         }
-
 
         [UnityTest]
         public IEnumerator Awake_WhenInvoked_SetSlider()
