@@ -10,6 +10,8 @@
 - Er word gestreeft om deep nesting te voorkomen om dat de functionaliteit slecht duidelijk word.
 - Gebruik autoformating van de IDE voor het uitlijnen van code.
 
+### feature branches
+- De feature branches dienen de {feature/userstory-nummer/featurenaam} naamgeving te hebben.
 
 ## Efficiëntie
 - Bij het schrijven van code word het DRY (Don't repeat yourself) principle toegepast.
